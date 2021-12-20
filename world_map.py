@@ -9,43 +9,36 @@ import random
 
 # Location constants
 ZONENAME = ''
-DESCRIPTION = ''
-EXAMINATION = ''
+DESCRIPTION = 'description'
+EXAMINATION = 'examine'
 
 # TODO: Finalize locations and fill out descriptions
 world_zone = {
-    't1': {
-        ZONENAME: 'Town',
+    'Town': {
         DESCRIPTION: 'Center of town',
         EXAMINATION: ''
     },
-    't2': {
-        ZONENAME: 'Blacksmith Shop',
+    'Blacksmith': {
         DESCRIPTION: 'description',
         EXAMINATION: ''
     },
-    't3': {
-        ZONENAME: 'General Store',
+    'General Store': {
         DESCRIPTION: 'description',
         EXAMINATION: ''
     },
-    't4': {
-        ZONENAME: 'Castle',
+    'Castle': {
         DESCRIPTION: 'description',
         EXAMINATION: ''
     },
-    'f1': {
-        ZONENAME: 'Forest',
+    'Forest': {
         DESCRIPTION: 'description',
         EXAMINATION: ''
     },
-    'm1': {
-        ZONENAME: 'Mine',
+    'Mine': {
         DESCRIPTION: 'description',
         EXAMINATION: ''
     },
-    'd1': {
-        ZONENAME: "Dragon's Lair",
+    "Dragon's Lair": {
         DESCRIPTION: 'description',
         EXAMINATION: ''
     },
