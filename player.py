@@ -12,4 +12,5 @@ class player:
         self.hp = 0
         self.mp = 0
         self.status_effects = []
+        self.location = ''
 myPlayer = player()
