@@ -1,7 +1,7 @@
 from player_movement import *
 
 def prompt():
-    print('\n' + '==========================')
+    print('==========================')
     print('What would you like to do?')
     print('-Travel-')
     print('-Quit-')

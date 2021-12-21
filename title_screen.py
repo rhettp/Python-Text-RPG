@@ -4,6 +4,7 @@ import sys
 import os
 import time
 import random
+from game_start import *
 
 ##### Title Screen #####
 def title_screen():
@@ -21,9 +22,7 @@ def title_screen_selections():
     while True:
         option = input('> ').lower()
         if option == 'play':
-            #TODO
-            print("Play")
-            #start_game()
+            start_game()
             break
         elif option == 'help':
             help_menu()
