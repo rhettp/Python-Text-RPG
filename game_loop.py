@@ -7,4 +7,7 @@ def main_game_loop():
     while True:
         os.system('clear')
         print_location()
-        town_prompt()
+        if myPlayer.location == "Town":
+            town_prompt()
+        elif myPlayer.location in ["Blacksmith", "Magic Shop", "General Store"]:
+            shop_prompt()
