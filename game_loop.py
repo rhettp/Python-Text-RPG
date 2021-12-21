@@ -7,5 +7,4 @@ def main_game_loop():
     while True:
         os.system('clear')
         print_location()
-        time.sleep(1)
-        prompt()
+        town_prompt()

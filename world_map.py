@@ -13,17 +13,10 @@ DESCRIPTION = 'description'
 EXAMINATION = 'examine'
 
 # TODO: Finalize locations and fill out descriptions
+# World Zones
 world_zone = {
     'Town': {
         DESCRIPTION: 'Center of town',
-        EXAMINATION: ''
-    },
-    'Blacksmith': {
-        DESCRIPTION: 'description',
-        EXAMINATION: ''
-    },
-    'General Store': {
-        DESCRIPTION: 'description',
         EXAMINATION: ''
     },
     'Castle': {
@@ -39,6 +32,22 @@ world_zone = {
         EXAMINATION: ''
     },
     "Dragon's Lair": {
+        DESCRIPTION: 'description',
+        EXAMINATION: ''
+    },
+}
+
+# Town Shops
+shops = {
+    'Blacksmith': {
+        DESCRIPTION: 'description',
+        EXAMINATION: ''
+    },
+    'Magic Shop': {
+        DESCRIPTION: 'description',
+        EXAMINATION: ''
+    },
+    'General Store': {
         DESCRIPTION: 'description',
         EXAMINATION: ''
     },
