@@ -9,8 +9,9 @@ import random
 class player:
     def __init__(self):
         self.name = ''
-        self.hp = 100
-        self.mp = 100
-        self.status_effects = []
+        self.max_hp = 100
+        self.hp = self.max_hp
+        self.max_mp = 100
+        self.mp = self.max_mp
         self.location = 'Town'
 myPlayer = player()

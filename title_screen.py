@@ -12,22 +12,22 @@ def title_screen():
     print('###################################')
     print('# Welcome to the Python Text RPG! #')
     print('###################################')
-    print('-Play-')
-    print('-Help-')
-    print('-Quit-')
+    print('1) Play')
+    print('2) Help')
+    print('3) Quit')
     title_screen_selections()
 
 ##### Title Selections #####
 def title_screen_selections():
     while True:
-        option = input('> ').lower()
-        if option == 'play':
+        option = input('> ')
+        if option == '1':
             start_game()
             break
-        elif option == 'help':
+        elif option == '2':
             help_menu()
             break
-        elif option == 'quit':
+        elif option == '3':
             sys.exit()
         else:
             print("Please enter a valid command.")

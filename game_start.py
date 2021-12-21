@@ -16,23 +16,14 @@ def start_game():
 
     # Introduction
     intro1 = "Welcome to the land of Requiem {}!\n".format(myPlayer.name)
-    intro2 = "Here you will fight monsters, level up skills, and complete quests.\n"
-    intro3 = "But it is up to you on how you do it!\n"
-    intro4 = "Have fun and be careful!\n"
-
+    intro2 = ("Here you will fight monsters, level up skills, and complete quests.\n"
+              "But it is up to you on how you do it!\n"
+              "Have fun and be careful!\n")
     for character in intro1:
         sys.stdout.write(character)
         sys.stdout.flush()
         time.sleep(0.05)
     for character in intro2:
-        sys.stdout.write(character)
-        sys.stdout.flush()
-        time.sleep(0.05)
-    for character in intro3:
-        sys.stdout.write(character)
-        sys.stdout.flush()
-        time.sleep(0.05)
-    for character in intro4:
         sys.stdout.write(character)
         sys.stdout.flush()
         time.sleep(0.05)
@@ -43,8 +34,8 @@ def start_game():
     print("# Let us Begin! #")
     print("#################")
     time.sleep(1)
-    intro5 = "\nYou arrive in the bustling city of Myrefall\n"
-    for character in intro5:
+    intro3 = "\nYou arrive in the bustling city of Myrefall.\n"
+    for character in intro3:
         sys.stdout.write(character)
         sys.stdout.flush()
         time.sleep(0.05)
