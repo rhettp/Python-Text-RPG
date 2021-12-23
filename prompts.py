@@ -69,3 +69,69 @@ def shop_prompt():
         else:
             print("Please enter a valid action.")
             continue
+
+# Forest prompt
+def forest_prompt():
+    print('\n==========================')
+    print('What would you like to do?')
+    print('1) Train combat (1-5)')
+    print('2) Train woodcutting')
+    print('3) Look')
+    print('4) Travel')
+    print('5) Inventory')
+    print('6) Character')
+    print('7) Quit')
+    while True:
+        action = input('> ')
+        if action == '1':
+            print("train")
+        elif action == '2':
+            print("woodcut")
+        elif action == '3':
+            print("\n" + world_zone[myPlayer.location][DESCRIPTION])
+            forest_prompt()
+        elif action == '4':
+            player_move()
+            break
+        elif action == '5':
+            print("inventory")
+        elif action == '6':
+            print("Character")
+        elif action == '7':
+            sys.exit()
+        else:
+            print("Please enter a valid action.")
+            continue
+
+# Mine prompt
+def mine_prompt():
+    print('\n==========================')
+    print('What would you like to do?')
+    print('1) Train combat (6-10)')
+    print('2) Train mining/blacksmithing')
+    print('3) Look')
+    print('4) Travel')
+    print('5) Inventory')
+    print('6) Character')
+    print('7) Quit')
+    while True:
+        action = input('> ')
+        if action == '1':
+            print("train")
+        elif action == '2':
+            print("mining")
+        elif action == '3':
+            print("\n" + world_zone[myPlayer.location][DESCRIPTION])
+            mine_prompt()
+        elif action == '4':
+            player_move()
+            break
+        elif action == '5':
+            print("inventory")
+        elif action == '6':
+            print("Character")
+        elif action == '7':
+            sys.exit()
+        else:
+            print("Please enter a valid action.")
+            continue
