@@ -14,4 +14,10 @@ class player:
         self.max_mp = 100
         self.mp = self.max_mp
         self.location = 'Town'
+        self.attack = 10
+        self.defense = 10
+
+    def is_dead(self):
+        return self.hp <= 0 
+
 myPlayer = player()

@@ -14,5 +14,7 @@ class enemy:
 # Goblin enemy subclass
 class Goblin(enemy):
     def __init__(self):
-        super().__init__(name = "Goblin", hp = 10, damage = 2)
+        super().__init__(name = "Goblin", hp = 25, damage = 2)
 
+
+goblin = Goblin()
