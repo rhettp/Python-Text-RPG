@@ -13,11 +13,17 @@ class player:
         self.hp = self.max_hp
         self.max_mp = 100
         self.mp = self.max_mp
-        self.location = 'Town'
-        self.attack = 10
-        self.defense = 10
+        self.location = 'Forest'
+        self.gold = 100
+        self.strength = 1
+        self.agility = 1
+        self.magic = 1
+        
 
     def is_dead(self):
-        return self.hp <= 0 
+        return self.hp <= 0
+
+    def display_stats(self):
+        print('HP: {}/{}   MP: ({}/{})  Gold: {}'.format(self.hp,self.max_hp, self.mp, self.max_mp, self.gold))
 
 myPlayer = player()

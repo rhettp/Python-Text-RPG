@@ -1,10 +1,15 @@
 from player_movement import *
+from combat import *
+from enemy import *
+from player import *
 
 ##### Prompts ##### 
 
 # Town prompt
 def town_prompt():
-    print('\n==========================')
+    print('\n')
+    myPlayer.display_stats()
+    print('==========================')
     print('What would you like to do?')
     print('1) Train')
     print('2) Look')
@@ -39,7 +44,9 @@ def town_prompt():
 # Shops prompt
 # TODO: Create buy and sell actions
 def shop_prompt():
-    print('\n==========================')
+    print('\n')
+    myPlayer.display_stats()
+    print('==========================')
     print('What would you like to do?')
     print('1) Buy')
     print('2) Sell')
@@ -72,7 +79,9 @@ def shop_prompt():
 
 # Forest prompt
 def forest_prompt():
-    print('\n==========================')
+    print('\n')
+    myPlayer.display_stats()
+    print('==========================')
     print('What would you like to do?')
     print('1) Train combat (1-5)')
     print('2) Train woodcutting')
@@ -84,7 +93,11 @@ def forest_prompt():
     while True:
         action = input('> ')
         if action == '1':
-            print("train")
+            os.system('clear')
+            print('A {} approaches!\n'.format(Goblin().name))
+            Goblin().display_stats()
+            combat_state(Goblin())
+            forest_prompt()
         elif action == '2':
             print("woodcut")
         elif action == '3':
@@ -105,7 +118,9 @@ def forest_prompt():
 
 # Mine prompt
 def mine_prompt():
-    print('\n==========================')
+    print('\n')
+    myPlayer.display_stats()
+    print('==========================')
     print('What would you like to do?')
     print('1) Train combat (6-10)')
     print('2) Train mining/blacksmithing')
@@ -135,3 +150,14 @@ def mine_prompt():
         else:
             print("Please enter a valid action.")
             continue
+
+# Prompt based on player location
+def prompt_choice():
+    if myPlayer.location == "Town":
+        town_prompt()
+    elif myPlayer.location in ["Blacksmith", "Magic Shop", "General Store"]:
+        shop_prompt()
+    elif myPlayer.location == "Forest":
+        forest_prompt()
+
+forest_prompt()
