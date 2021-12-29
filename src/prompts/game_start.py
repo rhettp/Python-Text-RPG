@@ -1,8 +1,8 @@
 import sys
 import os
 import time
-from player import *
-from game_loop import *
+from character.player import *
+from gameplay.game_loop import *
 
 ##### New Game Start #####
 def start_game():

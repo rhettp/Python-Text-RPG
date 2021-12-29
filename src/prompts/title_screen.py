@@ -4,7 +4,7 @@ import sys
 import os
 import time
 import random
-from game_start import *
+from prompts.game_start import *
 
 ##### Title Screen #####
 def title_screen():

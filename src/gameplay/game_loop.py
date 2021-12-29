@@ -1,7 +1,7 @@
 import os
 import time
-from prompts import *
-from player_movement import *
+from prompts.prompts import *
+from gameplay.movement import *
 
 def main_game_loop():
     while True:

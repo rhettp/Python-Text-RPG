@@ -4,8 +4,8 @@ import sys
 import os
 import time
 import random
-from player import *
-from world_map import*
+from character.player import *
+from world.world_map import*
 
 ##### Player Movement #####
 

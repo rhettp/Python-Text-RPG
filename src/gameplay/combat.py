@@ -4,8 +4,8 @@ import sys
 import os
 import time
 import random
-from player import *
-from enemy import *
+from character.player import *
+from character.enemy import *
 
 ##### Combat #####
 

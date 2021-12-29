@@ -13,7 +13,7 @@ class player:
         self.hp = self.max_hp
         self.max_mp = 100
         self.mp = self.max_mp
-        self.location = 'Forest'
+        self.location = 'Town'
         self.gold = 100
         self.strength = 1
         self.agility = 1

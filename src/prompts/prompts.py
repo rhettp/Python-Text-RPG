@@ -1,7 +1,7 @@
-from player_movement import *
-from combat import *
-from enemy import *
-from player import *
+from gameplay.movement import *
+from gameplay.combat import *
+from character.enemy import *
+from character.player import *
 
 ##### Prompts ##### 
 
@@ -159,5 +159,3 @@ def prompt_choice():
         shop_prompt()
     elif myPlayer.location == "Forest":
         forest_prompt()
-
-forest_prompt()
