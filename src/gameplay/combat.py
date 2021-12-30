@@ -67,21 +67,21 @@ def magic_prompt(enemy):
         action = input("> ")
         if action == '1':
             if myPlayer.mp < 20:
-                print("Insufficient MP to cast Fireball.")
+                print("Not enough MP to cast Fireball.")
                 continue
             else:
                 fireball(enemy)
                 break
         elif action == '2':
             if myPlayer.mp < 30:
-                print("Insufficient MP to cast Icebolt.")
+                print("Not enough MP to cast Icebolt.")
                 continue
             else:
                 icebolt(enemy)
                 break
         elif action == '3':
             if myPlayer.mp < 40:
-                print("Insufficient MP to cast Heal.")
+                print("Not enough MP to cast Heal.")
                 continue
             elif myPlayer.hp == myPlayer.max_hp:
                 print("Already at full HP.")

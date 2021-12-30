@@ -19,11 +19,14 @@ class player:
         self.agility = 1
         self.magic = 1
         
-
+    # Check if player is dead
     def is_dead(self):
         return self.hp <= 0
 
+    # Display current player stats
     def display_stats(self):
+        print('======================================')
         print('HP: {}/{}   MP: ({}/{})  Gold: {}'.format(self.hp,self.max_hp, self.mp, self.max_mp, self.gold))
+        print('======================================')
 
 myPlayer = player()

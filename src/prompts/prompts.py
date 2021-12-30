@@ -1,5 +1,6 @@
 from gameplay.movement import *
 from gameplay.combat import *
+from gameplay.inventory import *
 from character.enemy import *
 from character.player import *
 
@@ -7,9 +8,9 @@ from character.player import *
 
 # Town prompt
 def town_prompt():
-    print('\n')
+    os.system('clear')
+    print_location()
     myPlayer.display_stats()
-    print('==========================')
     print('What would you like to do?')
     print('1) Train')
     print('2) Look')
@@ -25,6 +26,7 @@ def town_prompt():
         elif action == '2':
             print("\n" + world_zone[myPlayer.location][DESCRIPTION])
             town_prompt()
+            break
         elif action == '3':
             player_shop()
             break
@@ -32,7 +34,12 @@ def town_prompt():
             player_move()
             break
         elif action == '5':
-            print("inventory")
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            inventory_prompt()
+            town_prompt()
+            break
         elif action == '6':
             print("Character")
         elif action == '7':

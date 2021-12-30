@@ -14,7 +14,8 @@ def print_location():
     print('\n' + ('#' * (4 + len(myPlayer.location))))
     print('# {} #'.format(myPlayer.location))
     print('#' * (4 + len(myPlayer.location)))
-    time.sleep(1)
+    print('\n')
+    #time.sleep(1)
 
 # Player move location
 def player_move():
