@@ -8,52 +8,59 @@ from character.player import *
 
 # Town prompt
 def town_prompt():
-    os.system('clear')
-    print_location()
-    myPlayer.display_stats()
     print('What would you like to do?')
-    print('1) Train')
-    print('2) Look')
-    print('3) Shop')
+    print('1) Shop')
+    print('2) Rest')
+    print('3) Look')
     print('4) Travel')
     print('5) Inventory')
     print('6) Character')
     print('7) Quit')
     while True:
         action = input('> ')
-        if action == '1':
-            print("train")
-        elif action == '2':
-            print("\n" + world_zone[myPlayer.location][DESCRIPTION])
-            town_prompt()
-            break
-        elif action == '3':
+        if action == '1':       # Shop     
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
             player_shop()
             break
-        elif action == '4':
-            player_move()
+        elif action == '2':     # Rest
+            print("rest")
+        elif action == '3':     # Look
+            os.system('clear')
+            print_location()
+            print(world_zone[myPlayer.location][DESCRIPTION])
+            print("\n")
+            myPlayer.display_stats()
+            town_prompt()
             break
-        elif action == '5':
+        elif action == '4':     # Travel
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            player_move()
+            prompt_choice()
+            break
+        elif action == '5':     # Inventory
             os.system('clear')
             print_location()
             myPlayer.display_stats()
             inventory_prompt()
             town_prompt()
             break
-        elif action == '6':
+        elif action == '6':     # Character
             print("Character")
-        elif action == '7':
+        elif action == '7':     # Quit
             sys.exit()
-        else:
+        else:                   # Input validation
             print("Please enter a valid action.")
             continue
 
 # Shops prompt
 # TODO: Create buy and sell actions
 def shop_prompt():
-    print('\n')
+    print_location()
     myPlayer.display_stats()
-    print('==========================')
     print('What would you like to do?')
     print('1) Buy')
     print('2) Sell')
@@ -72,7 +79,12 @@ def shop_prompt():
             print("\n" + shops[myPlayer.location][DESCRIPTION])
             shop_prompt()
         elif action == '4':
-            print('inventory')
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            inventory_prompt()
+            shop_prompt()
+            break
         elif action == '5':
             print('character')
         elif action == '6':
@@ -86,9 +98,8 @@ def shop_prompt():
 
 # Forest prompt
 def forest_prompt():
-    print('\n')
+    print_location()
     myPlayer.display_stats()
-    print('==========================')
     print('What would you like to do?')
     print('1) Train combat (1-5)')
     print('2) Train woodcutting')
@@ -108,13 +119,27 @@ def forest_prompt():
         elif action == '2':
             print("woodcut")
         elif action == '3':
-            print("\n" + world_zone[myPlayer.location][DESCRIPTION])
+            os.system('clear')
+            print_location()
+            print(world_zone[myPlayer.location][DESCRIPTION])
+            print("\n")
+            myPlayer.display_stats()
             forest_prompt()
+            break
         elif action == '4':
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
             player_move()
+            prompt_choice()
             break
         elif action == '5':
-            print("inventory")
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            inventory_prompt()
+            forest_prompt()
+            break
         elif action == '6':
             print("Character")
         elif action == '7':
@@ -125,9 +150,8 @@ def forest_prompt():
 
 # Mine prompt
 def mine_prompt():
-    print('\n')
+    print_location()
     myPlayer.display_stats()
-    print('==========================')
     print('What would you like to do?')
     print('1) Train combat (6-10)')
     print('2) Train mining/blacksmithing')
@@ -143,13 +167,27 @@ def mine_prompt():
         elif action == '2':
             print("mining")
         elif action == '3':
-            print("\n" + world_zone[myPlayer.location][DESCRIPTION])
+            os.system('clear')
+            print_location()
+            print(world_zone[myPlayer.location][DESCRIPTION])
+            print("\n")
+            myPlayer.display_stats()
             mine_prompt()
+            break
         elif action == '4':
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
             player_move()
+            prompt_choice()
             break
         elif action == '5':
-            print("inventory")
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            inventory_prompt()
+            mine_prompt()
+            break
         elif action == '6':
             print("Character")
         elif action == '7':
@@ -160,9 +198,14 @@ def mine_prompt():
 
 # Prompt based on player location
 def prompt_choice():
+    os.system('clear')
+    print_location()
+    myPlayer.display_stats()
     if myPlayer.location == "Town":
         town_prompt()
     elif myPlayer.location in ["Blacksmith", "Magic Shop", "General Store"]:
         shop_prompt()
     elif myPlayer.location == "Forest":
         forest_prompt()
+    elif myPlayer.location == "Mine":
+        mine_prompt()

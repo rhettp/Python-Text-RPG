@@ -20,7 +20,7 @@ def main():
     addToInventory("Log")
     addToInventory("Iron Ore")
     addToInventory("Iron Ore")
-    town_prompt()
+    prompt_choice()
 
 if __name__=="__main__":
     main()

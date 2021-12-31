@@ -123,6 +123,7 @@ def inventory_prompt():
             dropItemPrompt()
             break
         elif action == '4':
+            os.system('clear')
             break
         else:
             print("Please enter a valid action.")
