@@ -21,6 +21,9 @@ class player:
         self.strength = 1
         self.agility = 1
         self.magic = 1
+        self.wc_xp = 0
+        self.wc_lvlUp = 50
+        self.wc_lvl = 1
         
     # Check if player is dead
     def is_dead(self):
