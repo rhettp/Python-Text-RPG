@@ -66,8 +66,6 @@ def town_prompt():
 # Shops prompt
 # TODO: Create buy and sell actions
 def shop_prompt():
-    print_location()
-    myPlayer.display_stats()
     print('What would you like to do?')
     print('1) Buy')
     print('2) Sell')
@@ -105,8 +103,6 @@ def shop_prompt():
 
 # Forest prompt
 def forest_prompt():
-    print_location()
-    myPlayer.display_stats()
     print('What would you like to do?')
     print('1) Train combat (1-5)')
     print('2) Train woodcutting')
@@ -157,8 +153,6 @@ def forest_prompt():
 
 # Mine prompt
 def mine_prompt():
-    print_location()
-    myPlayer.display_stats()
     print('What would you like to do?')
     print('1) Train combat (6-10)')
     print('2) Train mining/blacksmithing')
