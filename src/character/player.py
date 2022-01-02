@@ -15,6 +15,9 @@ class player:
         self.mp = self.max_mp
         self.location = 'Town'
         self.gold = 100
+        self.xp = 0
+        self.lvlUp = 50
+        self.lvl = 1
         self.strength = 1
         self.agility = 1
         self.magic = 1
@@ -32,5 +35,12 @@ class player:
     def rest(self):
         self.hp = self.max_hp
         self.mp = self.max_mp
+
+    def level_up(self):
+        self.lvl += 1
+        self.xp -= self.lvlUp
+        self.lvlUp = round(self.lvlUp * 1.5)
+        print("Congatulations your level increased to {}!".format(self.lvl))
+        print("{} XP to next level.\n".format(myPlayer.lvlUp - myPlayer.xp))
 
 myPlayer = player()

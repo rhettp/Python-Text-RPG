@@ -6,13 +6,13 @@ import time
 import random
 from character.player import *
 from character.enemy import *
+from prompts.prompts import *
 
 ##### Combat #####
 
 # Base combat state
 def combat_state(enemy):
     myPlayer.display_stats()
-    print('==========================')
     print("What would you like to do?")
     print("1) Attack")
     print("2) Magic")
@@ -40,6 +40,9 @@ def attack(enemy):
     if enemy.is_dead():
         combat_victory(enemy)
     else:
+        print("\n##########")
+        print("# Combat #")
+        print("##########\n")
         print("You hit the {} for {} damage!".format(enemy.name, damage))
         enemy.display_stats()
         enemy_attack(enemy)
@@ -57,6 +60,12 @@ def enemy_attack(enemy):
 
 # Magic choice prompt
 def magic_prompt(enemy):
+    os.system('clear')
+    print("\n##########")
+    print("# Combat #")
+    print("##########\n")
+    enemy.display_stats()
+    myPlayer.display_stats()
     print("What spell would you like to cast?")
     print("1) Fireball")
     print("2) Icebolt")
@@ -65,21 +74,21 @@ def magic_prompt(enemy):
 
     while True:
         action = input("> ")
-        if action == '1':
+        if action == '1':       # Fireball
             if myPlayer.mp < 20:
                 print("Not enough MP to cast Fireball.")
                 continue
             else:
                 fireball(enemy)
                 break
-        elif action == '2':
+        elif action == '2':     # Icebolt
             if myPlayer.mp < 30:
                 print("Not enough MP to cast Icebolt.")
                 continue
             else:
                 icebolt(enemy)
                 break
-        elif action == '3':
+        elif action == '3':     # Heal
             if myPlayer.mp < 40:
                 print("Not enough MP to cast Heal.")
                 continue
@@ -89,8 +98,14 @@ def magic_prompt(enemy):
             else:
                 heal(enemy)
                 break
-        elif action == '4':
+        elif action == '4':     # Back
+            os.system('clear')
+            print("\n##########")
+            print("# Combat #")
+            print("##########\n")
+            enemy.display_stats()
             combat_state(enemy)
+            break
         else:
             print("Please enter a valid spell")
             continue
@@ -104,6 +119,9 @@ def fireball(enemy):
     if enemy.is_dead():
         combat_victory(enemy)
     else:
+        print("\n##########")
+        print("# Combat #")
+        print("##########\n")
         print("You hit the {} with a fireball for {} damage!".format(enemy.name, damage))
         enemy.display_stats()
         enemy_attack(enemy)
@@ -118,6 +136,9 @@ def icebolt(enemy):
     if enemy.is_dead():
         combat_victory(enemy)
     else:
+        print("\n##########")
+        print("# Combat #")
+        print("##########\n")
         print("You hit the {} with a iceball for {} damage!".format(enemy.name, damage))
         enemy.display_stats()
         enemy_attack(enemy)
@@ -133,6 +154,9 @@ def heal(enemy):
         healed = 40
         myPlayer.hp += healed
     os.system('clear')
+    print("\n##########")
+    print("# Combat #")
+    print("##########\n")
     print("You heal yourself for {} HP.".format(healed))
     enemy.display_stats()
     enemy_attack(enemy)
@@ -140,9 +164,17 @@ def heal(enemy):
 
 # Combat Victory Function
 def combat_victory(enemy):
+    print_location()
     print("You killed the {}!".format(enemy.name))
     print("You receive {} gold!".format(enemy.gold))
     myPlayer.gold += enemy.gold
+    print("You gained {} XP!".format(enemy.xp))
+    myPlayer.xp += enemy.xp
+    if myPlayer.xp >= myPlayer.lvlUp:
+        myPlayer.level_up()
+    else:
+        print("{} XP left to next level.\n".format(myPlayer.lvlUp - myPlayer.xp))
+    myPlayer.display_stats()
 
 # Combat Defeat function
 def combat_defeat(enemy):

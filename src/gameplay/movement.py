@@ -21,9 +21,9 @@ def print_location():
 def player_move():
     print("Where would you like to travel to?")
     print("1) Town")
-    print("2) Castle")
-    print("3) Forest")
-    print("4) Mine")
+    print("2) Forest")
+    print("3) Mine")
+    print("4) Castle")
     print("5) Dragon's Lair")
     print("6) Back")    # Go back a menu
 
@@ -37,25 +37,25 @@ def player_move():
                 myPlayer.location = "Town"
                 break
         elif destination == "2":
-            if myPlayer.location == "Castle":
-                print("You are already here.")
-                continue
-            else:
-                myPlayer.location = "Castle"
-                break
-        elif destination == "3":
             if myPlayer.location == "Forest":
                 print("You are already here.")
                 continue
             else:
                 myPlayer.location = "Forest"
                 break
-        elif destination == "4":
+        elif destination == "3":
             if myPlayer.location == "Mine":
                 print("You are already here.")
                 continue
             else:
                 myPlayer.location = "Mine"
+                break
+        elif destination == "4":
+            if myPlayer.location == "Castle":
+                print("You are already here.")
+                continue
+            else:
+                myPlayer.location = "Castle"
                 break
         elif destination == "5":
             if myPlayer.location == "Dragon's Lair":

@@ -115,6 +115,9 @@ def forest_prompt():
         action = input('> ')
         if action == '1':       # Train
             os.system('clear')
+            print("\n##########")
+            print("# Combat #")
+            print("##########\n")
             print('A {} approaches!\n'.format(Goblin().name))
             Goblin().display_stats()
             combat_state(Goblin())
