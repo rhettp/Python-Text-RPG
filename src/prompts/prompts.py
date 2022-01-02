@@ -25,7 +25,13 @@ def town_prompt():
             player_shop()
             break
         elif action == '2':     # Rest
-            print("rest")
+            os.system('clear')
+            print_location()
+            myPlayer.rest()
+            print("You feel rested. Your HP and MP have been restored.\n")
+            myPlayer.display_stats()
+            town_prompt()
+            break
         elif action == '3':     # Look
             os.system('clear')
             print_location()

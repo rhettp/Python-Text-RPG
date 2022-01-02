@@ -29,4 +29,8 @@ class player:
         print('HP: {}/{}   MP: ({}/{})  Gold: {}'.format(self.hp,self.max_hp, self.mp, self.max_mp, self.gold))
         print('======================================')
 
+    def rest(self):
+        self.hp = self.max_hp
+        self.mp = self.max_mp
+
 myPlayer = player()
