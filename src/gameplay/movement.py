@@ -90,6 +90,7 @@ def player_shop():
             myPlayer.location = "General Store"
             break
         elif destination == '4':    # Go back a menu
+            os.system('clear')
             break
         else:
             print("Please enter a valid shop.")
