@@ -87,20 +87,23 @@ def showIventory():
 # Display descriptions of inventory items
 def inventoryDescription():
     item_set = set(inventory)   #Convert to set to rid of duplicates
-    for item in item_set:
-        print("{}: {}".format(item, items[item][DESCRIPTION]))
+    if not item_set:
+        print("Your inventory is empty.")
+    else:
+        for item in item_set:
+            print("{}: {}".format(item, items[item][DESCRIPTION]))
 
 # Inventory Prompt
 def inventory_prompt():
     print("What would you like to do?")
-    print("1) View inventory")
+    print("1) View Inventory")
     print("2) Inventory description")
     print("3) Drop item")
     print("4) Back")
 
     while True:
         action = input('> ')
-        if action == '1':
+        if action == '1':       # View Inventory
             os.system('clear')
             print_location()
             showIventory()
@@ -108,7 +111,7 @@ def inventory_prompt():
             myPlayer.display_stats()
             inventory_prompt()
             break
-        elif action == '2':
+        elif action == '2':     # Inventory description
             os.system('clear')
             print_location()
             inventoryDescription()
@@ -116,14 +119,22 @@ def inventory_prompt():
             myPlayer.display_stats()
             inventory_prompt()
             break
-        elif action == '3':
+        elif action == '3':     # Drop item
+            os.system('clear')
+            print_location()
+            if not inventory:
+                print("Your inventory is empty.\n\n")
+                myPlayer.display_stats()
+                inventory_prompt()
+                break
+            else:
+                myPlayer.display_stats()
+                dropItemPrompt()
+                break
+        elif action == '4':     # Back
             os.system('clear')
             print_location()
             myPlayer.display_stats()
-            dropItemPrompt()
-            break
-        elif action == '4':
-            os.system('clear')
             break
         else:
             print("Please enter a valid action.")
