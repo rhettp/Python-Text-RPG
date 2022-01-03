@@ -29,7 +29,10 @@ def woodcutting_prompt():
             myPlayer.display_stats()
             woodcutting_prompt()
             break
-        elif action == '2':     # Willow tree
+        elif action == '2' and myPlayer.wc_lvl < 5:     # Willow tree lvl check
+            print("You need a Woodcutting level of at least 5 to cut Willow Trees.")
+            continue 
+        elif action == '2' and myPlayer.wc_lvl >= 5:    # Willow tree
             os.system('clear')
             print("\n###########")
             print("Woodcutting")
@@ -38,7 +41,10 @@ def woodcutting_prompt():
             myPlayer.display_stats()
             woodcutting_prompt()
             break
-        elif action == '3':     # Maple tree
+        elif action == '3' and myPlayer.wc_lvl < 10:    # Maple tree lvl check
+            print("You need a Woodcutting level of at least 10 to cut Maple Trees.")
+            continue 
+        elif action == '3' and myPlayer.wc_lvl >= 10:   # Maple tree
             os.system('clear')
             print("\n###########")
             print("Woodcutting")
@@ -47,7 +53,10 @@ def woodcutting_prompt():
             myPlayer.display_stats()
             woodcutting_prompt()
             break
-        elif action == '4':     # Yew tree
+        elif action == '4' and myPlayer.wc_lvl < 15:    # Yew tree lvl check
+            print("You need a Woodcutting level of at least 15 to cut Yew Trees.")
+            continue 
+        elif action == '4' and myPlayer.wc_lvl >= 15:   # Yew tree
             os.system('clear')
             print("\n###########")
             print("Woodcutting")
@@ -56,7 +65,10 @@ def woodcutting_prompt():
             myPlayer.display_stats()
             woodcutting_prompt()
             break
-        elif action == '5':     # Magic tree
+        elif action == '5' and myPlayer.wc_lvl < 20:    # Magic tree lvl check
+            print("You need a Woodcutting level of at least 20 to cut Magic Trees.")
+            continue 
+        elif action == '5' and myPlayer.wc_lvl >= 20:   # Magic tree
             os.system('clear')
             print("\n###########")
             print("Woodcutting")
@@ -76,7 +88,8 @@ def woodcutting_prompt():
             woodcutting_prompt()
             break
         elif action == '7':     # Back
-            print("back")
+            os.system('clear')
+            break
         else:                   # Input Validation
             print("Please enter a valid tree.")
             continue
@@ -86,20 +99,45 @@ def woodcut(log):
     if log == "Oak Log":
         print("You swing your axe at the Oak Tree...")
         addToInventory("Oak Log")
-        print("You reveive an Oak Log!\n")
+        print("You receive an Oak Log!")
+        myPlayer.wc_xp += items["Oak Log"][EXPERIENCE]      # 5 XP
+        if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
+            myPlayer.woodcutting_level_up()
+        else:
+            print("{} XP left to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
     elif log == "Willow Log":
         print("You swing your axe at the Willow Tree...")
         addToInventory("Willow Log")
-        print("You reveive a Willow Log!\n")
+        print("You receive a Willow Log!")
+        myPlayer.wc_xp += items["Willow Log"][EXPERIENCE]   # 10 XP
+        if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
+            myPlayer.woodcutting_level_up()
+        else:
+            print("{} XP left to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
     elif log == "Maple Log":
         print("You swing your axe at the Maple Tree...")
         addToInventory("Maple Log")
-        print("You reveive a Maple Log!\n")
+        print("You receive a Maple Log!")
+        myPlayer.wc_xp += items["Maple Log"][EXPERIENCE]    # 20 XP
+        if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
+            myPlayer.woodcutting_level_up()
+        else:
+            print("{} XP left to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
     elif log == "Yew Log":
         print("You swing your axe at the Yew Tree...")
         addToInventory("Yew Log")
-        print("You reveive a Yew Log!\n")
+        print("You receive a Yew Log!")
+        myPlayer.wc_xp += items["Yew Log"][EXPERIENCE]      # 40 XP
+        if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
+            myPlayer.woodcutting_level_up()
+        else:
+            print("{} XP left to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
     elif log == "Magic Log":
         print("You swing your axe at the Magic Tree...")
         addToInventory("Magic Log")
-        print("You reveive a Magic Log!\n")
+        print("You receive a Magic Log!")
+        myPlayer.wc_xp += items["Magic Log"][EXPERIENCE]    # 80 XP
+        if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
+            myPlayer.woodcutting_level_up()
+        else:
+            print("{} XP left to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))

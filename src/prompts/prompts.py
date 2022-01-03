@@ -105,8 +105,8 @@ def shop_prompt():
 # Forest prompt
 def forest_prompt():
     print('What would you like to do?')
-    print('1) Train combat (1-5)')
-    print('2) Train woodcutting')
+    print('1) Train Combat (1-5)')
+    print('2) Train Woodcutting')
     print('3) Look')
     print('4) Travel')
     print('5) Inventory')
@@ -123,13 +123,18 @@ def forest_prompt():
             Goblin().display_stats()
             combat_state(Goblin())
             forest_prompt()
+            break
         elif action == '2':     # Woodcutting
             os.system('clear')
             print("\n###########")
             print("Woodcutting")
-            print("###########\n")
+            print("###########\n\n")
             myPlayer.display_stats()
             woodcutting_prompt()
+            print_location()
+            myPlayer.display_stats()
+            forest_prompt()
+            break
         elif action == '3':     # Look
             os.system('clear')
             print_location()

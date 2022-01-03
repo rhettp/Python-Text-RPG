@@ -39,11 +39,20 @@ class player:
         self.hp = self.max_hp
         self.mp = self.max_mp
 
+    # Combat level up
     def level_up(self):
         self.lvl += 1
         self.xp -= self.lvlUp
-        self.lvlUp = round(self.lvlUp * 1.5)
+        self.lvlUp = round(self.lvlUp * 1.2)
         print("Congatulations your level increased to {}!".format(self.lvl))
         print("{} XP to next level.\n".format(myPlayer.lvlUp - myPlayer.xp))
+
+    # Woodcutting level up
+    def woodcutting_level_up(self):
+        self.wc_lvl += 1
+        self.wc_xp -= self.wc_lvlUp
+        self.wc_lvlUp = round(self.wc_lvlUp * 1.2)
+        print("Congatulations your level increased to {}!".format(self.wc_lvl))
+        print("{} XP to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
 
 myPlayer = player()
