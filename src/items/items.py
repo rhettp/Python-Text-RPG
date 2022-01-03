@@ -8,14 +8,30 @@ DAMAGE = 0
 # TODO: Finalize Items
 # Items
 items = {
-    'Log': {
-        DESCRIPTION: 'A wood log.',
+    'Oak Log': {
+        DESCRIPTION: 'An oak log.',
         VALUE: 5
+    },
+    'Willow Log': {
+        DESCRIPTION: 'A willow log.',
+        VALUE: 10
+    },
+    'Maple Log': {
+        DESCRIPTION: 'A maple log.',
+        VALUE: 15
+    },
+    'Yew Log': {
+        DESCRIPTION: 'A yew log.',
+        VALUE: 20
+    },
+    'Magic Log': {
+        DESCRIPTION: 'A magic log.',
+        VALUE: 25
     },
     'Iron Ore': {
         DESCRIPTION: 'A single iron ore.',
         VALUE: 10
-    },
+    }
 }
 
 # Weapons

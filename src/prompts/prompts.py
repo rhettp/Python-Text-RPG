@@ -3,6 +3,7 @@ from gameplay.combat import *
 from gameplay.inventory import *
 from character.enemy import *
 from character.player import *
+from skills.woodcutting import *
 
 ##### Prompts ##### 
 
@@ -122,8 +123,13 @@ def forest_prompt():
             Goblin().display_stats()
             combat_state(Goblin())
             forest_prompt()
-        elif action == '2':     # Woodcut
-            print("woodcut")
+        elif action == '2':     # Woodcutting
+            os.system('clear')
+            print("\n###########")
+            print("Woodcutting")
+            print("###########\n")
+            myPlayer.display_stats()
+            woodcutting_prompt()
         elif action == '3':     # Look
             os.system('clear')
             print_location()

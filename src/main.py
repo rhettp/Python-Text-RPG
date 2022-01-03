@@ -15,11 +15,6 @@ from gameplay.inventory import *
 ##### Main Function #####
 def main():
     #title_screen()
-    addToInventory("Log")
-    addToInventory("Iron Ore")
-    addToInventory("Log")
-    addToInventory("Iron Ore")
-    addToInventory("Iron Ore")
     prompt_choice()
 
 if __name__=="__main__":
