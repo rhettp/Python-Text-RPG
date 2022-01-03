@@ -121,14 +121,13 @@ def shop_prompt():
             print("buy")
         elif action == '2':     # Sell
             os.system('clear')
-            print_location()
             if not inventory:   # Empty inventory
+                print_location()
                 print("Your inventory is empty.\n")
                 myPlayer.display_stats()
                 shop_prompt()
                 break
             else:
-                myPlayer.display_stats()
                 sell_prompt()
                 shop_prompt()
                 break
@@ -164,8 +163,19 @@ def shop_prompt():
 
 # Selling prompt
 def sell_prompt():
+    print_location()
+    item_set = set(inventory)
+    if myPlayer.location == "General Store":
+        for item in item_set:
+            if item in ["Oak Log", "Willow Log", "Maple Log", "Yew Log", "Magic Log"]:
+                print("{} ({}): {} gold".format(item, inventory.count(item), items[item][VALUE]))
+    elif myPlayer.location == "Blacksmith":
+        print("blacksmith sell items")
+    else:
+        print("magic shop sell items")
+    print("\n")
+    myPlayer.display_stats()
     print("Which item would you like to sell?")
-    showIventory()
     while True:
         item = input('> ')
         if item in inventory:
