@@ -52,7 +52,7 @@ class player:
         self.wc_lvl += 1
         self.wc_xp -= self.wc_lvlUp
         self.wc_lvlUp = round(self.wc_lvlUp * 1.2)
-        print("Congatulations your level increased to {}!".format(self.wc_lvl))
+        print("Congatulations your Woodcutting level increased to {}!".format(self.wc_lvl))
         print("{} XP to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
 
 myPlayer = player()

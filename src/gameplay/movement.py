@@ -68,29 +68,3 @@ def player_move():
         else:
             print("Please enter a valid location.")
             continue
-
-# Player move to shop
-def player_shop():
-    print("Where would you like to shop?")
-    print("1) Blacksmith")
-    print("2) Magic Shop")
-    print("3) General Store")
-    print("4) Back")    # Go back a menu
-
-    while True:
-        destination = input('> ')
-        if destination == '1':
-            myPlayer.location = "Blacksmith"
-            break
-        elif destination == '2':
-            myPlayer.location = "Magic Shop"
-            break
-        elif destination == '3':
-            myPlayer.location = "General Store"
-            break
-        elif destination == '4':    # Go back a menu
-            os.system('clear')
-            break
-        else:
-            print("Please enter a valid shop.")
-            continue

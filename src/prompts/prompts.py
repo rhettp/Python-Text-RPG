@@ -20,10 +20,10 @@ def town_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Shop     
-            player_shop()
             os.system('clear')
             print_location()
             myPlayer.display_stats()
+            shop_selection()
             town_prompt()
             break
         elif action == '2':     # Rest
@@ -64,7 +64,47 @@ def town_prompt():
             print("Please enter a valid action.")
             continue
 
-# Shops prompt
+# Shop selection prompt
+def shop_selection():
+    print("Where would you like to shop?")
+    print("1) General Store")
+    print("2) Blacksmith")
+    print("3) Magic Shop")
+    print("4) Back")    # Go back a menu
+
+    while True:
+        destination = input('> ')
+        if destination == '1':
+            myPlayer.location = "General Store"
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            shop_prompt()
+            break
+        elif destination == '2':
+            myPlayer.location = "Blacksmith"
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            shop_prompt()
+            break
+        elif destination == '3':
+            myPlayer.location = "Magic Shop"
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            shop_prompt()
+            break
+        elif destination == '4':    # Back
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            break
+        else:
+            print("Please enter a valid shop.")
+            continue
+
+# Shopping prompt
 # TODO: Create buy and sell actions
 def shop_prompt():
     print('What would you like to do?')
@@ -80,10 +120,26 @@ def shop_prompt():
         if action == '1':       # Buy
             print("buy")
         elif action == '2':     # Sell
-            print("sell")
+            os.system('clear')
+            print_location()
+            if not inventory:   # Empty inventory
+                print("Your inventory is empty.\n")
+                myPlayer.display_stats()
+                shop_prompt()
+                break
+            else:
+                myPlayer.display_stats()
+                sell_prompt()
+                shop_prompt()
+                break
         elif action == '3':     # Look
-            print("\n" + shops[myPlayer.location][DESCRIPTION])
+            os.system('clear')
+            print_location()
+            print(shops[myPlayer.location][DESCRIPTION])
+            print("\n")
+            myPlayer.display_stats()
             shop_prompt()
+            break
         elif action == '4':     # Inventory
             os.system('clear')
             print_location()
@@ -94,12 +150,82 @@ def shop_prompt():
         elif action == '5':     # Character
             print('character')
         elif action == '6':     # Leave
+            os.system('clear')
             myPlayer.location = "Town"
+            print_location()
+            myPlayer.display_stats()
+            town_prompt()
             break
         elif action == '7':     # Quit
             sys.exit()
         else:                   # Input Validation
             print("Please enter a valid action.")
+            continue
+
+# Selling prompt
+def sell_prompt():
+    print("Which item would you like to sell?")
+    showIventory()
+    while True:
+        item = input('> ')
+        if item in inventory:
+            print("How many {}(s) do you want to sell?".format(item))
+            while True:
+                print("> ", end='')
+                number = int(input())
+                if number == 0:         # 0 items
+                    os.system('clear')
+                    print_location()
+                    print("No {}s were sold.".format(item))
+                    print("\n")
+                    myPlayer.display_stats()
+                    shop_prompt()
+                    break
+                elif number == 1:       # 1 item
+                    os.system('clear')
+                    print_location()
+                    print("You sold a(n) {} for {} gold.".format(item, items[item][VALUE]))
+                    print("\n")
+                    removeItem(item)
+                    myPlayer.gold += items[item][VALUE]
+                    myPlayer.display_stats()
+                    shop_prompt()
+                    break
+                elif number > inventory.count(item):    # More items than in inventory
+                    print("You don't have {} {}s.".format(number, item))
+                    continue
+                elif number > 1 and number <= inventory.count(item):    # Multiple items
+                    os.system('clear')
+                    print_location()
+                    sum = 0
+                    for i in range(number):
+                        removeItem(item)
+                        sum += items[item][VALUE]
+                    myPlayer.gold += sum
+                    print("You sold {} {}s for {} gold.".format(number, item, sum))
+                    print("\n")
+                    myPlayer.display_stats()
+                    shop_prompt()
+                    break
+                else:
+                    print("Please enter a valid number.")
+                    continue
+            break
+        elif item in ["all","All", "ALL"]:  # Sell all items
+            os.system('clear')
+            print_location()
+            sum = 0
+            for i in inventory:
+                sum += items[i][VALUE]
+            inventory.clear()
+            myPlayer.gold += sum
+            print("All items were sold for {} gold.".format(sum))
+            print("\n")
+            myPlayer.display_stats()
+            shop_prompt()
+            break
+        else:
+            print("Please enter a valid item.")
             continue
 
 # Forest prompt
