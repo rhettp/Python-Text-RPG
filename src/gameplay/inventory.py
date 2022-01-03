@@ -19,7 +19,6 @@ def removeItem(item):
 # Drop/remove player determined number of items from inventory
 def dropItemPrompt():
     print("Which item would you like to drop?")
-    showIventory()
     while True:
         item = input('> ')
         if item in inventory:
@@ -70,36 +69,31 @@ def dropItemPrompt():
             myPlayer.display_stats()
             inventory_prompt()
             break
+        elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            inventory_prompt()
+            break
         else:
             print("Please enter a valid item.")
             continue
 
 # Show player inventory with item count
 def showIventory():
-    item_count = {}
-    for item in inventory:
-        item_count[item] = item_count.get(item, 0) + 1
+    item_set = set(inventory)
     if not inventory:
         print("Your inventory is empty.")
     else:
-        print(item_count)
-
-# Display descriptions of inventory items
-def inventoryDescription():
-    item_set = set(inventory)   #Convert to set to rid of duplicates
-    if not item_set:
-        print("Your inventory is empty.")
-    else:
         for item in item_set:
-            print("{}: {}".format(item, items[item][DESCRIPTION]))
+            print("{} ({}): {}".format(item, inventory.count(item), items[item][DESCRIPTION]))
 
 # Inventory Prompt
 def inventory_prompt():
     print("What would you like to do?")
     print("1) View Inventory")
-    print("2) Inventory description")
-    print("3) Drop item")
-    print("4) Back")
+    print("2) Drop item")
+    print("3) Back")
 
     while True:
         action = input('> ')
@@ -111,15 +105,7 @@ def inventory_prompt():
             myPlayer.display_stats()
             inventory_prompt()
             break
-        elif action == '2':     # Inventory description
-            os.system('clear')
-            print_location()
-            inventoryDescription()
-            print("\n")
-            myPlayer.display_stats()
-            inventory_prompt()
-            break
-        elif action == '3':     # Drop item
+        elif action == '2':     # Drop item
             os.system('clear')
             print_location()
             if not inventory:
@@ -128,10 +114,12 @@ def inventory_prompt():
                 inventory_prompt()
                 break
             else:
+                showIventory()
+                print("\n")
                 myPlayer.display_stats()
                 dropItemPrompt()
                 break
-        elif action == '4':     # Back
+        elif action == '3':     # Back
             os.system('clear')
             print_location()
             myPlayer.display_stats()

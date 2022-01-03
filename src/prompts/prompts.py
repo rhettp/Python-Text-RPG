@@ -234,6 +234,12 @@ def sell_prompt():
             myPlayer.display_stats()
             shop_prompt()
             break
+        elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # Sell no items/go back
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            shop_prompt()
+            break
         else:
             print("Please enter a valid item.")
             continue
