@@ -165,7 +165,9 @@ def sell_prompt():
             if item in ["Oak Log", "Willow Log", "Maple Log", "Yew Log", "Magic Log"]:
                 print("{} ({}): {} gold".format(item, inventory.count(item), items[item][VALUE]))
     elif myPlayer.location == "Blacksmith":
-        print("blacksmith sell items")
+        for item in item_set:
+            if item in ["Copper Ore", "Iron Ore", "Silver Ore", "Gold Ore", "Diamond Ore", "Copper Bar", "Iron Bar", "Silver Bar", "Gold Bar", "Diamond Bar"]:
+                print("{} ({}): {} gold".format(item, inventory.count(item), items[item][VALUE]))
     else:
         print("magic shop sell items")
     print("\n")

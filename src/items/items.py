@@ -58,6 +58,31 @@ items = {
         DESCRIPTION: 'A single Diamond ore.',
         VALUE: 25,
         EXPERIENCE: 80
+    },
+    'Copper Bar': {
+        DESCRIPTION: 'A single Copper ore.',
+        VALUE: 5,
+        EXPERIENCE: 5
+    },
+    'Iron Bar': {
+        DESCRIPTION: 'A single Iron bar.',
+        VALUE: 10,
+        EXPERIENCE: 10
+    },
+    'Silver Bar': {
+        DESCRIPTION: 'A single Silver bar.',
+        VALUE: 15,
+        EXPERIENCE: 20
+    },
+    'Gold Bar': {
+        DESCRIPTION: 'A single Gold bar.',
+        VALUE: 20,
+        EXPERIENCE: 40
+    },
+    'Diamond Bar': {
+        DESCRIPTION: 'A single Diamond bar.',
+        VALUE: 25,
+        EXPERIENCE: 80
     }
 }
 
