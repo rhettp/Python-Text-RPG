@@ -90,22 +90,18 @@ def showIventory():
 
 # Inventory Prompt
 def inventory_prompt():
+    os.system('clear')
+    print_location()
+    showIventory()
+    print("\n")
+    myPlayer.display_stats()
     print("What would you like to do?")
-    print("1) View Inventory")
-    print("2) Drop item")
-    print("3) Back")
+    print("1) Drop item")
+    print("2) Back")
 
     while True:
         action = input('> ')
-        if action == '1':       # View Inventory
-            os.system('clear')
-            print_location()
-            showIventory()
-            print("\n")
-            myPlayer.display_stats()
-            inventory_prompt()
-            break
-        elif action == '2':     # Drop item
+        if action == '1':     # Drop item
             os.system('clear')
             print_location()
             if not inventory:
@@ -119,7 +115,7 @@ def inventory_prompt():
                 myPlayer.display_stats()
                 dropItemPrompt()
                 break
-        elif action == '3':     # Back
+        elif action == '2':     # Back
             os.system('clear')
             print_location()
             myPlayer.display_stats()

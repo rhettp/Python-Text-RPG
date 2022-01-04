@@ -15,7 +15,7 @@ def town_prompt():
     print('2) Rest')
     print('3) Look')
     print('4) Travel')
-    print('5) Inventory')
+    print('5) View Inventory')
     print('6) Character')
     print('7) Quit')
     while True:
@@ -51,9 +51,6 @@ def town_prompt():
             prompt_choice()
             break
         elif action == '5':     # Inventory
-            os.system('clear')
-            print_location()
-            myPlayer.display_stats()
             inventory_prompt()
             town_prompt()
             break
@@ -112,7 +109,7 @@ def shop_prompt():
     print('1) Buy')
     print('2) Sell')
     print('3) Look')
-    print('4) Inventory')
+    print('4) View Inventory')
     print('5) Character')
     print('6) Leave')
     print('7) Quit')
@@ -141,11 +138,8 @@ def shop_prompt():
             shop_prompt()
             break
         elif action == '4':     # Inventory
-            os.system('clear')
-            print_location()
-            myPlayer.display_stats()
             inventory_prompt()
-            shop_prompt()
+            town_prompt()
             break
         elif action == '5':     # Character
             print('character')
@@ -252,7 +246,7 @@ def forest_prompt():
     print('2) Train Woodcutting')
     print('3) Look')
     print('4) Travel')
-    print('5) Inventory')
+    print('5) View Inventory')
     print('6) Character')
     print('7) Quit')
     while True:
@@ -294,11 +288,8 @@ def forest_prompt():
             prompt_choice()
             break
         elif action == '5':     # Inventory
-            os.system('clear')
-            print_location()
-            myPlayer.display_stats()
             inventory_prompt()
-            forest_prompt()
+            town_prompt()
             break
         elif action == '6':     # Character
             print("Character")
@@ -315,7 +306,7 @@ def mine_prompt():
     print('2) Train mining/blacksmithing')
     print('3) Look')
     print('4) Travel')
-    print('5) Inventory')
+    print('5) View Inventory')
     print('6) Character')
     print('7) Quit')
     while True:
@@ -349,11 +340,8 @@ def mine_prompt():
             prompt_choice()
             break
         elif action == '5':     # Inventory
-            os.system('clear')
-            print_location()
-            myPlayer.display_stats()
             inventory_prompt()
-            mine_prompt()
+            town_prompt()
             break
         elif action == '6':     # Character
             print("Character")
