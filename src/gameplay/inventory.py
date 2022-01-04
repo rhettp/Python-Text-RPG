@@ -76,7 +76,6 @@ def dropItemPrompt():
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:
             os.system('clear')
             print_location()
-            myPlayer.display_stats()
             inventory_prompt()
             break
         else:
@@ -94,8 +93,6 @@ def showIventory():
 
 # Inventory Prompt
 def inventory_prompt():
-    os.system('clear')
-    print_location()
     showIventory()
     print("\n")
     myPlayer.display_stats()

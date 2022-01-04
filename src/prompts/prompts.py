@@ -51,6 +51,8 @@ def town_prompt():
             prompt_choice()
             break
         elif action == '5':     # Inventory
+            os.system('clear')
+            print_location()
             inventory_prompt()
             town_prompt()
             break
@@ -138,8 +140,10 @@ def shop_prompt():
             shop_prompt()
             break
         elif action == '4':     # Inventory
+            os.system('clear')
+            print_location()
             inventory_prompt()
-            town_prompt()
+            shop_prompt()
             break
         elif action == '5':     # Character
             print('character')
@@ -269,9 +273,9 @@ def forest_prompt():
             break
         elif action == '2':     # Woodcutting
             os.system('clear')
-            print("\n###########")
-            print("Woodcutting")
-            print("###########\n\n")
+            print("\n###############")
+            print("# Woodcutting #")
+            print("###############\n\n")
             myPlayer.display_stats()
             woodcutting_prompt()
             print_location()
@@ -294,6 +298,8 @@ def forest_prompt():
             prompt_choice()
             break
         elif action == '5':     # Inventory
+            os.system('clear')
+            print_location()
             inventory_prompt()
             town_prompt()
             break
@@ -321,9 +327,9 @@ def mine_prompt():
             print("train")
         elif action == '2':     # Mining
             os.system('clear')
-            print("\n######")
-            print("Mining")
-            print("######\n\n")
+            print("\n##########")
+            print("# Mining #")
+            print("##########\n\n")
             myPlayer.display_stats()
             mining_prompt()
             print_location()
@@ -346,8 +352,10 @@ def mine_prompt():
             prompt_choice()
             break
         elif action == '5':     # Inventory
+            os.system('clear')
+            print_location()
             inventory_prompt()
-            town_prompt()
+            mine_prompt()
             break
         elif action == '6':     # Character
             print("Character")

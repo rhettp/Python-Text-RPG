@@ -22,9 +22,9 @@ def woodcutting_prompt():
         action = input('> ')
         if action == '1':       # Oak tree
             os.system('clear')
-            print("\n###########")
-            print("Woodcutting")
-            print("###########\n")
+            print("\n###############")
+            print("# Woodcutting #")
+            print("###############\n")
             woodcut("Oak Log")
             myPlayer.display_stats()
             woodcutting_prompt()
@@ -34,9 +34,9 @@ def woodcutting_prompt():
             continue 
         elif action == '2' and myPlayer.wc_lvl >= 5:    # Willow tree
             os.system('clear')
-            print("\n###########")
-            print("Woodcutting")
-            print("###########\n")
+            print("\n###############")
+            print("# Woodcutting #")
+            print("###############\n")
             woodcut("Willow Log")
             myPlayer.display_stats()
             woodcutting_prompt()
@@ -46,9 +46,9 @@ def woodcutting_prompt():
             continue 
         elif action == '3' and myPlayer.wc_lvl >= 10:   # Maple tree
             os.system('clear')
-            print("\n###########")
-            print("Woodcutting")
-            print("###########\n")
+            print("\n###############")
+            print("# Woodcutting #")
+            print("###############\n")
             woodcut("Maple Log")
             myPlayer.display_stats()
             woodcutting_prompt()
@@ -58,9 +58,9 @@ def woodcutting_prompt():
             continue 
         elif action == '4' and myPlayer.wc_lvl >= 15:   # Yew tree
             os.system('clear')
-            print("\n###########")
-            print("Woodcutting")
-            print("###########\n")
+            print("\n###############")
+            print("# Woodcutting #")
+            print("###############\n")
             woodcut("Yew Log")
             myPlayer.display_stats()
             woodcutting_prompt()
@@ -70,21 +70,19 @@ def woodcutting_prompt():
             continue 
         elif action == '5' and myPlayer.wc_lvl >= 20:   # Magic tree
             os.system('clear')
-            print("\n###########")
-            print("Woodcutting")
-            print("###########\n")
+            print("\n###############")
+            print("# Woodcutting #")
+            print("###############\n")
             woodcut("Magic Log")
             myPlayer.display_stats()
             woodcutting_prompt()
             break
         elif action == '6':     # Inventory
             os.system('clear')
-            print("\n###########")
-            print("Woodcutting")
-            print("###########\n")
-            showIventory()
-            print("\n")
-            myPlayer.display_stats()
+            print("\n###############")
+            print("# Woodcutting #")
+            print("###############\n")
+            inventory_prompt()
             woodcutting_prompt()
             break
         elif action == '7':     # Back

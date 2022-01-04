@@ -22,9 +22,9 @@ def mining_prompt():
         action = input('> ')
         if action == '1':       # Copper ore
             os.system('clear')
-            print("\n######")
-            print("Mining")
-            print("######\n")
+            print("\n##########")
+            print("# Mining #")
+            print("##########\n")
             mine("Copper Ore")
             myPlayer.display_stats()
             mining_prompt()
@@ -34,9 +34,9 @@ def mining_prompt():
             continue 
         elif action == '2' and myPlayer.mn_lvl >= 5:    # Iron ore
             os.system('clear')
-            print("\n######")
-            print("Mining")
-            print("######\n")
+            print("\n##########")
+            print("# Mining #")
+            print("##########\n")
             mine("Iron Ore")
             myPlayer.display_stats()
             mining_prompt()
@@ -46,9 +46,9 @@ def mining_prompt():
             continue 
         elif action == '3' and myPlayer.mn_lvl >= 10:   # Silver ore
             os.system('clear')
-            print("\n######")
-            print("Mining")
-            print("######\n")
+            print("\n##########")
+            print("# Mining #")
+            print("##########\n")
             mine("Silver Ore")
             myPlayer.display_stats()
             mining_prompt()
@@ -58,9 +58,9 @@ def mining_prompt():
             continue 
         elif action == '4' and myPlayer.mn_lvl >= 15:   # Gold ore
             os.system('clear')
-            print("\n######")
-            print("Mining")
-            print("######\n")
+            print("\n##########")
+            print("# Mining #")
+            print("##########\n")
             mine("Gold Ore")
             myPlayer.display_stats()
             mining_prompt()
@@ -70,21 +70,19 @@ def mining_prompt():
             continue 
         elif action == '5' and myPlayer.mn_lvl >= 20:   # Diamond ore
             os.system('clear')
-            print("\n######")
-            print("Mining")
-            print("######\n")
+            print("\n##########")
+            print("# Mining #")
+            print("##########\n")
             mine("Diamond Ore")
             myPlayer.display_stats()
             mining_prompt()
             break
         elif action == '6':     # Inventory
             os.system('clear')
-            print("\n######")
-            print("Mining")
-            print("######\n")
-            showIventory()
-            print("\n")
-            myPlayer.display_stats()
+            print("\n##########")
+            print("# Mining #")
+            print("##########\n")
+            inventory_prompt()
             mining_prompt()
             break
         elif action == '7':     # Back
