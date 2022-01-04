@@ -16,7 +16,7 @@ def woodcutting_prompt():
     print("3) Maple Tree")
     print("4) Yew Tree")
     print("5) Magic Tree")
-    print("6) Display Inventory")
+    print("6) View Inventory")
     print("7) Back")
     while True:
         action = input('> ')

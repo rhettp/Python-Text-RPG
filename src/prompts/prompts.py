@@ -4,6 +4,7 @@ from gameplay.inventory import *
 from character.enemy import *
 from character.player import *
 from skills.woodcutting import *
+from skills.mining import *
 
 ##### Prompts ##### 
 
@@ -322,7 +323,16 @@ def mine_prompt():
         if action == '1':       # Train
             print("train")
         elif action == '2':     # Mining
-            print("mining")
+            os.system('clear')
+            print("\n######")
+            print("Mining")
+            print("######\n\n")
+            myPlayer.display_stats()
+            mining_prompt()
+            print_location()
+            myPlayer.display_stats()
+            mine_prompt()
+            break
         elif action == '3':     # Look
             os.system('clear')
             print_location()

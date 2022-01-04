@@ -15,15 +15,18 @@ class player:
         self.mp = self.max_mp
         self.location = 'Town'
         self.gold = 100
-        self.xp = 0
-        self.lvlUp = 50
-        self.lvl = 1
-        self.strength = 1
-        self.agility = 1
-        self.magic = 1
-        self.wc_xp = 0
-        self.wc_lvlUp = 50
-        self.wc_lvl = 1
+        self.xp = 0         # Combat XP
+        self.lvlUp = 50     # Combat XP required for level up
+        self.lvl = 1        # Current Combat level 
+        self.strength = 1   # Current Strength level
+        self.agility = 1    # Current Agility level
+        self.magic = 1      # Current Magic level
+        self.wc_xp = 0      # Woodcutting XP
+        self.wc_lvlUp = 50  # Woodcutting XP required for level up
+        self.wc_lvl = 1     # Current Woodcutting level
+        self.mn_xp = 0      # Mining XP
+        self.mn_lvlUp = 50  # Mining XP required for level up
+        self.mn_lvl = 1     # Current Mining level
         
     # Check if player is dead
     def is_dead(self):
@@ -54,5 +57,13 @@ class player:
         self.wc_lvlUp = round(self.wc_lvlUp * 1.2)
         print("Congatulations your Woodcutting level increased to {}!".format(self.wc_lvl))
         print("{} XP to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
+
+    # Mining level up
+    def mining_level_up(self):
+        self.mn_lvl += 1
+        self.mn_xp -= self.mn_lvlUp
+        self.mn_lvlUp = round(self.mn_lvlUp * 1.2)
+        print("Congatulations your Mining level increased to {}!".format(self.mn_lvl))
+        print("{} XP to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
 
 myPlayer = player()
