@@ -179,44 +179,48 @@ def sell_prompt():
             print("How many {}(s) do you want to sell?".format(item))
             while True:
                 print("> ", end='')
-                number = int(input())
-                if number == 0:         # 0 items
-                    os.system('clear')
-                    print_location()
-                    print("No {}s were sold.".format(item))
-                    print("\n")
-                    myPlayer.display_stats()
-                    shop_prompt()
-                    break
-                elif number == 1:       # 1 item
-                    os.system('clear')
-                    print_location()
-                    print("You sold a(n) {} for {} gold.".format(item, items[item][VALUE]))
-                    print("\n")
-                    removeItem(item)
-                    myPlayer.gold += items[item][VALUE]
-                    myPlayer.display_stats()
-                    shop_prompt()
-                    break
-                elif number > inventory.count(item):    # More items than in inventory
-                    print("You don't have {} {}s.".format(number, item))
-                    continue
-                elif number > 1 and number <= inventory.count(item):    # Multiple items
-                    os.system('clear')
-                    print_location()
-                    sum = 0
-                    for i in range(number):
-                        removeItem(item)
-                        sum += items[item][VALUE]
-                    myPlayer.gold += sum
-                    print("You sold {} {}s for {} gold.".format(number, item, sum))
-                    print("\n")
-                    myPlayer.display_stats()
-                    shop_prompt()
-                    break
-                else:
+                try:
+                    number = int(input())
+                except:
                     print("Please enter a valid number.")
-                    continue
+                else:
+                    if number == 0:         # 0 items
+                        os.system('clear')
+                        print_location()
+                        print("No {}s were sold.".format(item))
+                        print("\n")
+                        myPlayer.display_stats()
+                        shop_prompt()
+                        break
+                    elif number == 1:       # 1 item
+                        os.system('clear')
+                        print_location()
+                        print("You sold a(n) {} for {} gold.".format(item, items[item][VALUE]))
+                        print("\n")
+                        removeItem(item)
+                        myPlayer.gold += items[item][VALUE]
+                        myPlayer.display_stats()
+                        shop_prompt()
+                        break
+                    elif number > inventory.count(item):    # More items than in inventory
+                        print("You don't have {} {}s.".format(number, item))
+                        continue
+                    elif number > 1 and number <= inventory.count(item):    # Multiple items
+                        os.system('clear')
+                        print_location()
+                        sum = 0
+                        for i in range(number):
+                            removeItem(item)
+                            sum += items[item][VALUE]
+                        myPlayer.gold += sum
+                        print("You sold {} {}s for {} gold.".format(number, item, sum))
+                        print("\n")
+                        myPlayer.display_stats()
+                        shop_prompt()
+                        break
+                    else:
+                        print("Please enter a valid number.")
+                        continue
             break
         elif item in ["all","All", "ALL"]:  # Sell all items
             os.system('clear')

@@ -25,40 +25,44 @@ def dropItemPrompt():
             print("How many {}(s) do you want to drop?".format(item))
             while True:
                 print("> ", end='')
-                number = int(input())
-                if number == 0:
-                    os.system('clear')
-                    print_location()
-                    print("No {}s were dropped.".format(item))
-                    print("\n")
-                    myPlayer.display_stats()
-                    inventory_prompt()
-                    break
-                elif number == 1:
-                    os.system('clear')
-                    print_location()
-                    print("You dropped a(n) {}".format(item))
-                    print("\n")
-                    removeItem(item)
-                    myPlayer.display_stats()
-                    inventory_prompt()
-                    break
-                elif number > inventory.count(item):
-                    print("You don't have {} {}s.".format(number, item))
-                    continue
-                elif number > 1 and number <= inventory.count(item):
-                    os.system('clear')
-                    print_location()
-                    print("You dropped {} {}s.".format(number, item))
-                    print("\n")
-                    for i in range(number):
-                        removeItem(item)
-                    myPlayer.display_stats()
-                    inventory_prompt()
-                    break
-                else:
+                try:
+                    number = int(input())
+                except:
                     print("Please enter a valid number.")
-                    continue
+                else:
+                    if number == 0:
+                        os.system('clear')
+                        print_location()
+                        print("No {}s were dropped.".format(item))
+                        print("\n")
+                        myPlayer.display_stats()
+                        inventory_prompt()
+                        break
+                    elif number == 1:
+                        os.system('clear')
+                        print_location()
+                        print("You dropped a(n) {}".format(item))
+                        print("\n")
+                        removeItem(item)
+                        myPlayer.display_stats()
+                        inventory_prompt()
+                        break
+                    elif number > inventory.count(item):
+                        print("You don't have {} {}s.".format(number, item))
+                        continue
+                    elif number > 1 and number <= inventory.count(item):
+                        os.system('clear')
+                        print_location()
+                        print("You dropped {} {}s.".format(number, item))
+                        print("\n")
+                        for i in range(number):
+                            removeItem(item)
+                        myPlayer.display_stats()
+                        inventory_prompt()
+                        break
+                    else:
+                        print("Please enter a valid number.")
+                        continue
             break
         elif item in ["all","All", "ALL"]:
             os.system('clear')
