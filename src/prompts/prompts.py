@@ -5,6 +5,7 @@ from character.enemy import *
 from character.player import *
 from skills.woodcutting import *
 from skills.mining import *
+from skills.blacksmithing import *
 
 ##### Prompts ##### 
 
@@ -252,8 +253,8 @@ def sell_prompt():
 # Forest prompt
 def forest_prompt():
     print('What would you like to do?')
-    print('1) Train Combat (1-5)')
-    print('2) Train Woodcutting')
+    print('1) Combat (1-5)')
+    print('2) Woodcutting')
     print('3) Look')
     print('4) Travel')
     print('5) View Inventory')
@@ -314,13 +315,14 @@ def forest_prompt():
 # Mine prompt
 def mine_prompt():
     print('What would you like to do?')
-    print('1) Train combat (6-10)')
-    print('2) Train mining/blacksmithing')
-    print('3) Look')
-    print('4) Travel')
-    print('5) View Inventory')
-    print('6) Character')
-    print('7) Quit')
+    print('1) Combat (6-10)')
+    print('2) Mining')
+    print('3) Blacksmithing')
+    print('4) Look')
+    print('5) Travel')
+    print('6) View Inventory')
+    print('7) Character')
+    print('8) Quit')
     while True:
         action = input('> ')
         if action == '1':       # Train
@@ -336,7 +338,18 @@ def mine_prompt():
             myPlayer.display_stats()
             mine_prompt()
             break
-        elif action == '3':     # Look
+        elif action == '3':      # Blacksmithing
+            os.system('clear')
+            print("\n#################")
+            print("# Blacksmithing #")
+            print("#################\n\n")
+            myPlayer.display_stats()
+            blacksmithing_prompt()
+            print_location()
+            myPlayer.display_stats()
+            mine_prompt()
+            break
+        elif action == '4':     # Look
             os.system('clear')
             print_location()
             print(world_zone[myPlayer.location][DESCRIPTION])
@@ -344,22 +357,22 @@ def mine_prompt():
             myPlayer.display_stats()
             mine_prompt()
             break
-        elif action == '4':     # Travel
+        elif action == '5':     # Travel
             os.system('clear')
             print_location()
             myPlayer.display_stats()
             player_move()
             prompt_choice()
             break
-        elif action == '5':     # Inventory
+        elif action == '6':     # Inventory
             os.system('clear')
             print_location()
             inventory_prompt()
             mine_prompt()
             break
-        elif action == '6':     # Character
+        elif action == '7':     # Character
             print("Character")
-        elif action == '7':     # Exit
+        elif action == '8':     # Exit
             sys.exit()
         else:                   # Input Validation
             print("Please enter a valid action.")
