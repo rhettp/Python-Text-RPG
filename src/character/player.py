@@ -55,7 +55,7 @@ class player:
         self.lvl += 1
         self.xp -= self.lvlUp
         self.lvlUp = round(self.lvlUp * 1.2)
-        print("Congatulations your Combar level increased to {}!".format(self.lvl))
+        print("Congatulations your Combat level increased to {}!".format(self.lvl))
         print("{} XP to next level.\n".format(myPlayer.lvlUp - myPlayer.xp))
 
     # Woodcutting level up

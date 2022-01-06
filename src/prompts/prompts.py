@@ -119,7 +119,10 @@ def shop_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Buy
-            print("buy")
+            os.system('clear')
+            buy_prompt()
+            shop_prompt()
+            break
         elif action == '2':     # Sell
             os.system('clear')
             if not inventory:   # Empty inventory
@@ -161,13 +164,90 @@ def shop_prompt():
             print("Please enter a valid action.")
             continue
 
+# Buying prompt
+def buy_prompt():
+    print_location()
+    general_items = ["Oak Log", "Willow Log", "Maple Log", "Yew Log"]
+    blacksmith_items = ["Copper Ore", "Iron Ore", "Silver Ore", "Gold Ore", "Diamond Ore", "Copper Bar", "Iron Bar", "Silver Bar", "Gold Bar", "Diamond Bar"]
+    magic_items = ["Healing Potion", "Mana Potion", "Magic Log"]
+    if myPlayer.location == "General Store":
+        for item in general_items:
+            print("{} ({}): {} gold".format(item, items[item][DESCRIPTION], items[item][VALUE]))
+    elif myPlayer.location == "Blacksmith":
+        for item in blacksmith_items:
+            print("{} ({}): {} gold".format(item, items[item][DESCRIPTION], items[item][VALUE]))
+    else:
+        for item in magic_items:
+            print("{} ({}): {} gold".format(item, items[item][DESCRIPTION], items[item][VALUE]))
+    print("\n")
+    myPlayer.display_stats()
+    print("Which item would you like to buy?")
+    while True:
+        item = input('> ')
+        if item in general_items or item in blacksmith_items or item in magic_items:
+            print("How many {}(s) do you want to buy?".format(item))
+            while True:
+                print("> ", end='')
+                try:
+                    number = int(input())
+                except:
+                    print("Please enter a valid number.")
+                else:
+                    if number == 0:         # 0 items
+                        os.system('clear')
+                        print_location()
+                        print("No {}(s) were bought.".format(item))
+                        print("\n")
+                        myPlayer.display_stats()
+                        shop_prompt()
+                        break
+                    elif number == 1 and myPlayer.gold >= number * items[item][VALUE]:       # 1 item
+                        os.system('clear')
+                        print_location()
+                        print("You bought a(n) {} for {} gold.".format(item, items[item][VALUE]))
+                        print("\n")
+                        addToInventory(item)
+                        myPlayer.gold -= items[item][VALUE]
+                        myPlayer.display_stats()
+                        shop_prompt()
+                        break
+                    elif myPlayer.gold < number * items[item][VALUE]:                       # Not enough gold
+                        print("You don't have enough gold for {} {}(s).".format(number, item))
+                        continue
+                    elif number > 1 and myPlayer.gold >= number * items[item][VALUE]:       # Multiple items
+                        os.system('clear')
+                        print_location()
+                        sum = 0
+                        for i in range(number):
+                            addToInventory(item)
+                            sum += items[item][VALUE]
+                        myPlayer.gold -= sum
+                        print("You bought {} {}(s) for {} gold.".format(number, item, sum))
+                        print("\n")
+                        myPlayer.display_stats()
+                        shop_prompt()
+                        break
+                    else:
+                        print("Please enter a valid number.")
+                        continue
+            break
+        elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # Sell no items/go back
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            shop_prompt()
+            break
+        else:
+            print("Please enter a valid item.")
+            continue
+
 # Selling prompt
 def sell_prompt():
     print_location()
     item_set = set(inventory)
     if myPlayer.location == "General Store":
         for item in item_set:
-            if item in ["Oak Log", "Willow Log", "Maple Log", "Yew Log", "Magic Log"]:
+            if item in ["Oak Log", "Willow Log", "Maple Log", "Yew Log"]:
                 print("{} ({}): {} gold".format(item, inventory.count(item), items[item][VALUE]))
     elif myPlayer.location == "Blacksmith":
         for item in item_set:
@@ -192,7 +272,7 @@ def sell_prompt():
                     if number == 0:         # 0 items
                         os.system('clear')
                         print_location()
-                        print("No {}s were sold.".format(item))
+                        print("No {}(s) were sold.".format(item))
                         print("\n")
                         myPlayer.display_stats()
                         shop_prompt()
@@ -208,7 +288,7 @@ def sell_prompt():
                         shop_prompt()
                         break
                     elif number > inventory.count(item):    # More items than in inventory
-                        print("You don't have {} {}s.".format(number, item))
+                        print("You don't have {} {}(s).".format(number, item))
                         continue
                     elif number > 1 and number <= inventory.count(item):    # Multiple items
                         os.system('clear')
@@ -218,7 +298,7 @@ def sell_prompt():
                             removeItem(item)
                             sum += items[item][VALUE]
                         myPlayer.gold += sum
-                        print("You sold {} {}s for {} gold.".format(number, item, sum))
+                        print("You sold {} {}(s) for {} gold.".format(number, item, sum))
                         print("\n")
                         myPlayer.display_stats()
                         shop_prompt()
