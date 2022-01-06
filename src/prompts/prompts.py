@@ -39,7 +39,7 @@ def town_prompt():
         elif action == '3':     # Look
             os.system('clear')
             print_location()
-            print(world_zone[myPlayer.location][DESCRIPTION])
+            print(world_zone[myPlayer.location]["DESCRIPTION"])
             print("\n")
             myPlayer.display_stats()
             town_prompt()
@@ -138,7 +138,7 @@ def shop_prompt():
         elif action == '3':     # Look
             os.system('clear')
             print_location()
-            print(shops[myPlayer.location][DESCRIPTION])
+            print(shops[myPlayer.location]["DESCRIPTION"])
             print("\n")
             myPlayer.display_stats()
             shop_prompt()
@@ -167,24 +167,25 @@ def shop_prompt():
 # Buying prompt
 def buy_prompt():
     print_location()
-    general_items = ["Oak Log", "Willow Log", "Maple Log", "Yew Log"]
-    blacksmith_items = ["Copper Ore", "Iron Ore", "Silver Ore", "Gold Ore", "Diamond Ore", "Copper Bar", "Iron Bar", "Silver Bar", "Gold Bar", "Diamond Bar"]
-    magic_items = ["Healing Potion", "Mana Potion", "Magic Log"]
     if myPlayer.location == "General Store":
         for item in general_items:
-            print("{} ({}): {} gold".format(item, items[item][DESCRIPTION], items[item][VALUE]))
+            print("{}: {}".format(item, items[item]["DESCRIPTION"]))
     elif myPlayer.location == "Blacksmith":
         for item in blacksmith_items:
-            print("{} ({}): {} gold".format(item, items[item][DESCRIPTION], items[item][VALUE]))
+            print("{}: {}".format(item, items[item]["DESCRIPTION"]))
     else:
         for item in magic_items:
-            print("{} ({}): {} gold".format(item, items[item][DESCRIPTION], items[item][VALUE]))
+            print("{}: {}".format(item, items[item]["DESCRIPTION"]))
     print("\n")
     myPlayer.display_stats()
     print("Which item would you like to buy?")
     while True:
         item = input('> ')
         if item in general_items or item in blacksmith_items or item in magic_items:
+            os.system('clear')
+            print_location()
+            print("{}: {} gold\n".format(item, items[item]["VALUE"]))
+            myPlayer.display_stats()
             print("How many {}(s) do you want to buy?".format(item))
             while True:
                 print("> ", end='')
@@ -201,26 +202,26 @@ def buy_prompt():
                         myPlayer.display_stats()
                         shop_prompt()
                         break
-                    elif number == 1 and myPlayer.gold >= number * items[item][VALUE]:       # 1 item
+                    elif number == 1 and myPlayer.gold >= number * items[item]["VALUE"]:       # 1 item
                         os.system('clear')
                         print_location()
-                        print("You bought a(n) {} for {} gold.".format(item, items[item][VALUE]))
+                        print("You bought a(n) {} for {} gold.".format(item, items[item]["VALUE"]))
                         print("\n")
                         addToInventory(item)
-                        myPlayer.gold -= items[item][VALUE]
+                        myPlayer.gold -= items[item]["VALUE"]
                         myPlayer.display_stats()
                         shop_prompt()
                         break
-                    elif myPlayer.gold < number * items[item][VALUE]:                       # Not enough gold
+                    elif myPlayer.gold < number * items[item]["VALUE"]:                       # Not enough gold
                         print("You don't have enough gold for {} {}(s).".format(number, item))
                         continue
-                    elif number > 1 and myPlayer.gold >= number * items[item][VALUE]:       # Multiple items
+                    elif number > 1 and myPlayer.gold >= number * items[item]["VALUE"]:       # Multiple items
                         os.system('clear')
                         print_location()
                         sum = 0
                         for i in range(number):
                             addToInventory(item)
-                            sum += items[item][VALUE]
+                            sum += items[item]["VALUE"]
                         myPlayer.gold -= sum
                         print("You bought {} {}(s) for {} gold.".format(number, item, sum))
                         print("\n")
@@ -247,14 +248,16 @@ def sell_prompt():
     item_set = set(inventory)
     if myPlayer.location == "General Store":
         for item in item_set:
-            if item in ["Oak Log", "Willow Log", "Maple Log", "Yew Log"]:
-                print("{} ({}): {} gold".format(item, inventory.count(item), items[item][VALUE]))
+            if item in general_items:
+                print("{} ({}): {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
     elif myPlayer.location == "Blacksmith":
         for item in item_set:
-            if item in ["Copper Ore", "Iron Ore", "Silver Ore", "Gold Ore", "Diamond Ore", "Copper Bar", "Iron Bar", "Silver Bar", "Gold Bar", "Diamond Bar"]:
-                print("{} ({}): {} gold".format(item, inventory.count(item), items[item][VALUE]))
+            if item in blacksmith_items:
+                print("{} ({}): {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
     else:
-        print("magic shop sell items")
+        for item in item_set:
+            if item in magic_items:
+                print("{} ({}): {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
     print("\n")
     myPlayer.display_stats()
     print("Which item would you like to sell?")
@@ -280,10 +283,10 @@ def sell_prompt():
                     elif number == 1:       # 1 item
                         os.system('clear')
                         print_location()
-                        print("You sold a(n) {} for {} gold.".format(item, items[item][VALUE]))
+                        print("You sold a(n) {} for {} gold.".format(item, items[item]["VALUE"]))
                         print("\n")
                         removeItem(item)
-                        myPlayer.gold += items[item][VALUE]
+                        myPlayer.gold += items[item]["VALUE"]
                         myPlayer.display_stats()
                         shop_prompt()
                         break
@@ -296,7 +299,7 @@ def sell_prompt():
                         sum = 0
                         for i in range(number):
                             removeItem(item)
-                            sum += items[item][VALUE]
+                            sum += items[item]["VALUE"]
                         myPlayer.gold += sum
                         print("You sold {} {}(s) for {} gold.".format(number, item, sum))
                         print("\n")
@@ -312,7 +315,7 @@ def sell_prompt():
             print_location()
             sum = 0
             for i in inventory:
-                sum += items[i][VALUE]
+                sum += items[i]["VALUE"]
             inventory.clear()
             myPlayer.gold += sum
             print("All items were sold for {} gold.".format(sum))
@@ -366,7 +369,7 @@ def forest_prompt():
         elif action == '3':     # Look
             os.system('clear')
             print_location()
-            print(world_zone[myPlayer.location][DESCRIPTION])
+            print(world_zone[myPlayer.location]["DESCRIPTION"])
             print("\n")
             myPlayer.display_stats()
             forest_prompt()
@@ -432,7 +435,7 @@ def mine_prompt():
         elif action == '4':     # Look
             os.system('clear')
             print_location()
-            print(world_zone[myPlayer.location][DESCRIPTION])
+            print(world_zone[myPlayer.location]["DESCRIPTION"])
             print("\n")
             myPlayer.display_stats()
             mine_prompt()

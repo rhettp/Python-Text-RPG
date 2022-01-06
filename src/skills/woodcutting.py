@@ -98,7 +98,7 @@ def woodcut(log):
         print("You swing your axe at the Oak Tree...")
         addToInventory("Oak Log")
         print("You receive an Oak Log!")
-        myPlayer.wc_xp += items["Oak Log"][EXPERIENCE]      # 5 XP
+        myPlayer.wc_xp += items["Oak Log"]["EXPERIENCE"]      # 5 XP
         if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
             myPlayer.woodcutting_level_up()
         else:
@@ -107,7 +107,7 @@ def woodcut(log):
         print("You swing your axe at the Willow Tree...")
         addToInventory("Willow Log")
         print("You receive a Willow Log!")
-        myPlayer.wc_xp += items["Willow Log"][EXPERIENCE]   # 10 XP
+        myPlayer.wc_xp += items["Willow Log"]["EXPERIENCE"]   # 10 XP
         if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
             myPlayer.woodcutting_level_up()
         else:
@@ -116,7 +116,7 @@ def woodcut(log):
         print("You swing your axe at the Maple Tree...")
         addToInventory("Maple Log")
         print("You receive a Maple Log!")
-        myPlayer.wc_xp += items["Maple Log"][EXPERIENCE]    # 20 XP
+        myPlayer.wc_xp += items["Maple Log"]["EXPERIENCE"]    # 20 XP
         if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
             myPlayer.woodcutting_level_up()
         else:
@@ -125,7 +125,7 @@ def woodcut(log):
         print("You swing your axe at the Yew Tree...")
         addToInventory("Yew Log")
         print("You receive a Yew Log!")
-        myPlayer.wc_xp += items["Yew Log"][EXPERIENCE]      # 40 XP
+        myPlayer.wc_xp += items["Yew Log"]["EXPERIENCE"]      # 40 XP
         if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
             myPlayer.woodcutting_level_up()
         else:
@@ -134,7 +134,7 @@ def woodcut(log):
         print("You swing your axe at the Magic Tree...")
         addToInventory("Magic Log")
         print("You receive a Magic Log!")
-        myPlayer.wc_xp += items["Magic Log"][EXPERIENCE]    # 80 XP
+        myPlayer.wc_xp += items["Magic Log"]["EXPERIENCE"]    # 80 XP
         if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
             myPlayer.woodcutting_level_up()
         else:

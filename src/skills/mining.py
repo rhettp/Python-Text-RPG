@@ -98,7 +98,7 @@ def mine(ore):
         print("You swing your pickaxe at the Copper node...")
         addToInventory("Copper Ore")
         print("You receive Copper Ore!")
-        myPlayer.mn_xp += items["Copper Ore"][EXPERIENCE]      # 5 XP
+        myPlayer.mn_xp += items["Copper Ore"]["EXPERIENCE"]      # 5 XP
         if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
             myPlayer.mining_level_up()
         else:
@@ -107,7 +107,7 @@ def mine(ore):
         print("You swing your pickaxe at the Iron node...")
         addToInventory("Iron Ore")
         print("You receive Iron Ore!")
-        myPlayer.mn_xp += items["Iron Ore"][EXPERIENCE]      # 10 XP
+        myPlayer.mn_xp += items["Iron Ore"]["EXPERIENCE"]      # 10 XP
         if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
             myPlayer.mining_level_up()
         else:
@@ -116,7 +116,7 @@ def mine(ore):
         print("You swing your pickaxe at the Silver node...")
         addToInventory("Silver Ore")
         print("You receive Silver Ore!")
-        myPlayer.mn_xp += items["Silver Ore"][EXPERIENCE]      # 20 XP
+        myPlayer.mn_xp += items["Silver Ore"]["EXPERIENCE"]      # 20 XP
         if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
             myPlayer.mining_level_up()
         else:
@@ -125,7 +125,7 @@ def mine(ore):
         print("You swing your pickaxe at the Gold node...")
         addToInventory("Gold Ore")
         print("You receive Gold Ore!")
-        myPlayer.mn_xp += items["Gold Ore"][EXPERIENCE]      # 40 XP
+        myPlayer.mn_xp += items["Gold Ore"]["EXPERIENCE"]      # 40 XP
         if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
             myPlayer.mining_level_up()
         else:
@@ -134,7 +134,7 @@ def mine(ore):
         print("You swing your pickaxe at the Diamond node...")
         addToInventory("Diamond Ore")
         print("You receive Diamond Ore!")
-        myPlayer.mn_xp += items["Diamond Ore"][EXPERIENCE]      # 5 XP
+        myPlayer.mn_xp += items["Diamond Ore"]["EXPERIENCE"]      # 5 XP
         if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
             myPlayer.mining_level_up()
         else:

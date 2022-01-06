@@ -89,7 +89,7 @@ def showIventory():
         print("Your inventory is empty.")
     else:
         for item in item_set:
-            print("{} ({}): {}".format(item, inventory.count(item), items[item][DESCRIPTION]))
+            print("{} ({}): {}".format(item, inventory.count(item), items[item]["DESCRIPTION"]))
 
 # Inventory Prompt
 def inventory_prompt():
