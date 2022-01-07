@@ -59,9 +59,13 @@ def town_prompt():
             break
         elif action == '6':     # Character
             os.system('clear')
-            print_location()
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
             myPlayer.character_info()
             myPlayer.display_stats()
+            character_prompt()
             town_prompt()
             break
         elif action == '7':     # Quit
@@ -155,9 +159,13 @@ def shop_prompt():
             break
         elif action == '5':     # Character
             os.system('clear')
-            print_location()
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
             myPlayer.character_info()
             myPlayer.display_stats()
+            character_prompt()
             shop_prompt()
             break
         elif action == '6':     # Leave
@@ -408,9 +416,13 @@ def forest_prompt():
             break
         elif action == '6':     # Character
             os.system('clear')
-            print_location()
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
             myPlayer.character_info()
             myPlayer.display_stats()
+            character_prompt()
             forest_prompt()
             break
         elif action == '7':     # Exit
@@ -479,9 +491,13 @@ def mine_prompt():
             break
         elif action == '7':     # Character
             os.system('clear')
-            print_location()
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
             myPlayer.character_info()
             myPlayer.display_stats()
+            character_prompt()
             mine_prompt()
             break
         elif action == '8':     # Exit
@@ -503,3 +519,19 @@ def prompt_choice():
         forest_prompt()
     elif myPlayer.location == "Mine":
         mine_prompt()
+
+# Character prompt
+def character_prompt():
+    print("What would you like to do?")
+    print("1) Back")
+    while True:
+        action = input('> ')
+        if action == '1':       # Back
+            print("train")
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            break
+        else:                   # Input Validation
+            print("Please enter a valid action")
+            continue

@@ -35,6 +35,13 @@ class player:
         self.bs_xp = 0      # Blacksmithing XP
         self.bs_lvlUp = 50  # Blacksmithing XP required for level up
         self.bs_lvl = 1     # Current Blacksmithing level
+
+        self.head = "None"  # Head Slot
+        self.chest = "None" # Chest Slot
+        self.legs = "None"  # Leg Slot
+        self.melee_weapon = "Fists"
+        self.range_weapon = "None"
+        self.magic_weapon = "None"
         
     # Check if player is dead
     def is_dead(self):
@@ -48,14 +55,21 @@ class player:
 
     # Display character info
     def character_info(self):
-        print("Name:            {}".format(self.name))
-        print("Combat:          {}".format(self.lvl))
-        print("Strength:        {}".format(self.strength))
-        print("Agility:         {}".format(self.agility))
-        print("Magic:           {}".format(self.magic))
-        print("Woodcutting:     {}".format(self.wc_lvl))
-        print("Mining:          {}".format(self.mn_lvl))
-        print("Blacksmithing:   {}\n".format(self.bs_lvl))
+        text = "Gear"
+        options = [self.head, self.chest, self.legs, self.melee_weapon, self.range_weapon, self.magic_weapon]
+        longest = max(options, key=len) # Find longest string length b/w gear options
+        space = 17 + len(longest)       # Space based on longest string
+        gear = text.center(space," ")   # Center "Gear" using longest string
+        print("---------------------            " + '-' * space)
+        print("        Stats                    " + gear)
+        print("---------------------            " + '-' * space)
+        print("Combat:            {}\t\t Head:            {}".format(self.lvl, self.head))
+        print("Strength:          {}\t\t Chest:           {}".format(self.strength, self.chest))
+        print("Agility:           {}\t\t Legs:            {}".format(self.agility, self.legs))
+        print("Magic:             {}\t\t".format(self.magic))
+        print("Woodcutting:       {}\t\t Melee Weapon:    {}".format(self.wc_lvl, self.melee_weapon))
+        print("Mining:            {}\t\t Range Weapon:    {}".format(self.mn_lvl, self.range_weapon))
+        print("Blacksmithing:     {}\t\t Magic Weapon:    {}\n".format(self.bs_lvl, self.magic_weapon))
 
     def rest(self):
         self.hp = self.max_hp
