@@ -7,48 +7,37 @@ import random
 
 ##### World Map #####
 
-# Location constants
-ZONENAME = ''
-DESCRIPTION = 'description'
-EXAMINATION = 'examine'
-
-# TODO: Finalize locations and fill out descriptions
 # World Zones
 world_zone = {
     'Town': {
-        DESCRIPTION: 'Center of town',
-        EXAMINATION: ''
+        "DESCRIPTION": 'Center of town'
     },
-    'Castle': {
-        DESCRIPTION: 'description',
-        EXAMINATION: ''
+    'Swamp': {
+        "DESCRIPTION": 'DESCRIPTION'
     },
     'Forest': {
-        DESCRIPTION: 'description',
-        EXAMINATION: ''
+        "DESCRIPTION": 'DESCRIPTION'
     },
     'Mine': {
-        DESCRIPTION: 'description',
-        EXAMINATION: ''
+        "DESCRIPTION": 'DESCRIPTION'
     },
     "Dragon's Lair": {
-        DESCRIPTION: 'description',
-        EXAMINATION: ''
+        "DESCRIPTION": 'DESCRIPTION'
+    },
+    "Graveyard": {
+        "DESCRIPTION": 'DESCRIPTION'
     },
 }
 
 # Town Shops
 shops = {
     'Blacksmith': {
-        DESCRIPTION: 'description',
-        EXAMINATION: ''
+        "DESCRIPTION": 'DESCRIPTION'
     },
     'Magic Shop': {
-        DESCRIPTION: 'description',
-        EXAMINATION: ''
+        "DESCRIPTION": 'DESCRIPTION'
     },
     'General Store': {
-        DESCRIPTION: 'description',
-        EXAMINATION: ''
+        "DESCRIPTION": 'DESCRIPTION'
     },
 }

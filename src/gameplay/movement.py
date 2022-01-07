@@ -22,9 +22,10 @@ def player_move():
     print("1) Town")
     print("2) Forest")
     print("3) Mine")
-    print("4) Castle")
-    print("5) Dragon's Lair")
-    print("6) Back")    # Go back a menu
+    print("4) Swamp")
+    print("5) Graveyard")
+    print("6) Dragon's Lair")
+    print("7) Back")    # Go back a menu
 
     while True:
         destination = input('> ')
@@ -50,20 +51,27 @@ def player_move():
                 myPlayer.location = "Mine"
                 break
         elif destination == "4":
-            if myPlayer.location == "Castle":
+            if myPlayer.location == "Swamp":
                 print("You are already here.")
                 continue
             else:
-                myPlayer.location = "Castle"
+                myPlayer.location = "Swamp"
                 break
         elif destination == "5":
+            if myPlayer.location == "Graveyard":
+                print("You are already here.")
+                continue
+            else:
+                myPlayer.location = "Graveyard"
+                break
+        elif destination == "6":
             if myPlayer.location == "Dragon's Lair":
                 print("You are already here.")
                 continue
             else:
                 myPlayer.location = "Dragon's Lair"
                 break
-        elif destination == "6":    # Go back a menu
+        elif destination == "7":    # Go back a menu
             break
         else:
             print("Please enter a valid location.")
