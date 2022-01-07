@@ -64,6 +64,7 @@ class player:
     # Combat level up
     def level_up(self):
         self.lvl += 1
+        self.max_hp += 5
         self.xp -= self.lvlUp
         self.lvlUp = round(self.lvlUp * 1.2)
         print("Congatulations your Combat level increased to {}!".format(self.lvl))

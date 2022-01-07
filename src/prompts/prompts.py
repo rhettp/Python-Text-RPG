@@ -111,7 +111,6 @@ def shop_selection():
             continue
 
 # Shopping prompt
-# TODO: Create buy and sell actions
 def shop_prompt():
     print('What would you like to do?')
     print('1) Buy')
@@ -179,13 +178,18 @@ def buy_prompt():
     print_location()
     if myPlayer.location == "General Store":
         for item in general_items:
-            print("{}: {}".format(item, items[item]["DESCRIPTION"]))
+            print("{}:\t {}".format(item, items[item]["DESCRIPTION"]))
     elif myPlayer.location == "Blacksmith":
         for item in blacksmith_items:
-            print("{}: {}".format(item, items[item]["DESCRIPTION"]))
+            print("{}:\t {}".format(item, items[item]["DESCRIPTION"]))
     else:
         for item in magic_items:
-            print("{}: {}".format(item, items[item]["DESCRIPTION"]))
+            if item not in ["Super Health Potion", "Super Mana Potion", "Staff"]:
+                print("{}:\t\t{}".format(item, items[item]["DESCRIPTION"]))
+            elif item != "Staff":
+                print("{} {:>25}".format(item, items[item]["DESCRIPTION"]))
+            else:
+                print("{} {:>31}".format(item, items[item]["DESCRIPTION"]))
     print("\n")
     myPlayer.display_stats()
     print("Which item would you like to buy?")
@@ -242,7 +246,7 @@ def buy_prompt():
                         print("Please enter a valid number.")
                         continue
             break
-        elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # Sell no items/go back
+        elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # Buy no items/go back
             os.system('clear')
             print_location()
             myPlayer.display_stats()
@@ -259,15 +263,20 @@ def sell_prompt():
     if myPlayer.location == "General Store":
         for item in item_set:
             if item in general_items:
-                print("{} ({}): {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+                print("{} \t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
     elif myPlayer.location == "Blacksmith":
         for item in item_set:
             if item in blacksmith_items:
-                print("{} ({}): {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+                print("{} \t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
     else:
         for item in item_set:
-            if item in magic_items:
-                print("{} ({}): {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+            if item in magic_items:     
+                if item not in ["Super Health Potion", "Super Mana Potion", "Staff"]:
+                    print("{} \t\t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+                elif item != "Staff":
+                    print("{} \t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+                else:
+                    print("{} \t\t\t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
     print("\n")
     myPlayer.display_stats()
     print("Which item would you like to sell?")

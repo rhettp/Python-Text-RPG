@@ -89,7 +89,13 @@ def showIventory():
         print("Your inventory is empty.")
     else:
         for item in item_set:
-            print("{} ({}): {}".format(item, inventory.count(item), items[item]["DESCRIPTION"]))
+            if item not in ["Super Health Potion", "Super Mana Potion", "Staff", "Silver Platelegs",\
+                 "Silver Platebody", "Diamond Platelegs", "Diamond Platebody", "Copper Platelegs", "Copper Platebody"]:
+                print("{} \t\t({}) : {}".format(item, inventory.count(item), items[item]["DESCRIPTION"]))
+            elif item != "Staff":
+                print("{} \t({}) : {}".format(item, inventory.count(item), items[item]["DESCRIPTION"]))
+            else:
+                print("{} \t\t\t({}) : {}".format(item, inventory.count(item), items[item]["DESCRIPTION"]))
 
 # Inventory Prompt
 def inventory_prompt():
