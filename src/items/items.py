@@ -3,13 +3,15 @@ from character.player import *
 ##### Items #####
 
 # General Store items
-general_items = ["Oak Log", "Willow Log", "Maple Log", "Yew Log"]
+general_items = ["Oak Log", "Willow Log", "Maple Log", "Yew Log", "Oak Bow", "Willow Bow", "Maple Bow", "Yew Bow"]
 
 # Blacksmith items
-blacksmith_items = ["Copper Ore", "Iron Ore", "Silver Ore", "Gold Ore", "Diamond Ore", "Copper Bar", "Iron Bar", "Silver Bar", "Gold Bar", "Diamond Bar"]
+blacksmith_items = ["Copper Ore", "Iron Ore", "Silver Ore", "Gold Ore", "Diamond Ore", "Copper Bar", "Iron Bar",\
+     "Silver Bar", "Gold Bar", "Diamond Bar"]
 
 # Magic Shop items
-magic_items = ["Health Potion","Super Health Potion", "Mana Potion", "Super Mana Potion", "Restore Potion", "Magic Log", "Staff", "Magic Staff", "Greater Staff"]
+magic_items = ["Health Potion","Super Health Potion", "Mana Potion", "Super Mana Potion", "Restore Potion",\
+     "Magic Log", "Magic Bow", "Staff", "Magic Staff", "Greater Staff"]
 
 # All items
 items = {
@@ -40,6 +42,33 @@ items = {
         "EXPERIENCE": 80
     },
     
+    # Bows
+     'Oak Bow': {
+        "DESCRIPTION": 'An Oak bow',
+        "VALUE": 20,
+        "DAMAGE": 5
+    },
+     'Willow Bow': {
+        "DESCRIPTION": 'A Willow bow',
+        "VALUE": 35,
+        "DAMAGE": 10
+    },
+     'Maple Bow': {
+        "DESCRIPTION": 'A Maple bow',
+        "VALUE": 50,
+        "DAMAGE": 15
+    },
+     'Yew Bow': {
+        "DESCRIPTION": 'A Yew bow',
+        "VALUE": 70,
+        "DAMAGE": 20
+    },
+     'Magic Bow': {
+        "DESCRIPTION": 'A Magic bow',
+        "VALUE": 100,
+        "DAMAGE": 30
+    },
+
     # Ore
     'Copper Ore': {
         "DESCRIPTION": 'A single Copper ore.',
