@@ -17,7 +17,7 @@ def town_prompt():
     print('3) Look')
     print('4) Travel')
     print('5) View Inventory')
-    print('6) Character')
+    print('6) Character Info')
     print('7) Quit')
     while True:
         action = input('> ')
@@ -58,7 +58,12 @@ def town_prompt():
             town_prompt()
             break
         elif action == '6':     # Character
-            print("Character")
+            os.system('clear')
+            print_location()
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            town_prompt()
+            break
         elif action == '7':     # Quit
             sys.exit()
         else:                   # Input validation
@@ -113,7 +118,7 @@ def shop_prompt():
     print('2) Sell')
     print('3) Look')
     print('4) View Inventory')
-    print('5) Character')
+    print('5) Character Info')
     print('6) Leave')
     print('7) Quit')
     while True:
@@ -150,7 +155,12 @@ def shop_prompt():
             shop_prompt()
             break
         elif action == '5':     # Character
-            print('character')
+            os.system('clear')
+            print_location()
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            shop_prompt()
+            break
         elif action == '6':     # Leave
             os.system('clear')
             myPlayer.location = "Town"
@@ -341,7 +351,7 @@ def forest_prompt():
     print('3) Look')
     print('4) Travel')
     print('5) View Inventory')
-    print('6) Character')
+    print('6) Character Info')
     print('7) Quit')
     while True:
         action = input('> ')
@@ -385,10 +395,15 @@ def forest_prompt():
             os.system('clear')
             print_location()
             inventory_prompt()
-            town_prompt()
+            forest_prompt()
             break
         elif action == '6':     # Character
-            print("Character")
+            os.system('clear')
+            print_location()
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            forest_prompt()
+            break
         elif action == '7':     # Exit
             sys.exit()
         else:                   # Input Validation
@@ -404,7 +419,7 @@ def mine_prompt():
     print('4) Look')
     print('5) Travel')
     print('6) View Inventory')
-    print('7) Character')
+    print('7) Character Info')
     print('8) Quit')
     while True:
         action = input('> ')
@@ -454,7 +469,12 @@ def mine_prompt():
             mine_prompt()
             break
         elif action == '7':     # Character
-            print("Character")
+            os.system('clear')
+            print_location()
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            mine_prompt()
+            break
         elif action == '8':     # Exit
             sys.exit()
         else:                   # Input Validation

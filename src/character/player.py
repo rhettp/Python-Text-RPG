@@ -8,7 +8,7 @@ import random
 ##### Player setup #####
 class player:
     def __init__(self):
-        self.name = ''
+        self.name = 'Player'
         self.max_hp = 100
         self.hp = self.max_hp
         self.max_mp = 100
@@ -45,6 +45,17 @@ class player:
         print('======================================')
         print('HP: {}/{}   MP: ({}/{})  Gold: {}'.format(self.hp,self.max_hp, self.mp, self.max_mp, self.gold))
         print('======================================')
+
+    # Display character info
+    def character_info(self):
+        print("Name:            {}".format(self.name))
+        print("Combat:          {}".format(self.lvl))
+        print("Strength:        {}".format(self.strength))
+        print("Agility:         {}".format(self.agility))
+        print("Magic:           {}".format(self.magic))
+        print("Woodcutting:     {}".format(self.wc_lvl))
+        print("Mining:          {}".format(self.mn_lvl))
+        print("Blacksmithing:   {}\n".format(self.bs_lvl))
 
     def rest(self):
         self.hp = self.max_hp
