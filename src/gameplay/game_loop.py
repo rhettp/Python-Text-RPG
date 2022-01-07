@@ -8,3 +8,4 @@ def main_game_loop():
         os.system('clear')
         print_location()
         prompt_choice()
+        

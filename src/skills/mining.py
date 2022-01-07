@@ -139,3 +139,4 @@ def mine(ore):
             myPlayer.mining_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
+            
