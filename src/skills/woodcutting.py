@@ -139,4 +139,4 @@ def woodcut(log):
             myPlayer.woodcutting_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
-            
+        

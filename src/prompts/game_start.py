@@ -41,4 +41,3 @@ def start_game():
         time.sleep(0.05)
     time.sleep(1)
     main_game_loop()
-    

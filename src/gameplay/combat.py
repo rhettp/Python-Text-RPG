@@ -318,4 +318,3 @@ def combat_victory(enemy):
 def combat_defeat(enemy):
     print("You were killed by the {}!".format(enemy.name))
     sys.exit()
-    

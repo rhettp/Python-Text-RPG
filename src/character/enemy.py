@@ -21,4 +21,3 @@ class Enemy:
 class Goblin(Enemy):
     def __init__(self):
         super().__init__(name = "Goblin", max_hp = 25, damage = 2, gold = 25, xp = 10)
-        

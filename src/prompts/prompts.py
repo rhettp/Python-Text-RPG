@@ -535,4 +535,3 @@ def character_prompt():
         else:                   # Input Validation
             print("Please enter a valid action")
             continue
-        

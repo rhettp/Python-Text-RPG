@@ -43,4 +43,3 @@ def help_menu():
     print("Type quit to exit the game.")
     print("Have fun!")
     title_screen_selections()
-    
