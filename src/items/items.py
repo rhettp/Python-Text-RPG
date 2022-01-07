@@ -9,7 +9,7 @@ general_items = ["Oak Log", "Willow Log", "Maple Log", "Yew Log"]
 blacksmith_items = ["Copper Ore", "Iron Ore", "Silver Ore", "Gold Ore", "Diamond Ore", "Copper Bar", "Iron Bar", "Silver Bar", "Gold Bar", "Diamond Bar"]
 
 # Magic Shop items
-magic_items = ["Healing Potion","Super Healing Potion", "Mana Potion", "Super Mana Potion", "Restore Potion", "Magic Log", "Staff", "Magic Staff", "Greater Staff"]
+magic_items = ["Health Potion","Super Health Potion", "Mana Potion", "Super Mana Potion", "Restore Potion", "Magic Log", "Staff", "Magic Staff", "Greater Staff"]
 
 # All items
 items = {
@@ -225,8 +225,8 @@ items = {
     },
 
     # Potions
-     'Healing Potion': {
-        "DESCRIPTION": 'A Healing potion',
+     'Health Potion': {
+        "DESCRIPTION": 'A Health potion',
         "VALUE": 50,
         "EFFECT": 50
     },
@@ -235,8 +235,8 @@ items = {
         "VALUE": 50,
         "EFFECT": 50
     },
-     'Super Healing Potion': {
-        "DESCRIPTION": 'A Super Healing potion',
+     'Super Health Potion': {
+        "DESCRIPTION": 'A Super Health potion',
         "VALUE": 100,
         "EFFECT": myPlayer.max_hp
     },

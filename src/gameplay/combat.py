@@ -7,6 +7,7 @@ import random
 from character.player import *
 from character.enemy import *
 from prompts.prompts import *
+from gameplay.inventory import *
 
 ##### Combat #####
 
@@ -16,7 +17,7 @@ def combat_state(enemy):
     print("What would you like to do?")
     print("1) Attack")
     print("2) Magic")
-    print("3) Items-")
+    print("3) Item")
     
     while True:
         action = input("> ")
@@ -27,7 +28,8 @@ def combat_state(enemy):
             magic_prompt(enemy)
             break
         elif action == '3':
-            print("Items")
+            item_prompt(enemy)
+            break
         else:
             print("Please enter a valid action")
             continue
@@ -161,6 +163,142 @@ def heal(enemy):
     enemy.display_stats()
     enemy_attack(enemy)
     combat_state(enemy)
+
+# Item prompt
+def item_prompt(enemy):
+    os.system('clear')
+    print("\n##########")
+    print("# Combat #")
+    print("##########\n")
+    enemy.display_stats()
+    myPlayer.display_stats()
+    print("What item would you like to use?")
+    print("1) Health Potion         ({})".format(inventory.count("Health Potion")))
+    print("2) Mana Potion           ({})".format(inventory.count("Mana Potion")))
+    print("3) Super Health Potion   ({})".format(inventory.count("Super Health Potion")))
+    print("4) Super Mana Potion     ({})".format(inventory.count("Super Mana Potion")))
+    print("5) Restore Potion        ({})".format(inventory.count("Restore Potion")))
+    print("6) Back")
+
+    while True:
+        action = input("> ")
+        if action == '1':       # Health potion
+            if "Health Potion" not in inventory:
+                print("You don't have a Health Potion.")
+                continue
+            elif myPlayer.hp == myPlayer.max_hp:
+                print("Already at full HP.")
+                continue
+            else:
+                if myPlayer.hp + items["Health Potion"]["EFFECT"] > myPlayer.max_hp:      #Prevent overhealing
+                    healed = myPlayer.max_hp - myPlayer.hp
+                    myPlayer.hp = myPlayer.max_hp
+                else:
+                    healed = items["Health Potion"]["EFFECT"]
+                    myPlayer.hp += healed
+                removeItem("Health Potion")
+                os.system('clear')
+                print("\n##########")
+                print("# Combat #")
+                print("##########\n")
+                print("You drink the potion and heal for {} HP!".format(healed))
+                enemy.display_stats()
+                enemy_attack(enemy)
+                combat_state(enemy)
+                break
+        elif action == '2':     # Mana potion
+            if "Mana Potion" not in inventory:
+                print("You don't have a Mana Potion.")
+                continue
+            elif myPlayer.mp == myPlayer.max_mp:
+                print("Already at full MP.")
+                continue
+            else:
+                if myPlayer.mp + items["Mana Potion"]["EFFECT"] > myPlayer.max_mp:      #Prevent mana overflow
+                    mana = myPlayer.max_mp - myPlayer.mp
+                    myPlayer.mp = myPlayer.max_mp
+                else:
+                    mana = items["Mana Potion"]["EFFECT"]
+                    myPlayer.mp += mana
+                removeItem("Mana Potion")
+                os.system('clear')
+                print("\n##########")
+                print("# Combat #")
+                print("##########\n")
+                print("You drink the potion and gain {} MP!".format(mana))
+                enemy.display_stats()
+                enemy_attack(enemy)
+                combat_state(enemy)
+                break
+        elif action == '3':     # Super health
+            if "Super Health Potion" not in inventory:
+                print("You don't have a Super Health Potion.")
+                continue
+            elif myPlayer.hp == myPlayer.max_hp:
+                print("Already at full HP.")
+                continue
+            else:
+                myPlayer.hp = items["Super Health Potion"]["EFFECT"]
+                removeItem("Super Health Potion")
+                os.system('clear')
+                print("\n##########")
+                print("# Combat #")
+                print("##########\n")
+                print("You drink the potion and heal fully!")
+                enemy.display_stats()
+                enemy_attack(enemy)
+                combat_state(enemy)
+                break
+        elif action == '4':     # Super mana
+            if "Super Mana Potion" not in inventory:
+                print("You don't have a Super Mana Potion.")
+                continue
+            elif myPlayer.mp == myPlayer.max_mp:
+                print("Already at full MP.")
+                continue
+            else:
+                myPlayer.mp = items["Super Mana Potion"]["EFFECT"]
+                removeItem("Super Mana Potion")
+                os.system('clear')
+                print("\n##########")
+                print("# Combat #")
+                print("##########\n")
+                print("You drink the potion and gain all your mana!")
+                enemy.display_stats()
+                enemy_attack(enemy)
+                combat_state(enemy)
+                break
+        elif action == '5':     # Restore potion
+            if "Restore Potion" not in inventory:
+                print("You don't have a Restore Potion.")
+                continue
+            elif myPlayer.hp == myPlayer.max_hp and myPlayer.mp == myPlayer.max_mp:
+                print("Already at full HP and MP.")
+                continue
+            else:
+                myPlayer.hp = items["Restore Potion"]["EFFECT"]
+                myPlayer.mp = items["Restore Potion"]["EFFECT_2"]
+                removeItem("Restore Potion")
+                os.system('clear')
+                print("\n##########")
+                print("# Combat #")
+                print("##########\n")
+                print("You drink the potion and gain full health and mana!")
+                enemy.display_stats()
+                enemy_attack(enemy)
+                combat_state(enemy)
+                break
+        elif action == '6':     # Back
+            os.system('clear')
+            print("\n##########")
+            print("# Combat #")
+            print("##########\n")
+            enemy.display_stats()
+            combat_state(enemy)
+            break
+        else:                   # Input Validation
+            print("Please enter a valid item")
+            continue
 
 # Combat Victory Function
 def combat_victory(enemy):
