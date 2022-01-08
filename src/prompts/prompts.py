@@ -188,8 +188,14 @@ def buy_prompt():
         for item in general_items:
             print("{}:\t {}".format(item, items[item]["DESCRIPTION"]))
     elif myPlayer.location == "Blacksmith":
-        for item in blacksmith_items:
-            print("{}:\t {}".format(item, items[item]["DESCRIPTION"]))
+        for item in blacksmith_buy_set:
+            if item not in ["Copper Platelegs", "Copper Platebody", "Silver Platelegs",\
+                "Silver Platebody", "Diamond Platelegs", "Diamond Platebody"]:
+                print("{}:\t\t {}".format(item, items[item]["DESCRIPTION"]))
+            elif item in ["Copper Platebody", "Silver Platebody"]:
+                print("{}: {:>23}".format(item, items[item]["DESCRIPTION"]))
+            else:
+                print("{}: {:>24}".format(item, items[item]["DESCRIPTION"]))
     else:
         for item in magic_items:
             if item not in ["Super Health Potion", "Super Mana Potion", "Staff"]:
@@ -203,7 +209,7 @@ def buy_prompt():
     print("Which item would you like to buy?")
     while True:
         item = input('> ')
-        if item in general_items or item in blacksmith_items or item in magic_items:
+        if item in general_items or item in blacksmith_buy_set or item in magic_items:
             os.system('clear')
             print_location()
             print("{}: {} gold\n".format(item, items[item]["VALUE"]))
@@ -274,8 +280,12 @@ def sell_prompt():
                 print("{} \t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
     elif myPlayer.location == "Blacksmith":
         for item in item_set:
-            if item in blacksmith_items:
-                print("{} \t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+            if item in blacksmith_sell_set:
+                if item not in ["Copper Platelegs", "Copper Platebody", "Silver Platelegs",\
+                "Silver Platebody", "Diamond Platelegs", "Diamond Platebody"]:
+                    print("{} \t\t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+                else:
+                    print("{} \t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
     else:
         for item in item_set:
             if item in magic_items:     
@@ -523,15 +533,370 @@ def prompt_choice():
 # Character prompt
 def character_prompt():
     print("What would you like to do?")
-    print("1) Back")
+    print("1) Change Gear")
+    print("2) Back")
     while True:
         action = input('> ')
-        if action == '1':       # Back
-            print("train")
+        if action == '1':       # Change Gear
+            os.system('clear')
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            change_gear_prompt()
+            break
+        elif action == '2':       # Back
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            break
+        else:                   # Input Validation
+            print("Please enter a valid action.")
+            continue
+
+# Gear change prompt
+def change_gear_prompt():
+    print("What gear slot would you like to chnage?")
+    print("1) Head Slot")
+    print("2) Chest Slot")
+    print("3) Legs Slot")
+    print("4) Melee Weapon Slot")
+    print("5) Range Weapon Slot")
+    print("6) Magic Weapon Slot")
+    print("7) Back")
+    while True:
+        action = input('> ')
+        if action == '1':       # Head Slot
+            if any(item in inventory for item in helmet_set):
+                head_slot_prompt()
+                os.system('clear')
+                print('\n' + ('#' * (4 + len(myPlayer.name))))
+                print('# {} #'.format(myPlayer.name))
+                print('#' * (4 + len(myPlayer.name)))
+                print("\n")
+                myPlayer.character_info()
+                myPlayer.display_stats()
+                character_prompt()
+                break
+            else:
+                print("You don't have a Helmet to equip.")
+                continue
+        elif action == '2':     # Chest Slot
+            if any(item in inventory for item in platebody_set):
+                chest_slot_prompt()
+                os.system('clear')
+                print('\n' + ('#' * (4 + len(myPlayer.name))))
+                print('# {} #'.format(myPlayer.name))
+                print('#' * (4 + len(myPlayer.name)))
+                print("\n")
+                myPlayer.character_info()
+                myPlayer.display_stats()
+                character_prompt()
+                break
+            else:
+                print("You don't have a Platebody to equip.")
+                continue
+        elif action == '3':     # Legs Slot
+            if any(item in inventory for item in platelegs_set):
+                legs_slot_prompt()
+                os.system('clear')
+                print('\n' + ('#' * (4 + len(myPlayer.name))))
+                print('# {} #'.format(myPlayer.name))
+                print('#' * (4 + len(myPlayer.name)))
+                print("\n")
+                myPlayer.character_info()
+                myPlayer.display_stats()
+                character_prompt()
+                break
+            else:
+                print("You don't have a set of Platelegs to equip.")
+                continue
+        elif action == '4':     # Melee Slot
+            if any(item in inventory for item in melee_set):
+                melee_slot_prompt()
+                os.system('clear')
+                print('\n' + ('#' * (4 + len(myPlayer.name))))
+                print('# {} #'.format(myPlayer.name))
+                print('#' * (4 + len(myPlayer.name)))
+                print("\n")
+                myPlayer.character_info()
+                myPlayer.display_stats()
+                character_prompt()
+                break
+            else:
+                print("You don't have a Melee Weapon to equip.")
+                continue
+        elif action == '5':     # Range Slot
+            if any(item in inventory for item in range_set):
+                range_slot_prompt()
+                os.system('clear')
+                print('\n' + ('#' * (4 + len(myPlayer.name))))
+                print('# {} #'.format(myPlayer.name))
+                print('#' * (4 + len(myPlayer.name)))
+                print("\n")
+                myPlayer.character_info()
+                myPlayer.display_stats()
+                character_prompt()
+                break
+            else:
+                print("You don't have a Range Weapon to equip.")
+                continue
+        elif action == '6':     # Magic Slot
+            if any(item in inventory for item in staff_set):
+                magic_slot_prompt()
+                os.system('clear')
+                print('\n' + ('#' * (4 + len(myPlayer.name))))
+                print('# {} #'.format(myPlayer.name))
+                print('#' * (4 + len(myPlayer.name)))
+                print("\n")
+                myPlayer.character_info()
+                myPlayer.display_stats()
+                character_prompt()
+                break
+            else:
+                print("You don't have a Magic Weapon to equip.")
+                continue
+        elif action == '7':     # Back
             os.system('clear')
             print_location()
             myPlayer.display_stats()
             break
         else:                   # Input Validation
             print("Please enter a valid action")
+            continue
+
+# Head Slot prompt
+def head_slot_prompt():
+    os.system('clear')
+    print('\n' + ('#' * (4 + len(myPlayer.name))))
+    print('# {} #'.format(myPlayer.name))
+    print('#' * (4 + len(myPlayer.name)))
+    print("\n")
+    for item in inventory:
+        if item in helmet_set:
+            if item != "Diamond Helmet":
+                print("{}: \t\t{}".format(item, items[item]["DESCRIPTION"]))
+            else:
+                print("{}: \t{}".format(item, items[item]["DESCRIPTION"]))
+    print("\n")
+    myPlayer.display_stats()
+    print("Which Helmet would you like to equip?")
+    while True:
+        item = input('> ')
+        if item in inventory and item in helmet_set:
+            if myPlayer.head == "None":         # First gear equip
+                myPlayer.head = item
+                removeItem(item)
+                break
+            else:
+                addToInventory(myPlayer.head)   # Replace gear slot
+                myPlayer.head = item
+                removeItem(item)
+                break
+        elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
+            os.system('clear')
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            break
+        else:
+            print("Please enter a valid item.")
+            continue
+
+# Chest Slot prompt
+def chest_slot_prompt():
+    os.system('clear')
+    print('\n' + ('#' * (4 + len(myPlayer.name))))
+    print('# {} #'.format(myPlayer.name))
+    print('#' * (4 + len(myPlayer.name)))
+    print("\n")
+    for item in inventory:
+        if item in platebody_set:
+            print("{}: \t{}".format(item, items[item]["DESCRIPTION"]))
+    print("\n")
+    myPlayer.display_stats()
+    print("Which Platebody would you like to equip?")
+    while True:
+        item = input('> ')
+        if item in inventory and item in platebody_set:
+            if myPlayer.chest == "None":         # First gear equip
+                myPlayer.chest = item
+                removeItem(item)
+                break
+            else:
+                addToInventory(myPlayer.chest)   # Replace gear slot
+                myPlayer.chest = item
+                removeItem(item)
+                break
+        elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
+            os.system('clear')
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            break
+        else:
+            print("Please enter a valid item.")
+            continue
+
+# Legs Slot prompt
+def legs_slot_prompt():
+    os.system('clear')
+    print('\n' + ('#' * (4 + len(myPlayer.name))))
+    print('# {} #'.format(myPlayer.name))
+    print('#' * (4 + len(myPlayer.name)))
+    print("\n")
+    for item in inventory:
+        if item in platelegs_set:
+            print("{}: \t{}".format(item, items[item]["DESCRIPTION"]))
+    print("\n")
+    myPlayer.display_stats()
+    print("Which set of Platelegs would you like to equip?")
+    while True:
+        item = input('> ')
+        if item in inventory and item in platelegs_set:
+            if myPlayer.legs == "None":         # First gear equip
+                myPlayer.legs = item
+                removeItem(item)
+                break
+            else:
+                addToInventory(myPlayer.legs)   # Replace gear slot
+                myPlayer.legs = item
+                removeItem(item)
+                break
+        elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
+            os.system('clear')
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            break
+        else:
+            print("Please enter a valid item.")
+            continue
+
+# Melee Slot prompt
+def melee_slot_prompt():
+    os.system('clear')
+    print('\n' + ('#' * (4 + len(myPlayer.name))))
+    print('# {} #'.format(myPlayer.name))
+    print('#' * (4 + len(myPlayer.name)))
+    print("\n")
+    for item in inventory:
+        if item in melee_set:
+            print("{}: \t{}".format(item, items[item]["DESCRIPTION"]))
+    print("\n")
+    myPlayer.display_stats()
+    print("Which Melee Weapon would you like to equip?")
+    while True:
+        item = input('> ')
+        if item in inventory and item in melee_set:
+            if myPlayer.melee_weapon == "None":         # First gear equip
+                myPlayer.melee_weapon = item
+                removeItem(item)
+                break
+            else:
+                addToInventory(myPlayer.melee_weapon)   # Replace gear slot
+                myPlayer.melee_weapon = item
+                removeItem(item)
+                break
+        elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
+            os.system('clear')
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            break
+        else:
+            print("Please enter a valid item.")
+            continue
+
+# Range Slot prompt
+def range_slot_prompt():
+    os.system('clear')
+    print('\n' + ('#' * (4 + len(myPlayer.name))))
+    print('# {} #'.format(myPlayer.name))
+    print('#' * (4 + len(myPlayer.name)))
+    print("\n")
+    for item in inventory:
+        if item in range_set:
+            print("{}: \t{}".format(item, items[item]["DESCRIPTION"]))
+    print("\n")
+    myPlayer.display_stats()
+    print("Which Range Weapon would you like to equip?")
+    while True:
+        item = input('> ')
+        if item in inventory and item in range_set:
+            if myPlayer.range_weapon == "None":         # First gear equip
+                myPlayer.range_weapon = item
+                removeItem(item)
+                break
+            else:
+                addToInventory(myPlayer.range_weapon)   # Replace gear slot
+                myPlayer.range_weapon = item
+                removeItem(item)
+                break
+        elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
+            os.system('clear')
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            break
+        else:
+            print("Please enter a valid item.")
+            continue
+
+# Magic Slot prompt
+def magic_slot_prompt():
+    os.system('clear')
+    print('\n' + ('#' * (4 + len(myPlayer.name))))
+    print('# {} #'.format(myPlayer.name))
+    print('#' * (4 + len(myPlayer.name)))
+    print("\n")
+    for item in inventory:
+        if item in staff_set:
+            if item == "Staff":
+                print("{}: \t\t{}".format(item, items[item]["DESCRIPTION"]))
+            else:
+                print("{}: \t{}".format(item, items[item]["DESCRIPTION"]))
+    print("\n")
+    myPlayer.display_stats()
+    print("Which Magic Weapon would you like to equip?")
+    while True:
+        item = input('> ')
+        if item in inventory and item in staff_set:
+            if myPlayer.magic_weapon == "None":         # First gear equip
+                myPlayer.magic_weapon = item
+                removeItem(item)
+                break
+            else:
+                addToInventory(myPlayer.magic_weapon)   # Replace gear slot
+                myPlayer.magic_weapon = item
+                removeItem(item)
+                break
+        elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
+            os.system('clear')
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            break
+        else:
+            print("Please enter a valid item.")
             continue

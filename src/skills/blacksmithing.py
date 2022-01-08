@@ -915,3 +915,4 @@ def smith(item):
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
