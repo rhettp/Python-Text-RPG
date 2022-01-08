@@ -5,13 +5,39 @@ from character.player import *
 # General Store items
 general_items = ["Oak Log", "Willow Log", "Maple Log", "Yew Log", "Oak Bow", "Willow Bow", "Maple Bow", "Yew Bow"]
 
-# Blacksmith items
-blacksmith_items = ["Copper Ore", "Iron Ore", "Silver Ore", "Gold Ore", "Diamond Ore", "Copper Bar", "Iron Bar",\
-     "Silver Bar", "Gold Bar", "Diamond Bar"]
+# Blacksmith buy set
+blacksmith_buy_set = ["Copper Ore", "Iron Ore", "Silver Ore", "Copper Bar", "Iron Bar", "Silver Bar", "Copper Sword",\
+    "Copper Helmet","Copper Platelegs", "Copper Platebody", "Iron Sword", "Iron Helmet", "Iron Platelegs", "Iron Platebody",\
+         "Silver Sword", "Silver Helmet","Silver Platelegs", "Silver Platebody"]
+
+# Blacksmith sell set
+blacksmith_sell_set = ["Copper Ore", "Iron Ore", "Silver Ore", "Gold Ore", "Diamond Ore", "Copper Bar", "Iron Bar",\
+     "Silver Bar", "Gold Bar", "Diamond Bar", "Copper Sword", "Copper Helmet","Copper Platelegs", "Copper Platebody",\
+          "Iron Sword", "Iron Helmet", "Iron Platelegs", "Iron Platebody", "Silver Sword", "Silver Helmet", "Silver Platelegs",\
+               "Silver Platebody", "Gold Sword", "Gold Helmet", "Gold Platelegs", "Gold Platebody", "Diamond Sword",\
+                   "Diamond Helmet", "Diamond Platelegs", "Diamond Platebody"]
 
 # Magic Shop items
 magic_items = ["Health Potion","Super Health Potion", "Mana Potion", "Super Mana Potion", "Restore Potion",\
      "Magic Log", "Magic Bow", "Staff", "Magic Staff", "Greater Staff"]
+
+# Helmet set
+helmet_set = ["Copper Helmet", "Iron Helmet", "Silver Helmet", "Gold Helmet", "Diamond Helmet"]
+
+# Platebody set
+platebody_set = ["Copper Platebody", "Iron Platebody", "Silver Platebody", "Gold Platebody", "Diamond Platebody"]
+
+# Platelegs set
+platelegs_set = ["Copper Platelegs", "Iron Platelegs", "Silver Platelegs", "Gold Platelegs", "Diamond Platelegs"]
+
+# Melee Weapon set
+melee_set = ["Copper Sword", "Iron Sword", "Silver Sword", "Gold Sword", "Diamond Sword"]
+
+# Range Weapon set
+range_set = ["Oak Bow", "Willow Bow", "Maple Bow", "Yew Bow", "Magic Bow"]
+
+# Magic Weapon set
+staff_set = ["Staff", "Magic Staff", "Greater Staff"]
 
 # All items
 items = {
