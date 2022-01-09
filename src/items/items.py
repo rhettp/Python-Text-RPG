@@ -72,27 +72,32 @@ items = {
      'Oak Bow': {
         "DESCRIPTION": 'An Oak bow',
         "VALUE": 20,
-        "DAMAGE": 5
+        "DAMAGE": 5,
+        "EXPERIENCE": 15
     },
      'Willow Bow': {
         "DESCRIPTION": 'A Willow bow',
         "VALUE": 35,
-        "DAMAGE": 10
+        "DAMAGE": 10,
+        "EXPERIENCE": 30
     },
      'Maple Bow': {
         "DESCRIPTION": 'A Maple bow',
         "VALUE": 50,
-        "DAMAGE": 15
+        "DAMAGE": 15,
+        "EXPERIENCE": 60
     },
      'Yew Bow': {
         "DESCRIPTION": 'A Yew bow',
         "VALUE": 70,
-        "DAMAGE": 20
+        "DAMAGE": 20,
+        "EXPERIENCE": 120
     },
      'Magic Bow': {
         "DESCRIPTION": 'A Magic bow',
         "VALUE": 100,
-        "DAMAGE": 30
+        "DAMAGE": 30,
+        "EXPERIENCE": 240
     },
 
     # Ore

@@ -4,6 +4,7 @@ from gameplay.inventory import *
 from character.enemy import *
 from character.player import *
 from skills.woodcutting import *
+from skills.fletching import *
 from skills.mining import *
 from skills.blacksmithing import *
 
@@ -375,11 +376,12 @@ def forest_prompt():
     print('What would you like to do?')
     print('1) Combat (1-5)')
     print('2) Woodcutting')
-    print('3) Look')
-    print('4) Travel')
-    print('5) View Inventory')
-    print('6) Character Info')
-    print('7) Quit')
+    print('3) Fletching')
+    print('4) Look')
+    print('5) Travel')
+    print('6) View Inventory')
+    print('7) Character Info')
+    print('8) Quit')
     while True:
         action = input('> ')
         if action == '1':       # Train
@@ -403,7 +405,18 @@ def forest_prompt():
             myPlayer.display_stats()
             forest_prompt()
             break
-        elif action == '3':     # Look
+        elif action == '3':     # Fletching
+            os.system('clear')
+            print("\n#############")
+            print("# Fletching #")
+            print("#############\n\n")
+            myPlayer.display_stats()
+            fletching_prompt()
+            print_location()
+            myPlayer.display_stats()
+            forest_prompt()
+            break
+        elif action == '4':     # Look
             os.system('clear')
             print_location()
             print(world_zone[myPlayer.location]["DESCRIPTION"])
@@ -411,20 +424,20 @@ def forest_prompt():
             myPlayer.display_stats()
             forest_prompt()
             break
-        elif action == '4':     # Travel
+        elif action == '5':     # Travel
             os.system('clear')
             print_location()
             myPlayer.display_stats()
             player_move()
             prompt_choice()
             break
-        elif action == '5':     # Inventory
+        elif action == '6':     # Inventory
             os.system('clear')
             print_location()
             inventory_prompt()
             forest_prompt()
             break
-        elif action == '6':     # Character
+        elif action == '7':     # Character
             os.system('clear')
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
@@ -435,7 +448,7 @@ def forest_prompt():
             character_prompt()
             forest_prompt()
             break
-        elif action == '7':     # Exit
+        elif action == '8':     # Exit
             sys.exit()
         else:                   # Input Validation
             print("Please enter a valid action.")

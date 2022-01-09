@@ -28,6 +28,10 @@ class player:
         self.wc_lvlUp = 50  # Woodcutting XP required for level up
         self.wc_lvl = 1     # Current Woodcutting level
 
+        self.ft_xp = 0      # Fletching XP
+        self.ft_lvlUp = 50  # Fletching XP required for level up
+        self.ft_lvl = 1     # Current Fletching level
+
         self.mn_xp = 0      # Mining XP
         self.mn_lvlUp = 50  # Mining XP required for level up
         self.mn_lvl = 1     # Current Mining level
@@ -68,8 +72,9 @@ class player:
         print("Agility:           {}\t\t Legs:            {}".format(self.agility, self.legs))
         print("Magic:             {}\t\t".format(self.magic))
         print("Woodcutting:       {}\t\t Melee Weapon:    {}".format(self.wc_lvl, self.melee_weapon))
-        print("Mining:            {}\t\t Range Weapon:    {}".format(self.mn_lvl, self.range_weapon))
-        print("Blacksmithing:     {}\t\t Magic Weapon:    {}\n".format(self.bs_lvl, self.magic_weapon))
+        print("Fletching:         {}\t\t Range Weapon:    {}".format(self.ft_lvl, self.range_weapon))
+        print("Mining:            {}\t\t Magic Weapon:    {}".format(self.mn_lvl, self.magic_weapon))
+        print("Blacksmithing:     {}\t\t\n".format(self.bs_lvl))
 
     def rest(self):
         self.hp = self.max_hp
@@ -91,6 +96,14 @@ class player:
         self.wc_lvlUp = round(self.wc_lvlUp * 1.2)
         print("Congatulations your Woodcutting level increased to {}!".format(self.wc_lvl))
         print("{} XP to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
+
+    # Fletching level up
+    def fletching_level_up(self):
+        self.ft_lvl += 1
+        self.ft_xp -= self.ft_lvlUp
+        self.ft_lvlUp = round(self.ft_lvlUp * 1.2)
+        print("Congatulations your Fletching level increased to {}!".format(self.ft_lvl))
+        print("{} XP to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
 
     # Mining level up
     def mining_level_up(self):
