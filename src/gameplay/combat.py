@@ -18,7 +18,6 @@ def combat_state(enemy):
     print("1) Attack")
     print("2) Magic")
     print("3) Item")
-    
     while True:
         action = input("> ")
         if action == '1':
@@ -36,10 +35,23 @@ def combat_state(enemy):
 
 # Attack function
 def attack(enemy):
-    damage = myPlayer.strength * 2
+    if miss():
+        damage = 0
+    elif myPlayer.melee_weapon == "None":
+        damage = random.randrange(1, myPlayer.strength * 2 + 1)
+    else:
+        damage = random.randrange(1, myPlayer.strength * 2 + items[myPlayer.melee_weapon]["DAMAGE"] + 1)
     enemy.hp -= damage
     os.system('clear')
-    if enemy.is_dead():
+    if damage == 0:
+        print("\n##########")
+        print("# Combat #")
+        print("##########\n")
+        print("You miss your attack!")
+        enemy.display_stats()
+        enemy_attack(enemy)
+        combat_state(enemy)
+    elif enemy.is_dead():
         combat_victory(enemy)
     else:
         print("\n##########")
@@ -49,7 +61,47 @@ def attack(enemy):
         enemy.display_stats()
         enemy_attack(enemy)
         combat_state(enemy)
-        
+
+# Miss Function
+# Returns True if 0 is randomly chosen, False otherwise
+def miss():
+    if myPlayer.agility < 5:                                # Agility < 5
+        rng = random.randrange(3)   # 25% chance
+        if rng == 0:
+            return True
+        else:
+            return False
+    elif myPlayer.agility >= 5 and myPlayer.agility < 10:   # Agility level (5-9)
+        rng = random.randrange(6)   # 14% chance
+        if rng == 0:
+            return True
+        else:
+            return False
+    elif myPlayer.agility >= 10 and myPlayer.agility < 15:  # Agility level (10-14)
+        rng = random.randrange(9)   # 10% chance
+        if rng == 0:
+            return True
+        else:
+            return False
+    elif myPlayer.agility >= 15 and myPlayer.agility < 20:  # Agility level (15-19)
+        rng = random.randrange(12)  # 7.7% chance
+        if rng == 0:
+            return True
+        else:
+            return False
+    elif myPlayer.agility >= 20 and myPlayer.agility < 25:  # Agility level (20-24)
+        rng = random.randrange(15)  # 6.25% chance
+        if rng == 0:
+            return True
+        else:
+            return False
+    elif myPlayer.agility == 25:                            # Agility max level (25)
+        rng = random.randrange(20)  # 4.8% chance
+        if rng == 0:
+            return True
+        else:
+            return False
+
 # Enemy attack function
 def enemy_attack(enemy):
     damage = enemy.damage

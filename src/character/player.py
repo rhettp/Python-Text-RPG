@@ -43,7 +43,7 @@ class player:
         self.head = "None"  # Head Slot
         self.chest = "None" # Chest Slot
         self.legs = "None"  # Leg Slot
-        self.melee_weapon = "Fists"
+        self.melee_weapon = "None"
         self.range_weapon = "None"
         self.magic_weapon = "None"
         
