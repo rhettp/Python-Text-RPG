@@ -2,8 +2,11 @@ from character.player import *
 
 ##### Items #####
 
-# General Store items
-general_items = ["Oak Log", "Willow Log", "Maple Log", "Yew Log", "Oak Bow", "Willow Bow", "Maple Bow", "Yew Bow"]
+# General Store buy set
+general_store_buy_set = ["Oak Log", "Willow Log", "Maple Log", "Oak Bow", "Willow Bow", "Maple Bow"]
+
+# General Store sell set 
+general_sell_set = ["Oak Log", "Willow Log", "Maple Log", "Yew Log", "Oak Bow", "Willow Bow", "Maple Bow", "Yew Bow"]
 
 # Blacksmith buy set
 blacksmith_buy_set = ["Copper Ore", "Iron Ore", "Silver Ore", "Copper Bar", "Iron Bar", "Silver Bar", "Copper Sword",\
@@ -18,7 +21,11 @@ blacksmith_sell_set = ["Copper Ore", "Iron Ore", "Silver Ore", "Gold Ore", "Diam
                    "Diamond Helmet", "Diamond Platelegs", "Diamond Platebody"]
 
 # Magic Shop items
-magic_items = ["Health Potion","Super Health Potion", "Mana Potion", "Super Mana Potion", "Restore Potion",\
+magic_shop_buy_set = ["Health Potion","Super Health Potion", "Mana Potion", "Super Mana Potion", "Restore Potion",\
+    "Staff", "Magic Staff", "Greater Staff"]
+
+# Magic Shop sell set
+magic_shop_sell_set = ["Health Potion","Super Health Potion", "Mana Potion", "Super Mana Potion", "Restore Potion",\
      "Magic Log", "Magic Bow", "Staff", "Magic Staff", "Greater Staff"]
 
 # Helmet set

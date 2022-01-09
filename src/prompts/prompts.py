@@ -186,7 +186,7 @@ def shop_prompt():
 def buy_prompt():
     print_location()
     if myPlayer.location == "General Store":
-        for item in general_items:
+        for item in general_store_buy_set:
             print("{}:\t {}".format(item, items[item]["DESCRIPTION"]))
     elif myPlayer.location == "Blacksmith":
         for item in blacksmith_buy_set:
@@ -198,7 +198,7 @@ def buy_prompt():
             else:
                 print("{}: {:>24}".format(item, items[item]["DESCRIPTION"]))
     else:
-        for item in magic_items:
+        for item in magic_shop_buy_set:
             if item not in ["Super Health Potion", "Super Mana Potion", "Staff"]:
                 print("{}:\t\t{}".format(item, items[item]["DESCRIPTION"]))
             elif item != "Staff":
@@ -210,7 +210,7 @@ def buy_prompt():
     print("Which item would you like to buy?")
     while True:
         item = input('> ')
-        if item in general_items or item in blacksmith_buy_set or item in magic_items:
+        if item in general_store_buy_set or item in blacksmith_buy_set or item in magic_shop_buy_set:
             os.system('clear')
             print_location()
             print("{}: {} gold\n".format(item, items[item]["VALUE"]))
@@ -277,7 +277,7 @@ def sell_prompt():
     item_set = set(inventory)
     if myPlayer.location == "General Store":
         for item in item_set:
-            if item in general_items:
+            if item in general_sell_set:
                 print("{} \t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
     elif myPlayer.location == "Blacksmith":
         for item in item_set:
@@ -289,7 +289,7 @@ def sell_prompt():
                     print("{} \t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
     else:
         for item in item_set:
-            if item in magic_items:     
+            if item in magic_shop_sell_set:     
                 if item not in ["Super Health Potion", "Super Mana Potion", "Staff"]:
                     print("{} \t\t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
                 elif item != "Staff":
