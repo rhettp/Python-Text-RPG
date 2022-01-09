@@ -15,26 +15,34 @@ from gameplay.inventory import *
 def combat_state(enemy):
     myPlayer.display_stats()
     print("What would you like to do?")
-    print("1) Attack")
-    print("2) Magic")
-    print("3) Item")
+    print("1) Melee Attack")
+    print("2) Range Attack")
+    print("3) Magic")
+    print("4) Item")
     while True:
         action = input("> ")
         if action == '1':
-            attack(enemy)
+            melee_attack(enemy)
             break
         elif action == '2':
+            if myPlayer.range_weapon == "None":         # Check if Player has bow equipped
+                print("You don't have a Bow equipped.")
+                continue
+            else:
+                range_attack(enemy)
+                break
+        elif action == '3':
             magic_prompt(enemy)
             break
-        elif action == '3':
+        elif action == '4':
             item_prompt(enemy)
             break
         else:
             print("Please enter a valid action")
             continue
 
-# Attack function
-def attack(enemy):
+# Melee Attack function
+def melee_attack(enemy):
     if miss():
         damage = 0
     elif myPlayer.melee_weapon == "None":
@@ -102,6 +110,33 @@ def miss():
         else:
             return False
 
+# Range Attack function
+def range_attack(enemy):
+    if miss():
+        damage = 0
+    else:
+        damage = random.randrange(1, myPlayer.agility * 2 + items[myPlayer.range_weapon]["DAMAGE"] + 1)
+    enemy.hp -= damage
+    os.system('clear')
+    if damage == 0:
+        print("\n##########")
+        print("# Combat #")
+        print("##########\n")
+        print("You miss your shot!")
+        enemy.display_stats()
+        enemy_attack(enemy)
+        combat_state(enemy)
+    elif enemy.is_dead():
+        combat_victory(enemy)
+    else:
+        print("\n##########")
+        print("# Combat #")
+        print("##########\n")
+        print("Your arrow strikes the {} for {} damage!".format(enemy.name, damage))
+        enemy.display_stats()
+        enemy_attack(enemy)
+        combat_state(enemy)
+
 # Enemy attack function
 def enemy_attack(enemy):
     damage = enemy.damage
@@ -167,10 +202,23 @@ def magic_prompt(enemy):
 # Fireball
 def fireball(enemy):
     myPlayer.mp -= 20
-    damage = myPlayer.magic * 2
+    if miss():
+        damage = 0
+    elif myPlayer.magic_weapon == "None":
+        damage = random.randrange(1, myPlayer.magic * 2 + 5)
+    else:
+        damage = random.randrange(1, myPlayer.magic * 2 + items[myPlayer.magic_weapon]["DAMAGE"] + 5)
     enemy.hp -= damage
     os.system('clear')
-    if enemy.is_dead():
+    if damage == 0:
+        print("\n##########")
+        print("# Combat #")
+        print("##########\n")
+        print("Your fireball misses the {}!".format(enemy.name))
+        enemy.display_stats()
+        enemy_attack(enemy)
+        combat_state(enemy)
+    elif enemy.is_dead():
         combat_victory(enemy)
     else:
         print("\n##########")
@@ -184,16 +232,29 @@ def fireball(enemy):
 # Icebolt
 def icebolt(enemy):
     myPlayer.mp -= 30
-    damage = myPlayer.magic * 2
+    if miss():
+        damage = 0
+    elif myPlayer.magic_weapon == "None":
+        damage = random.randrange(1, myPlayer.magic * 2 + 9)
+    else:
+        damage = random.randrange(1, myPlayer.magic * 2 + items[myPlayer.magic_weapon]["DAMAGE"] + 9)
     enemy.hp -= damage
     os.system('clear')
+    if damage == 0:
+        print("\n##########")
+        print("# Combat #")
+        print("##########\n")
+        print("Your icebolt misses the {}!".format(enemy.name))
+        enemy.display_stats()
+        enemy_attack(enemy)
+        combat_state(enemy)
     if enemy.is_dead():
         combat_victory(enemy)
     else:
         print("\n##########")
         print("# Combat #")
         print("##########\n")
-        print("You hit the {} with a iceball for {} damage!".format(enemy.name, damage))
+        print("You hit the {} with an icebolt for {} damage!".format(enemy.name, damage))
         enemy.display_stats()
         enemy_attack(enemy)
         combat_state(enemy)
