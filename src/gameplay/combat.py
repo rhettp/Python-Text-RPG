@@ -19,24 +19,42 @@ def combat_state(enemy):
     print("2) Range Attack")
     print("3) Magic")
     print("4) Item")
+    print("5) Flee")
     while True:
         action = input("> ")
-        if action == '1':
+        if action == '1':       # Melee
             melee_attack(enemy)
             break
-        elif action == '2':
+        elif action == '2':     # Range
             if myPlayer.range_weapon == "None":         # Check if Player has bow equipped
                 print("You don't have a Bow equipped.")
                 continue
             else:
                 range_attack(enemy)
                 break
-        elif action == '3':
+        elif action == '3':     # Magic
             magic_prompt(enemy)
             break
-        elif action == '4':
+        elif action == '4':     # Item
             item_prompt(enemy)
             break
+        elif action == '5':     # Flee
+            if flee():
+                os.system('clear')
+                print_location()
+                print("You successfully escaped the {}!\n".format(enemy.name))
+                myPlayer.display_stats()
+                break
+            else:
+                os.system('clear')
+                print("\n##########")
+                print("# Combat #")
+                print("##########\n")
+                print("Your attempt to flee the {} was unsuccessful!".format(enemy.name))
+                enemy.display_stats()
+                enemy_attack(enemy)
+                combat_state(enemy)
+                break
         else:
             print("Please enter a valid action")
             continue
@@ -70,7 +88,7 @@ def melee_attack(enemy):
         enemy_attack(enemy)
         combat_state(enemy)
 
-# Miss Function
+# Miss Function to determine if Player attack misses
 # Returns True if 0 is randomly chosen, False otherwise
 def miss():
     if myPlayer.agility < 5:                                # Agility < 5
@@ -412,6 +430,46 @@ def item_prompt(enemy):
         else:                   # Input Validation
             print("Please enter a valid item")
             continue
+
+# Flee function to determine if Player successfully flees from Combat
+# Returns True if 0 is randomly chosen, False otherwise
+def flee():
+    if myPlayer.agility < 5:                                # Agility < 5
+        rng = random.randrange(20)   # 4.8% chance
+        if rng == 0:
+            return True
+        else:
+            return False
+    elif myPlayer.agility >= 5 and myPlayer.agility < 10:   # Agility level (5-9)
+        rng = random.randrange(15)   # 6.25% chance
+        if rng == 0:
+            return True
+        else:
+            return False
+    elif myPlayer.agility >= 10 and myPlayer.agility < 15:  # Agility level (10-14)
+        rng = random.randrange(12)   # 7.7% chance
+        if rng == 0:
+            return True
+        else:
+            return False
+    elif myPlayer.agility >= 15 and myPlayer.agility < 20:  # Agility level (15-19)
+        rng = random.randrange(9)  # 10% chance
+        if rng == 0:
+            return True
+        else:
+            return False
+    elif myPlayer.agility >= 20 and myPlayer.agility < 25:  # Agility level (20-24)
+        rng = random.randrange(6)  # 14% chance
+        if rng == 0:
+            return True
+        else:
+            return False
+    elif myPlayer.agility == 25:                            # Agility max level (25)
+        rng = random.randrange(3)  # 25% chance
+        if rng == 0:
+            return True
+        else:
+            return False
 
 # Combat Victory Function
 def combat_victory(enemy):
