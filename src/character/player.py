@@ -20,8 +20,16 @@ class player:
         self.lvlUp = 50     # Combat XP required for level up
         self.lvl = 1        # Current Combat level 
 
+        self.str_xp = 0     # Strength XP
+        self.str_lvlUp = 50 # Strength XP required for level up
         self.strength = 1   # Current Strength level
+
+        self.ag_xp = 0      # Agility XP
+        self.ag_lvlUp = 50  # Agility XP required for level up
         self.agility = 1    # Current Agility level
+
+        self.mag_xp = 0     # Magic XP
+        self.mag_lvlUp = 50 # Magic XP required for level up
         self.magic = 1      # Current Magic level
 
         self.wc_xp = 0      # Woodcutting XP
@@ -43,9 +51,9 @@ class player:
         self.head = "None"  # Head Slot
         self.chest = "None" # Chest Slot
         self.legs = "None"  # Leg Slot
-        self.melee_weapon = "None"
-        self.range_weapon = "None"
-        self.magic_weapon = "None"
+        self.melee_weapon = "Diamond Sword"
+        self.range_weapon = "Magic Bow"
+        self.magic_weapon = "Greater Staff"
         
     # Check if player is dead
     def is_dead(self):
@@ -88,6 +96,31 @@ class player:
         self.lvlUp = round(self.lvlUp * 1.2)
         print("Congatulations your Combat level increased to {}!".format(self.lvl))
         print("{} XP to next level.\n".format(myPlayer.lvlUp - myPlayer.xp))
+
+    # Strength level up
+    def strength_level_up(self):
+        self.strength += 1
+        self.str_xp -= self.str_lvlUp
+        self.str_lvlUp = round(self.str_lvlUp * 1.2)
+        print("Congatulations your Strength level increased to {}!".format(self.strength))
+        print("{} XP to next level.\n".format(myPlayer.str_lvlUp - myPlayer.str_xp))
+
+    # Agility level up
+    def agility_level_up(self):
+        self.agility += 1
+        self.ag_xp -= self.ag_lvlUp
+        self.ag_lvlUp = round(self.ag_lvlUp * 1.2)
+        print("Congatulations your Agility level increased to {}!".format(self.agility))
+        print("{} XP to next level.\n".format(myPlayer.ag_lvlUp - myPlayer.ag_xp))
+
+    # Magic level up
+    def magic_level_up(self):
+        self.magic += 1
+        self.max_mp += 5
+        self.mag_xp -= self.mag_lvlUp
+        self.mag_lvlUp = round(self.mag_lvlUp * 1.2)
+        print("Congatulations your Magic level increased to {}!".format(self.magic))
+        print("{} XP to next level.\n".format(myPlayer.mag_lvlUp - myPlayer.mag_xp))
 
     # Woodcutting level up
     def woodcutting_level_up(self):

@@ -11,8 +11,14 @@ from gameplay.inventory import *
 
 ##### Combat #####
 
+# Global variables used for stat xp distribution
+used_strength = False
+used_agility = False
+used_magic = False
+
 # Base combat state
 def combat_state(enemy):
+    global used_strength, used_agility, used_magic
     myPlayer.display_stats()
     print("What would you like to do?")
     print("1) Melee Attack")
@@ -23,6 +29,7 @@ def combat_state(enemy):
     while True:
         action = input("> ")
         if action == '1':       # Melee
+            used_strength = True
             melee_attack(enemy)
             break
         elif action == '2':     # Range
@@ -30,6 +37,7 @@ def combat_state(enemy):
                 print("You don't have a Bow equipped.")
                 continue
             else:
+                used_agility = True
                 range_attack(enemy)
                 break
         elif action == '3':     # Magic
@@ -40,6 +48,9 @@ def combat_state(enemy):
             break
         elif action == '5':     # Flee
             if flee():  # If successful
+                used_strength = False
+                used_agility = False
+                used_magic = False
                 os.system('clear')
                 print_location()
                 print("You successfully escaped the {}!\n".format(enemy.name))
@@ -173,6 +184,7 @@ def magic_prompt(enemy):
     print("2) Icebolt")
     print("3) Heal")
     print("4) Back")
+    global used_magic
 
     while True:
         action = input("> ")
@@ -181,6 +193,7 @@ def magic_prompt(enemy):
                 print("Not enough MP to cast Fireball.")
                 continue
             else:
+                used_magic = True
                 fireball(enemy)
                 break
         elif action == '2':     # Icebolt
@@ -188,6 +201,7 @@ def magic_prompt(enemy):
                 print("Not enough MP to cast Icebolt.")
                 continue
             else:
+                used_magic = True
                 icebolt(enemy)
                 break
         elif action == '3':     # Heal
@@ -198,6 +212,7 @@ def magic_prompt(enemy):
                 print("Already at full HP.")
                 continue
             else:
+                used_magic = True
                 heal(enemy)
                 break
         elif action == '4':     # Back
@@ -462,16 +477,111 @@ def combat_victory(enemy):
     print("You killed the {}!".format(enemy.name))
     print("You receive {} gold!".format(enemy.gold))
     myPlayer.gold += enemy.gold
-    print("You gained {} XP!".format(enemy.xp))
-    myPlayer.xp += enemy.xp
+    myPlayer.xp += enemy.xp     # Combat xp
     if myPlayer.xp >= myPlayer.lvlUp:
         myPlayer.level_up()
     else:
-        print("{} XP left to next level.\n".format(myPlayer.lvlUp - myPlayer.xp))
+        print("You gained {} Combat XP! {} XP left to next level.".format(enemy.xp, myPlayer.lvlUp - myPlayer.xp))
+    stat_xp(enemy)  # Determine stat xp distribution
     myPlayer.display_stats()
+    global used_strength, used_agility, used_magic  # Reset globals
+    used_strength = False
+    used_agility = False
+    used_magic = False
+
+# Determine stat xp distribution based on Player combat choices
+def stat_xp(enemy):
+    # Player used only strength
+    if used_strength and not used_agility and not used_magic:
+        myPlayer.str_xp += enemy.xp
+        if myPlayer.str_xp >= myPlayer.str_lvlUp:
+            myPlayer.strength_level_up()
+        else:
+            print("You gained {} Strength XP! {} XP left to next level.\n".format(enemy.xp, myPlayer.str_lvlUp - myPlayer.str_xp))
+
+    # Player used only agility
+    elif used_agility and not used_strength and not used_magic:     
+        myPlayer.ag_xp += enemy.xp
+        if myPlayer.ag_xp >= myPlayer.ag_lvlUp:
+            myPlayer.agility_level_up()
+        else:
+            print("You gained {} Agility XP! {} XP left to next level.\n".format(enemy.xp, myPlayer.ag_lvlUp - myPlayer.ag_xp))
+
+    # Player used only magic
+    elif used_magic and not used_strength and not used_agility:     
+        myPlayer.mag_xp += enemy.xp
+        if myPlayer.mag_xp >= myPlayer.mag_lvlUp:
+            myPlayer.magic_level_up()
+        else:
+            print("You gained {} Magic XP! {} XP left to next level.\n".format(enemy.xp, myPlayer.mag_lvlUp - myPlayer.mag_xp))
+
+    # Player used strength and agility
+    elif used_strength and used_agility and not used_magic:         
+        xp = round(enemy.xp / 2)    # Divide xp in 2
+        myPlayer.str_xp += xp       # Strength
+        if myPlayer.str_xp >= myPlayer.str_lvlUp:
+            myPlayer.strength_level_up()
+        else:
+            print("You gained {} Strength XP! {} XP left to next level.".format(xp, myPlayer.str_lvlUp - myPlayer.str_xp))
+        myPlayer.ag_xp += xp        # Agility
+        if myPlayer.ag_xp >= myPlayer.ag_lvlUp:
+            myPlayer.agility_level_up()
+        else:
+            print("You gained {} Agility XP! {} XP left to next level.\n".format(xp, myPlayer.ag_lvlUp - myPlayer.ag_xp))
+
+    # Player used strength and magic
+    elif used_strength and used_magic and not used_agility:         
+        xp = round(enemy.xp / 2)    # Divide xp in 2
+        myPlayer.str_xp += xp       # Strength
+        if myPlayer.str_xp >= myPlayer.str_lvlUp:
+            myPlayer.strength_level_up()
+        else:
+            print("You gained {} Strength XP! {} XP left to next level.".format(xp, myPlayer.str_lvlUp - myPlayer.str_xp))
+        myPlayer.mag_xp += xp       # Magic
+        if myPlayer.mag_xp >= myPlayer.mag_lvlUp:
+            myPlayer.magic_level_up()
+        else:
+            print("You gained {} Magic XP! {} XP left to next level.\n".format(xp, myPlayer.mag_lvlUp - myPlayer.mag_xp))
+
+    # Player used agility and magic
+    elif used_agility and used_magic and not used_strength:   
+        xp = round(enemy.xp / 2)    # Divide xp in 2      
+        myPlayer.ag_xp += xp        # Agility
+        if myPlayer.ag_xp >= myPlayer.ag_lvlUp:
+            myPlayer.agility_level_up()
+        else:
+            print("You gained {} Agility XP! {} XP left to next level.".format(xp, myPlayer.ag_lvlUp - myPlayer.ag_xp))
+        myPlayer.mag_xp += xp       # Magic
+        if myPlayer.mag_xp >= myPlayer.mag_lvlUp:
+            myPlayer.magic_level_up()
+        else:
+            print("You gained {} Magic XP! {} XP left to next level.\n".format(xp, myPlayer.mag_lvlUp - myPlayer.mag_xp))
+        
+    # Player used strength/agility/magic
+    elif used_strength and used_agility and used_magic:            
+        xp = round(enemy.xp / 3)    # Divide xp in 3   
+        myPlayer.str_xp += xp       # Strength
+        if myPlayer.str_xp >= myPlayer.str_lvlUp:
+            myPlayer.strength_level_up()
+        else:
+            print("You gained {} Strength XP! {} XP left to next level.".format(xp, myPlayer.str_lvlUp - myPlayer.str_xp))   
+        myPlayer.ag_xp += xp        # Agility
+        if myPlayer.ag_xp >= myPlayer.ag_lvlUp:
+            myPlayer.agility_level_up()
+        else:
+            print("You gained {} Agility XP! {} XP left to next level.".format(xp, myPlayer.ag_lvlUp - myPlayer.ag_xp))
+        myPlayer.mag_xp += xp       # Magic
+        if myPlayer.mag_xp >= myPlayer.mag_lvlUp:
+            myPlayer.magic_level_up()
+        else:
+            print("You gained {} Magic XP! {} XP left to next level.\n".format(xp, myPlayer.mag_lvlUp - myPlayer.mag_xp))
 
 # Combat Defeat function
 def combat_defeat(enemy):
+    global used_strength, used_agility, used_magic  # Reset globals
+    used_strength = False
+    used_agility = False
+    used_magic = False
     os.system('clear')
     print("\n##########")
     print("# Combat #")
