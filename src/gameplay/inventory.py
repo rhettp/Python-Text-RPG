@@ -35,7 +35,6 @@ def dropItemPrompt():
                         print_location()
                         print("No {}s were dropped.".format(item))
                         print("\n")
-                        myPlayer.display_stats()
                         inventory_prompt()
                         break
                     elif number == 1:
@@ -44,7 +43,6 @@ def dropItemPrompt():
                         print("You dropped a(n) {}".format(item))
                         print("\n")
                         removeItem(item)
-                        myPlayer.display_stats()
                         inventory_prompt()
                         break
                     elif number > inventory.count(item):
@@ -57,7 +55,6 @@ def dropItemPrompt():
                         print("\n")
                         for i in range(number):
                             removeItem(item)
-                        myPlayer.display_stats()
                         inventory_prompt()
                         break
                     else:
@@ -70,7 +67,6 @@ def dropItemPrompt():
             print("All items were dropped.")
             inventory.clear()
             print("\n")
-            myPlayer.display_stats()
             inventory_prompt()
             break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:
