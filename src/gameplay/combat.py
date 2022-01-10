@@ -39,13 +39,13 @@ def combat_state(enemy):
             item_prompt(enemy)
             break
         elif action == '5':     # Flee
-            if flee():
+            if flee():  # If successful
                 os.system('clear')
                 print_location()
                 print("You successfully escaped the {}!\n".format(enemy.name))
                 myPlayer.display_stats()
                 break
-            else:
+            else:       # Failed to flee
                 os.system('clear')
                 print("\n##########")
                 print("# Combat #")
@@ -53,7 +53,6 @@ def combat_state(enemy):
                 print("Your attempt to flee the {} was unsuccessful!".format(enemy.name))
                 enemy.display_stats()
                 enemy_attack(enemy)
-                combat_state(enemy)
                 break
         else:
             print("Please enter a valid action")
@@ -76,7 +75,6 @@ def melee_attack(enemy):
         print("You miss your attack!")
         enemy.display_stats()
         enemy_attack(enemy)
-        combat_state(enemy)
     elif enemy.is_dead():
         combat_victory(enemy)
     else:
@@ -86,7 +84,6 @@ def melee_attack(enemy):
         print("You hit the {} for {} damage!".format(enemy.name, damage))
         enemy.display_stats()
         enemy_attack(enemy)
-        combat_state(enemy)
 
 # Miss Function to determine if Player attack misses
 # Returns True if 0 is randomly chosen, False otherwise
@@ -143,7 +140,6 @@ def range_attack(enemy):
         print("You miss your shot!")
         enemy.display_stats()
         enemy_attack(enemy)
-        combat_state(enemy)
     elif enemy.is_dead():
         combat_victory(enemy)
     else:
@@ -153,17 +149,16 @@ def range_attack(enemy):
         print("Your arrow strikes the {} for {} damage!".format(enemy.name, damage))
         enemy.display_stats()
         enemy_attack(enemy)
-        combat_state(enemy)
 
 # Enemy attack function
 def enemy_attack(enemy):
     damage = enemy.damage
     myPlayer.hp -= damage
     if myPlayer.is_dead():
-        os.system('clear')
         combat_defeat(enemy)
     else:
         print("The {} hit you for {} damage!".format(enemy.name, damage))
+        combat_state(enemy)
 
 # Magic choice prompt
 def magic_prompt(enemy):
@@ -235,7 +230,6 @@ def fireball(enemy):
         print("Your fireball misses the {}!".format(enemy.name))
         enemy.display_stats()
         enemy_attack(enemy)
-        combat_state(enemy)
     elif enemy.is_dead():
         combat_victory(enemy)
     else:
@@ -245,7 +239,6 @@ def fireball(enemy):
         print("You hit the {} with a fireball for {} damage!".format(enemy.name, damage))
         enemy.display_stats()
         enemy_attack(enemy)
-        combat_state(enemy)
 
 # Icebolt
 def icebolt(enemy):
@@ -265,7 +258,6 @@ def icebolt(enemy):
         print("Your icebolt misses the {}!".format(enemy.name))
         enemy.display_stats()
         enemy_attack(enemy)
-        combat_state(enemy)
     if enemy.is_dead():
         combat_victory(enemy)
     else:
@@ -275,7 +267,6 @@ def icebolt(enemy):
         print("You hit the {} with an icebolt for {} damage!".format(enemy.name, damage))
         enemy.display_stats()
         enemy_attack(enemy)
-        combat_state(enemy)
 
 # Heal
 def heal(enemy):
@@ -293,7 +284,6 @@ def heal(enemy):
     print("You heal yourself for {} HP.".format(healed))
     enemy.display_stats()
     enemy_attack(enemy)
-    combat_state(enemy)
 
 # Item prompt
 def item_prompt(enemy):
@@ -335,7 +325,6 @@ def item_prompt(enemy):
                 print("You drink the potion and heal for {} HP!".format(healed))
                 enemy.display_stats()
                 enemy_attack(enemy)
-                combat_state(enemy)
                 break
         elif action == '2':     # Mana potion
             if "Mana Potion" not in inventory:
@@ -359,7 +348,6 @@ def item_prompt(enemy):
                 print("You drink the potion and gain {} MP!".format(mana))
                 enemy.display_stats()
                 enemy_attack(enemy)
-                combat_state(enemy)
                 break
         elif action == '3':     # Super health
             if "Super Health Potion" not in inventory:
@@ -378,7 +366,6 @@ def item_prompt(enemy):
                 print("You drink the potion and heal fully!")
                 enemy.display_stats()
                 enemy_attack(enemy)
-                combat_state(enemy)
                 break
         elif action == '4':     # Super mana
             if "Super Mana Potion" not in inventory:
@@ -397,7 +384,6 @@ def item_prompt(enemy):
                 print("You drink the potion and gain all your mana!")
                 enemy.display_stats()
                 enemy_attack(enemy)
-                combat_state(enemy)
                 break
         elif action == '5':     # Restore potion
             if "Restore Potion" not in inventory:
@@ -417,7 +403,6 @@ def item_prompt(enemy):
                 print("You drink the potion and gain full health and mana!")
                 enemy.display_stats()
                 enemy_attack(enemy)
-                combat_state(enemy)
                 break
         elif action == '6':     # Back
             os.system('clear')
@@ -487,5 +472,65 @@ def combat_victory(enemy):
 
 # Combat Defeat function
 def combat_defeat(enemy):
-    print("You were killed by the {}!".format(enemy.name))
-    sys.exit()
+    os.system('clear')
+    print("\n##########")
+    print("# Combat #")
+    print("##########\n")
+    defeat1 = ("You were defeated by the {}!\n".format(enemy.name))
+    defeat2 = ("You fall unconscious...")
+    for character in defeat1:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    for character in defeat2:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    time.sleep(2)
+    
+    os.system('clear')
+    print_location()
+    defeat3 = ("Some time later")
+    for character in defeat3:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    periods = ("...\n")
+    for character in periods:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(1)
+    time.sleep(0.5)
+
+    # Player has at least 2 items and 2 gold
+    if len(inventory) >= 2 and myPlayer.gold >= 2:
+        defeat4 = ("You awaken and disover half of your gold and inventory is gone!\n\n")
+        myPlayer.gold = round(myPlayer.gold / 2)            # Player gold divided in half
+        for i in range(round(len(inventory) / 2)):          # Remove half of inventory randomly
+            inventory.pop(random.randrange(len(inventory)))
+
+    # Player has less than 2 items and at least 2 gold
+    elif len(inventory) < 2 and myPlayer.gold >= 2:
+        defeat4 = ("You awaken and discover half of your gold is gone!\n\n")
+        myPlayer.gold = round(myPlayer.gold / 2)            # Player gold divided in half
+
+    # Player has at least 2 items and less than 2 gold
+    elif len(inventory) >= 2 and myPlayer.gold < 2:
+        defeat4 = ("You awaken and disover half of your inventory is gone!\n\n")
+        for i in range(round(len(inventory) / 2)):          # Remove half of inventory randomly
+            inventory.pop(random.randrange(len(inventory)))
+    
+    # Player has less than 2 items and less than 2 gold
+    else:
+        defeat4 = ("You awaken and feel sore from the battle with the {}.".format(enemy.name))
+
+    for character in defeat4:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    time.sleep(2)
+    myPlayer.hp = myPlayer.max_hp                   # Player hp back at max
+    myPlayer.mp = myPlayer.max_mp                   # Player mp back at max
+    myPlayer.display_stats()
+
+    
