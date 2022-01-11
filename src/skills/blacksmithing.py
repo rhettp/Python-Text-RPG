@@ -109,7 +109,7 @@ def forge_prompt():
             else:
                 print("You need at least 3 Silver Ore to smelt it into bars.")
         elif action == '4':       # Gold Ore
-            if inventory.count("Gold Ore") >= 4 and myPlayer.bs_lvl >= 15:      # 4 Silver Ore and at least lvl 15
+            if inventory.count("Gold Ore") >= 4 and myPlayer.bs_lvl >= 15:      # 4 Gold Ore and at least lvl 15
                 os.system('clear')
                 print("\n#################")
                 print("# Blacksmithing #")

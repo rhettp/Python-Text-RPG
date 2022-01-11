@@ -63,17 +63,17 @@ items = {
     'Maple Log': {
         "DESCRIPTION": 'A maple log.',
         "VALUE": 15,
-        "EXPERIENCE": 40
+        "EXPERIENCE": 45
     },
     'Yew Log': {
         "DESCRIPTION": 'A yew log.',
         "VALUE": 20,
-        "EXPERIENCE": 80
+        "EXPERIENCE": 90
     },
     'Magic Log': {
         "DESCRIPTION": 'A magic log.',
         "VALUE": 25,
-        "EXPERIENCE": 160
+        "EXPERIENCE": 170
     },
     
     # Bow String
@@ -155,29 +155,29 @@ items = {
     'Silver Ore': {
         "DESCRIPTION": 'A single Silver ore.',
         "VALUE": 15,
-        "EXPERIENCE": 40
+        "EXPERIENCE": 45
     },
     'Gold Ore': {
         "DESCRIPTION": 'A single Gold ore.',
         "VALUE": 20,
-        "EXPERIENCE": 80
+        "EXPERIENCE": 90
     },
     'Diamond Ore': {
         "DESCRIPTION": 'A single Diamond ore.',
         "VALUE": 25,
-        "EXPERIENCE": 160
+        "EXPERIENCE": 170
     },
 
     # Bars
     'Copper Bar': {
         "DESCRIPTION": 'A single Copper ore.',
         "VALUE": 5,
-        "EXPERIENCE": 5
+        "EXPERIENCE": 10
     },
     'Iron Bar': {
         "DESCRIPTION": 'A single Iron bar.',
         "VALUE": 10,
-        "EXPERIENCE": 20
+        "EXPERIENCE": 45
     },
     'Silver Bar': {
         "DESCRIPTION": 'A single Silver bar.',

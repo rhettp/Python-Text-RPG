@@ -14,9 +14,7 @@ from gameplay.inventory import *
 
 ##### Main Function #####
 def main():
-    #title_screen()
-    for item in items:
-        addToInventory(item)
+    title_screen()
     prompt_choice()
 
 if __name__=="__main__":

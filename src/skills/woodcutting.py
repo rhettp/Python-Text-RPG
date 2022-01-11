@@ -158,6 +158,7 @@ def woodcut(log):
     # Yew logs
     elif log == "Yew Log":
         print("You swing your axe at the Yew Tree", end='')
+        # Determine woodcutting time
         if myPlayer.wc_lvl < 17:                                # level 15-17
             skill_wait_time(0)
         elif myPlayer.wc_lvl >= 17 and myPlayer.wc_lvl < 20:    # level 17-20
@@ -177,6 +178,7 @@ def woodcut(log):
     # Magic logs
     elif log == "Magic Log":
         print("You swing your axe at the Magic Tree", end='')
+        # Determine woodcutting time
         if myPlayer.wc_lvl < 22:                                # level 20-22
             skill_wait_time(0)
         elif myPlayer.wc_lvl >= 22 and myPlayer.wc_lvl < 23:    # level 22
