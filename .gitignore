@@ -1,5 +1,11 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+src/items/__pycache__/
+src/skills/__pycache__/
+src/character/__pycache__/
+src/gameplay/__pycache__/
+src/prompts/__pycache__/
+src/world/__pycache__/
 *.py[cod]
 *$py.class
 
