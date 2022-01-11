@@ -95,6 +95,7 @@ def woodcutting_prompt():
 
 # Woodcutting function
 def woodcut(log):
+    # Oak logs
     if log == "Oak Log":
         print("You swing your axe at the Oak Tree", end="")
         # Determine woodcutting time
@@ -108,11 +109,13 @@ def woodcut(log):
             skill_wait_time(3)
         addToInventory("Oak Log")
         print("You receive an Oak Log!")
-        myPlayer.wc_xp += items["Oak Log"]["EXPERIENCE"]      # 5 XP
+        myPlayer.wc_xp += items["Oak Log"]["EXPERIENCE"]      # 10 XP
         if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
             myPlayer.woodcutting_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
+
+    # Willow logs
     elif log == "Willow Log":
         print("You swing your axe at the Willow Tree", end="")
         # Determine woodcutting time
@@ -126,11 +129,13 @@ def woodcut(log):
             skill_wait_time(3)
         addToInventory("Willow Log")
         print("You receive a Willow Log!")
-        myPlayer.wc_xp += items["Willow Log"]["EXPERIENCE"]   # 10 XP
+        myPlayer.wc_xp += items["Willow Log"]["EXPERIENCE"]   # 20 XP
         if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
             myPlayer.woodcutting_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
+
+    # Maple logs
     elif log == "Maple Log":
         print("You swing your axe at the Maple Tree", end='')
         # Determine woodcutting time
@@ -144,11 +149,13 @@ def woodcut(log):
             skill_wait_time(3)
         addToInventory("Maple Log")
         print("You receive a Maple Log!")
-        myPlayer.wc_xp += items["Maple Log"]["EXPERIENCE"]    # 20 XP
+        myPlayer.wc_xp += items["Maple Log"]["EXPERIENCE"]    # 40 XP
         if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
             myPlayer.woodcutting_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
+
+    # Yew logs
     elif log == "Yew Log":
         print("You swing your axe at the Yew Tree", end='')
         if myPlayer.wc_lvl < 17:                                # level 15-17
@@ -161,11 +168,13 @@ def woodcut(log):
             skill_wait_time(3)
         addToInventory("Yew Log")
         print("You receive a Yew Log!")
-        myPlayer.wc_xp += items["Yew Log"]["EXPERIENCE"]      # 40 XP
+        myPlayer.wc_xp += items["Yew Log"]["EXPERIENCE"]      # 80 XP
         if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
             myPlayer.woodcutting_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
+
+    # Magic logs
     elif log == "Magic Log":
         print("You swing your axe at the Magic Tree", end='')
         if myPlayer.wc_lvl < 22:                                # level 20-22
@@ -178,7 +187,7 @@ def woodcut(log):
             skill_wait_time(3)
         addToInventory("Magic Log")
         print("You receive a Magic Log!")
-        myPlayer.wc_xp += items["Magic Log"]["EXPERIENCE"]    # 80 XP
+        myPlayer.wc_xp += items["Magic Log"]["EXPERIENCE"]    # 160 XP
         if myPlayer.wc_xp >= myPlayer.wc_lvlUp:
             myPlayer.woodcutting_level_up()
         else:

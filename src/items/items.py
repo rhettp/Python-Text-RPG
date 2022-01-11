@@ -145,27 +145,27 @@ items = {
     'Copper Ore': {
         "DESCRIPTION": 'A single Copper ore.',
         "VALUE": 5,
-        "EXPERIENCE": 5
+        "EXPERIENCE": 10
     },
     'Iron Ore': {
         "DESCRIPTION": 'A single Iron ore.',
         "VALUE": 10,
-        "EXPERIENCE": 10
+        "EXPERIENCE": 20
     },
     'Silver Ore': {
         "DESCRIPTION": 'A single Silver ore.',
         "VALUE": 15,
-        "EXPERIENCE": 20
+        "EXPERIENCE": 40
     },
     'Gold Ore': {
         "DESCRIPTION": 'A single Gold ore.',
         "VALUE": 20,
-        "EXPERIENCE": 40
+        "EXPERIENCE": 80
     },
     'Diamond Ore': {
         "DESCRIPTION": 'A single Diamond ore.',
         "VALUE": 25,
-        "EXPERIENCE": 80
+        "EXPERIENCE": 160
     },
 
     # Bars

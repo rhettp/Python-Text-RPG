@@ -5,6 +5,7 @@ import os
 import time
 from character.player import *
 from gameplay.inventory import *
+from skills.skill_wait_time import *
 
 ##### Mining #####
 
@@ -92,49 +93,103 @@ def mining_prompt():
             print("Please enter a valid ore.")
             continue
 
-# Woodcutting function
+# Mining function
 def mine(ore):
+    # Copper Ore
     if ore == "Copper Ore":
-        print("You swing your pickaxe at the Copper node...")
+        print("You swing your pickaxe at the Copper node", end='')
+        # Determine Mining time
+        if myPlayer.mn_lvl < 2:                                 # level 1-2
+            skill_wait_time(0)
+        elif myPlayer.mn_lvl >= 2 and myPlayer.mn_lvl < 5:      # level 2-5
+            skill_wait_time(1)
+        elif myPlayer.mn_lvl >= 5 and myPlayer.mn_lvl < 9:      # level 5-9
+            skill_wait_time(2)                  
+        else:                                                   # level 9+
+            skill_wait_time(3)
         addToInventory("Copper Ore")
         print("You receive Copper Ore!")
-        myPlayer.mn_xp += items["Copper Ore"]["EXPERIENCE"]      # 5 XP
+        myPlayer.mn_xp += items["Copper Ore"]["EXPERIENCE"]      # 10 XP
         if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
             myPlayer.mining_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
+
+    # Iron Ore
     elif ore == "Iron Ore":
-        print("You swing your pickaxe at the Iron node...")
+        print("You swing your pickaxe at the Iron node", end='')
+        # Determine Mining time
+        if myPlayer.mn_lvl < 7:                                 # level 5-7
+            skill_wait_time(0)
+        elif myPlayer.mn_lvl >= 7 and myPlayer.mn_lvl < 10:     # level 7-10
+            skill_wait_time(1)
+        elif myPlayer.mn_lvl >= 10 and myPlayer.mn_lvl < 14:    # level 10-14
+            skill_wait_time(2)
+        else:                                                   # level 14+
+            skill_wait_time(3)
         addToInventory("Iron Ore")
         print("You receive Iron Ore!")
-        myPlayer.mn_xp += items["Iron Ore"]["EXPERIENCE"]      # 10 XP
+        myPlayer.mn_xp += items["Iron Ore"]["EXPERIENCE"]      # 20 XP
         if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
             myPlayer.mining_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
+
+    # Silver Ore
     elif ore == "Silver Ore":
-        print("You swing your pickaxe at the Silver node...")
+        print("You swing your pickaxe at the Silver node", end='')
+        # Determine Mining time
+        if myPlayer.mn_lvl < 12:                                # level 10-12
+            skill_wait_time(0)
+        elif myPlayer.mn_lvl >= 12 and myPlayer.mn_lvl < 15:    # level 12-15
+            skill_wait_time(1)
+        elif myPlayer.mn_lvl >= 15 and myPlayer.mn_lvl < 19:    # level 15-19
+            skill_wait_time(2)
+        else:                                                   # level 19+
+            skill_wait_time(3)
         addToInventory("Silver Ore")
         print("You receive Silver Ore!")
-        myPlayer.mn_xp += items["Silver Ore"]["EXPERIENCE"]      # 20 XP
+        myPlayer.mn_xp += items["Silver Ore"]["EXPERIENCE"]      # 40 XP
         if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
             myPlayer.mining_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
+
+    # Gold Ore
     elif ore == "Gold Ore":
-        print("You swing your pickaxe at the Gold node...")
+        print("You swing your pickaxe at the Gold", end='')
+        # Determine Mining time
+        if myPlayer.mn_lvl < 17:                                # level 15-17
+            skill_wait_time(0)
+        elif myPlayer.mn_lvl >= 17 and myPlayer.mn_lvl < 20:    # level 17-20
+            skill_wait_time(1)
+        elif myPlayer.mn_lvl >= 20 and myPlayer.mn_lvl < 22:    # level 20-22
+            skill_wait_time(2)
+        else:                                                   # level 22+
+            skill_wait_time(3)
         addToInventory("Gold Ore")
         print("You receive Gold Ore!")
-        myPlayer.mn_xp += items["Gold Ore"]["EXPERIENCE"]      # 40 XP
+        myPlayer.mn_xp += items["Gold Ore"]["EXPERIENCE"]      # 80 XP
         if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
             myPlayer.mining_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
+
+    # Diamond Ore
     elif ore == "Diamond Ore":
-        print("You swing your pickaxe at the Diamond node...")
+        print("You swing your pickaxe at the Diamond node", end='')
+        # Determine Mining time
+        if myPlayer.mn_lvl < 22:                                # level 20-22
+            skill_wait_time(0)
+        elif myPlayer.mn_lvl >= 22 and myPlayer.mn_lvl < 23:    # level 22
+            skill_wait_time(1)
+        elif myPlayer.mn_lvl >= 23 and myPlayer.mn_lvl < 24:    # level 23
+            skill_wait_time(2)
+        else:                                                   # level 24+
+            skill_wait_time(3)
         addToInventory("Diamond Ore")
         print("You receive Diamond Ore!")
-        myPlayer.mn_xp += items["Diamond Ore"]["EXPERIENCE"]      # 5 XP
+        myPlayer.mn_xp += items["Diamond Ore"]["EXPERIENCE"]      # 160 XP
         if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
             myPlayer.mining_level_up()
         else:
