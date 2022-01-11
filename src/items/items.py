@@ -53,27 +53,27 @@ items = {
     'Oak Log': {
         "DESCRIPTION": 'An oak log.',
         "VALUE": 5,
-        "EXPERIENCE": 5
+        "EXPERIENCE": 10
     },
     'Willow Log': {
         "DESCRIPTION": 'A willow log.',
         "VALUE": 10,
-        "EXPERIENCE": 10
+        "EXPERIENCE": 20
     },
     'Maple Log': {
         "DESCRIPTION": 'A maple log.',
         "VALUE": 15,
-        "EXPERIENCE": 20
+        "EXPERIENCE": 40
     },
     'Yew Log': {
         "DESCRIPTION": 'A yew log.',
         "VALUE": 20,
-        "EXPERIENCE": 40
+        "EXPERIENCE": 80
     },
     'Magic Log': {
         "DESCRIPTION": 'A magic log.',
         "VALUE": 25,
-        "EXPERIENCE": 80
+        "EXPERIENCE": 160
     },
     
     # Bow String
