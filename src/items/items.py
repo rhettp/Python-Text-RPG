@@ -75,6 +75,39 @@ items = {
         "EXPERIENCE": 80
     },
     
+    # Bow String
+     'Bow String': {
+        "DESCRIPTION": 'A Bow string',
+        "VALUE": 5
+    },
+
+    # Unstrung Bows
+     'Oak Bow (u)': {
+        "DESCRIPTION": 'An unstrung Oak bow',
+        "VALUE": 10,
+        "EXPERIENCE": 10
+    },
+     'Willow Bow (u)': {
+        "DESCRIPTION": 'An unstrung Willow bow',
+        "VALUE": 25,
+        "EXPERIENCE": 20
+    },
+     'Maple Bow (u)': {
+        "DESCRIPTION": 'An unstrung Maple bow',
+        "VALUE": 40,
+        "EXPERIENCE": 45
+    },
+     'Yew Bow (u)': {
+        "DESCRIPTION": 'An unstrung Yew bow',
+        "VALUE": 55,
+        "EXPERIENCE": 90
+    },
+     'Magic Bow (u)': {
+        "DESCRIPTION": 'An unstrung Magic bow',
+        "VALUE": 70,
+        "EXPERIENCE": 170
+    },
+
     # Bows
      'Oak Bow': {
         "DESCRIPTION": 'An Oak bow',

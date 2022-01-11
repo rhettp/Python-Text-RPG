@@ -16,44 +16,44 @@ class player:
         self.location = 'Town'
         self.gold = 100
 
-        self.xp = 0         # Combat XP
-        self.lvlUp = 50     # Combat XP required for level up
-        self.lvl = 1        # Current Combat level 
+        self.xp = 0                 # Combat XP
+        self.lvlUp = 50             # Combat XP required for level up
+        self.lvl = 1                # Current Combat level 
 
-        self.str_xp = 0     # Strength XP
-        self.str_lvlUp = 50 # Strength XP required for level up
-        self.strength = 1   # Current Strength level
+        self.str_xp = 0             # Strength XP
+        self.str_lvlUp = 50         # Strength XP required for level up
+        self.strength = 1           # Current Strength level
 
-        self.ag_xp = 0      # Agility XP
-        self.ag_lvlUp = 50  # Agility XP required for level up
-        self.agility = 1    # Current Agility level
+        self.ag_xp = 0              # Agility XP
+        self.ag_lvlUp = 50          # Agility XP required for level up
+        self.agility = 1            # Current Agility level
 
-        self.mag_xp = 0     # Magic XP
-        self.mag_lvlUp = 50 # Magic XP required for level up
-        self.magic = 1      # Current Magic level
+        self.mag_xp = 0             # Magic XP
+        self.mag_lvlUp = 50         # Magic XP required for level up
+        self.magic = 1              # Current Magic level
 
-        self.wc_xp = 0      # Woodcutting XP
-        self.wc_lvlUp = 50  # Woodcutting XP required for level up
-        self.wc_lvl = 1     # Current Woodcutting level
+        self.wc_xp = 0              # Woodcutting XP
+        self.wc_lvlUp = 50          # Woodcutting XP required for level up
+        self.wc_lvl = 1             # Current Woodcutting level
 
-        self.ft_xp = 0      # Fletching XP
-        self.ft_lvlUp = 50  # Fletching XP required for level up
-        self.ft_lvl = 1     # Current Fletching level
+        self.ft_xp = 0              # Fletching XP
+        self.ft_lvlUp = 50          # Fletching XP required for level up
+        self.ft_lvl = 1             # Current Fletching level
 
-        self.mn_xp = 0      # Mining XP
-        self.mn_lvlUp = 50  # Mining XP required for level up
-        self.mn_lvl = 1     # Current Mining level
+        self.mn_xp = 0              # Mining XP
+        self.mn_lvlUp = 50          # Mining XP required for level up
+        self.mn_lvl = 1             # Current Mining level
 
-        self.bs_xp = 0      # Blacksmithing XP
-        self.bs_lvlUp = 50  # Blacksmithing XP required for level up
-        self.bs_lvl = 1     # Current Blacksmithing level
+        self.bs_xp = 0              # Blacksmithing XP
+        self.bs_lvlUp = 50          # Blacksmithing XP required for level up
+        self.bs_lvl = 1             # Current Blacksmithing level
 
-        self.head = "None"  # Head Slot
-        self.chest = "None" # Chest Slot
-        self.legs = "None"  # Leg Slot
-        self.melee_weapon = "Diamond Sword"
-        self.range_weapon = "Magic Bow"
-        self.magic_weapon = "Greater Staff"
+        self.head = "None"          # Head Slot
+        self.chest = "None"         # Chest Slot
+        self.legs = "None"          # Leg Slot
+        self.melee_weapon = "None"  # Melee Slot
+        self.range_weapon = "None"  # Range Slot
+        self.magic_weapon = "None"  # Magic Slot
         
     # Check if player is dead
     def is_dead(self):
