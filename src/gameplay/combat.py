@@ -54,6 +54,7 @@ def combat_state(enemy):
                 os.system('clear')
                 print_location()
                 print("You successfully escaped the {}!\n".format(enemy.name))
+                enemy.hp = enemy.max_hp     # Reset enemy health
                 myPlayer.display_stats()
                 break
             else:       # Failed to flee
@@ -163,12 +164,15 @@ def range_attack(enemy):
 
 # Enemy attack function
 def enemy_attack(enemy):
-    damage = enemy.damage
+    damage = random.randrange(enemy.max_hit + 1)
     myPlayer.hp -= damage
-    if myPlayer.is_dead():
+    if damage == 0:
+        print("The {} missed its attack!".format(enemy.name))
+        combat_state(enemy)
+    elif myPlayer.is_dead():
         combat_defeat(enemy)
     else:
-        print("The {} hit you for {} damage!".format(enemy.name, damage))
+        print("The {} hits you for {} damage!".format(enemy.name, damage))
         combat_state(enemy)
 
 # Magic choice prompt
@@ -475,6 +479,7 @@ def flee():
 def combat_victory(enemy):
     print_location()
     print("You killed the {}!".format(enemy.name))
+    enemy.hp = enemy.max_hp     # Reset enemy health
     print("You receive {} gold!".format(enemy.gold))
     myPlayer.gold += enemy.gold
     myPlayer.xp += enemy.xp     # Combat xp
@@ -582,6 +587,7 @@ def combat_defeat(enemy):
     used_strength = False
     used_agility = False
     used_magic = False
+    enemy.hp = enemy.max_hp     # Reset enemy health
     os.system('clear')
     print("\n##########")
     print("# Combat #")

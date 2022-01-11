@@ -384,14 +384,15 @@ def forest_prompt():
     print('8) Quit')
     while True:
         action = input('> ')
-        if action == '1':       # Train
+        if action == '1':       # Combat
             os.system('clear')
             print("\n##########")
             print("# Combat #")
             print("##########\n")
-            print('A {} approaches!\n'.format(Goblin().name))
-            Goblin().display_stats()
-            combat_state(Goblin())
+            enemy = random.choice(forest_enemies)
+            print('A {} approaches!\n'.format(enemy.name))
+            enemy.display_stats()
+            combat_state(enemy)
             forest_prompt()
             break
         elif action == '2':     # Woodcutting
@@ -467,8 +468,17 @@ def mine_prompt():
     print('8) Quit')
     while True:
         action = input('> ')
-        if action == '1':       # Train
-            print("train")
+        if action == '1':       # Combat
+            os.system('clear')
+            print("\n##########")
+            print("# Combat #")
+            print("##########\n")
+            enemy = random.choice(mine_enemies)
+            print('A {} approaches!\n'.format(enemy.name))
+            enemy.display_stats()
+            combat_state(enemy)
+            mine_prompt()
+            break
         elif action == '2':     # Mining
             os.system('clear')
             print("\n##########")
@@ -529,6 +539,187 @@ def mine_prompt():
             print("Please enter a valid action.")
             continue
 
+# Swamp prompt
+def swamp_prompt():
+    print('What would you like to do?')
+    print('1) Combat (11-15)')
+    print('2) Look')
+    print('3) Travel')
+    print('4) View Inventory')
+    print('5) Character Info')
+    print('6) Quit')
+    while True:
+        action = input('> ')
+        if action == '1':       # Combat
+            os.system('clear')
+            print("\n##########")
+            print("# Combat #")
+            print("##########\n")
+            enemy = random.choice(swamp_enemies)
+            print('A(n) {} approaches!\n'.format(enemy.name))
+            enemy.display_stats()
+            combat_state(enemy)
+            swamp_prompt()
+            break
+        elif action == '2':     # Look
+            os.system('clear')
+            print_location()
+            print(world_zone[myPlayer.location]["DESCRIPTION"])
+            print("\n")
+            myPlayer.display_stats()
+            swamp_prompt()
+            break
+        elif action == '3':     # Travel
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            player_move()
+            prompt_choice()
+            break
+        elif action == '4':     # Inventory
+            os.system('clear')
+            print_location()
+            inventory_prompt()
+            swamp_prompt()
+            break
+        elif action == '5':     # Character
+            os.system('clear')
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            character_prompt()
+            swamp_prompt()
+            break
+        elif action == '6':     # Exit
+            sys.exit()
+        else:                   # Input Validation
+            print("Please enter a valid action.")
+            continue
+
+# Graveyard prompt 
+def graveyard_prompt():
+    print('What would you like to do?')
+    print('1) Combat (16-20)')
+    print('2) Look')
+    print('3) Travel')
+    print('4) View Inventory')
+    print('5) Character Info')
+    print('6) Quit')
+    while True:
+        action = input('> ')
+        if action == '1':       # Combat
+            os.system('clear')
+            print("\n##########")
+            print("# Combat #")
+            print("##########\n")
+            enemy = random.choice(graveyard_enemies)
+            print('A {} approaches!\n'.format(enemy.name))
+            enemy.display_stats()
+            combat_state(enemy)
+            graveyard_prompt()
+            break
+        elif action == '2':     # Look
+            os.system('clear')
+            print_location()
+            print(world_zone[myPlayer.location]["DESCRIPTION"])
+            print("\n")
+            myPlayer.display_stats()
+            graveyard_prompt()
+            break
+        elif action == '3':     # Travel
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            player_move()
+            prompt_choice()
+            break
+        elif action == '4':     # Inventory
+            os.system('clear')
+            print_location()
+            inventory_prompt()
+            graveyard_prompt()
+            break
+        elif action == '5':     # Character
+            os.system('clear')
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            character_prompt()
+            graveyard_prompt()
+            break
+        elif action == '6':     # Exit
+            sys.exit()
+        else:                   # Input Validation
+            print("Please enter a valid action.")
+            continue
+
+# Dragon's Lair prompt
+def dragon_lair_prompt():
+    print('What would you like to do?')
+    print('1) Combat (21+)')
+    print('2) Look')
+    print('3) Travel')
+    print('4) View Inventory')
+    print('5) Character Info')
+    print('6) Quit')
+    while True:
+        action = input('> ')
+        if action == '1':       # Combat
+            os.system('clear')
+            print("\n##########")
+            print("# Combat #")
+            print("##########\n")
+            enemy = random.choice(lair_enemies)
+            print('A {} approaches!\n'.format(enemy.name))
+            enemy.display_stats()
+            combat_state(enemy)
+            dragon_lair_prompt()
+            break
+        elif action == '2':     # Look
+            os.system('clear')
+            print_location()
+            print(world_zone[myPlayer.location]["DESCRIPTION"])
+            print("\n")
+            myPlayer.display_stats()
+            dragon_lair_prompt()
+            break
+        elif action == '3':     # Travel
+            os.system('clear')
+            print_location()
+            myPlayer.display_stats()
+            player_move()
+            prompt_choice()
+            break
+        elif action == '4':     # Inventory
+            os.system('clear')
+            print_location()
+            inventory_prompt()
+            dragon_lair_prompt()
+            break
+        elif action == '5':     # Character
+            os.system('clear')
+            print('\n' + ('#' * (4 + len(myPlayer.name))))
+            print('# {} #'.format(myPlayer.name))
+            print('#' * (4 + len(myPlayer.name)))
+            print("\n")
+            myPlayer.character_info()
+            myPlayer.display_stats()
+            character_prompt()
+            dragon_lair_prompt()
+            break
+        elif action == '6':     # Exit
+            sys.exit()
+        else:                   # Input Validation
+            print("Please enter a valid action.")
+            continue
+
+
 # Prompt based on player location
 def prompt_choice():
     os.system('clear')
@@ -542,6 +733,12 @@ def prompt_choice():
         forest_prompt()
     elif myPlayer.location == "Mine":
         mine_prompt()
+    elif myPlayer.location == "Swamp":
+        swamp_prompt()
+    elif myPlayer.location == "Graveyard":
+        graveyard_prompt()
+    elif myPlayer.location == "Dragon's Lair":
+        dragon_lair_prompt()
 
 # Character prompt
 def character_prompt():
