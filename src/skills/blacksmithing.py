@@ -5,6 +5,7 @@ import os
 import time
 from character.player import *
 from gameplay.inventory import *
+from skills.skill_wait_time import *
 
 ##### Blacksmithing #####
 
@@ -158,56 +159,120 @@ def forge_prompt():
 
 # Forging function
 def forge(ore):
+    # Copper Ore
     if ore == "Copper Ore":
-        print("You start smelting the Copper Ore in the forge...")
+        print("You start smelting the Copper Ore in the forge", end="")
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 2:                                 # level 1-2
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 2 and myPlayer.bs_lvl < 5:      # level 2-5
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 5 and myPlayer.bs_lvl < 9:      # level 5-9
+            skill_wait_time(2)                  
+        else:                                                   # level 9+
+            skill_wait_time(3)
+        
+        # Remove ore from inventory
         removeItem(ore)     # -1 Copper ore
         addToInventory("Copper Bar")
         print("You receive a Copper Bar!")
-        myPlayer.bs_xp += items["Copper Bar"]["EXPERIENCE"]      # 5 XP
+        myPlayer.bs_xp += items["Copper Bar"]["EXPERIENCE"]      
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Iron Ore
     elif ore == "Iron Ore":
-        print("You start smelting the Iron Ore in the forge...")
+        print("You start smelting the Iron Ore in the forge", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 7:                                 # level 5-7
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 7 and myPlayer.bs_lvl < 10:     # level 7-10
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 10 and myPlayer.bs_lvl < 14:    # level 10-14
+            skill_wait_time(2)
+        else:                                                   # level 14+
+            skill_wait_time(3)
+
+        # Remove ore from inventory
         for i in range(2):  # -2 Iron ore
             removeItem(ore)
         addToInventory("Iron Bar")
         print("You receive an Iron Bar!")
-        myPlayer.bs_xp += items["Iron Bar"]["EXPERIENCE"]      # 20 XP
+        myPlayer.bs_xp += items["Iron Bar"]["EXPERIENCE"]      
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Silver Ore
     elif ore == "Silver Ore":
-        print("You start smelting the Silver Ore in the forge...")
+        print("You start smelting the Silver Ore in the forge", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 12:                                # level 10-12
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 12 and myPlayer.bs_lvl < 15:    # level 12-15
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 15 and myPlayer.bs_lvl < 19:    # level 15-19
+            skill_wait_time(2)
+        else:                                                   # level 19+
+            skill_wait_time(3)
+
+        # Remove ore from inventory
         for i in range(3):  # -3 Silver ore
             removeItem(ore)
         addToInventory("Silver Bar")
         print("You receive a Silver Bar!")
-        myPlayer.bs_xp += items["Silver Bar"]["EXPERIENCE"]      # 60 XP
+        myPlayer.bs_xp += items["Silver Bar"]["EXPERIENCE"]      
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Gold Ore    
     elif ore == "Gold Ore":
-        print("You start smelting the Gold Ore in the forge...")
+        print("You start smelting the Gold Ore in the forge", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 17:                                # level 15-17
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 17 and myPlayer.bs_lvl < 20:    # level 17-20
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 20 and myPlayer.bs_lvl < 22:    # level 20-22
+            skill_wait_time(2)
+        else:                                                   # level 22+
+            skill_wait_time(3)
+
+        # Remove ore from inventory
         for i in range(4):  # -4 Gold ore
             removeItem(ore)
         addToInventory("Gold Bar")
         print("You receive a Gold Bar!")
-        myPlayer.bs_xp += items["Gold Bar"]["EXPERIENCE"]      # 160 XP
+        myPlayer.bs_xp += items["Gold Bar"]["EXPERIENCE"]      
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Diamond Ore
     elif ore == "Diamond Ore":
-        print("You start smelting the Diamond Ore in the forge...")
+        print("You start smelting the Diamond Ore in the forge", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 22:                                # level 20-22
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 22 and myPlayer.bs_lvl < 23:    # level 22
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 23 and myPlayer.bs_lvl < 24:    # level 23
+            skill_wait_time(2)
+        else:                                                   # level 24+
+            skill_wait_time(3)
+
+        # Remove ore from inventory
         for i in range(5):  # -5 Diamond ore
             removeItem(ore)
         addToInventory("Diamond Bar")
         print("You receive a Diamond Bar!")
-        myPlayer.bs_xp += items["Diamond Bar"]["EXPERIENCE"]      # 480 XP
+        myPlayer.bs_xp += items["Diamond Bar"]["EXPERIENCE"]     
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
@@ -289,7 +354,7 @@ def helmet_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Copper
-            if inventory.count("Copper Bar") >= 2 and myPlayer.bs_lvl >= 2:     # 3 Copper bars and at least lvl 2
+            if inventory.count("Copper Bar") >= 2 and myPlayer.bs_lvl >= 2:     # 2 Copper bars and at least lvl 2
                 os.system('clear')
                 print("\n#################")
                 print("# Blacksmithing #")
@@ -331,7 +396,7 @@ def helmet_prompt():
             else:
                 print("You need at least 2 Silver Bars to make a Helmet.")
         elif action == '4':       # Gold
-            if inventory.count("Gold Bar") >= 2 and myPlayer.bs_lvl >= 16:    # 2 Gold Bars and at least lvl 16
+            if inventory.count("Gold Bar") >= 2 and myPlayer.bs_lvl >= 16:      # 2 Gold Bars and at least lvl 16
                 os.system('clear')
                 print("\n#################")
                 print("# Blacksmithing #")
@@ -686,231 +751,490 @@ def platebody_prompt():
 
 # Smithing function
 def smith(item):
-    # Helmets
+
+    ### Helmets ###
+    
+    # Copper Helmet
     if item == "Copper Helmet":
-        print("You start hammering the Copper...")
+        print("You start hammering the Copper", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 3:                                 # level 2-3
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 3 and myPlayer.bs_lvl < 6:      # level 3-6
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 6 and myPlayer.bs_lvl < 10:     # level 6-10
+            skill_wait_time(2)                  
+        else:                                                   # level 10+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(2):  # -2 Copper bars
             removeItem("Copper Bar")
         addToInventory("Copper Helmet")
         print("You receive a Copper Helmet!")
-        myPlayer.bs_xp += items["Copper Helmet"]["EXPERIENCE"]    # 15 XP
+        myPlayer.bs_xp += items["Copper Helmet"]["EXPERIENCE"] 
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             print("{} XP gained, {} current XP, {} lvl up".format(items["Copper Helmet"]["EXPERIENCE"], myPlayer.bs_xp, myPlayer.bs_lvlUp))
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP gained, {} current XP, {} lvl up".format(items["Copper Helmet"]["EXPERIENCE"], myPlayer.bs_xp, myPlayer.bs_lvlUp))
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Iron Helmet
     elif item == "Iron Helmet":
-        print("You start hammering the Iron...")
+        print("You start hammering the Iron", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 8:                                 # level 6-8
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 8 and myPlayer.bs_lvl < 11:     # level 8-11
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 11 and myPlayer.bs_lvl < 15:    # level 11-15
+            skill_wait_time(2)
+        else:                                                   # level 15+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(2):  # -2 Iron bars
             removeItem("Iron Bar")
         addToInventory("Iron Helmet")
         print("You receive an Iron Helmet!")
-        myPlayer.bs_xp += items["Iron Helmet"]["EXPERIENCE"]      # 40 XP
+        myPlayer.bs_xp += items["Iron Helmet"]["EXPERIENCE"] 
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Silver Helmet
     elif item == "Silver Helmet":
-        print("You start hammering the Silver...")
+        print("You start hammering the Silver", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 13:                                # level 11-13
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 13 and myPlayer.bs_lvl < 16:    # level 13-16
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 16 and myPlayer.bs_lvl < 20:    # level 16-20
+            skill_wait_time(2)
+        else:                                                   # level 20+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(2):  # -2 Silver bars
             removeItem("Silver Bar")
         addToInventory("Silver Helmet")
         print("You receive a Silver Helmet!")
-        myPlayer.bs_xp += items["Silver Helmet"]["EXPERIENCE"]    # 80 XP
+        myPlayer.bs_xp += items["Silver Helmet"]["EXPERIENCE"] 
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Gold Helmet
     elif item == "Gold Helmet":
-        print("You start hammering the Gold...")
+        print("You start hammering the Gold", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 18:                                # level 16-18
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 18 and myPlayer.bs_lvl < 21:    # level 18-21
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 21 and myPlayer.bs_lvl < 23:    # level 21-23
+            skill_wait_time(2)
+        else:                                                   # level 23+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(2):  # -2 Gold bars
             removeItem("Gold Bar")
         addToInventory("Gold Helmet")
         print("You receive a Gold Helmet!")
-        myPlayer.bs_xp += items["Gold Helmet"]["EXPERIENCE"]      # 160 XP
+        myPlayer.bs_xp += items["Gold Helmet"]["EXPERIENCE"]   
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Diamond Helmet
     elif item == "Diamond Helmet":
-        print("You start hammering the Diamond...")
+        print("You start hammering the Diamond", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 23:                                # level 21-23
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 23 and myPlayer.bs_lvl < 24:    # level 23
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 24 and myPlayer.bs_lvl < 25:    # level 24
+            skill_wait_time(2)
+        else:                                                   # level 25
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(2):  # -2 Diamond bars
             removeItem("Diamond Bar")
         addToInventory("Diamond Helmet")
         print("You receive a Diamond Helmet!")
-        myPlayer.bs_xp += items["Diamond Helmet"]["EXPERIENCE"]   # 350 XP
+        myPlayer.bs_xp += items["Diamond Helmet"]["EXPERIENCE"] 
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
-    # Swords
+
+    ### Swords ###
+
+    # Copper Sword
     elif item == "Copper Sword":
-        print("You start hammering the Copper...")
+        print("You start hammering the Copper", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 4:                                 # level 3-4
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 4 and myPlayer.bs_lvl < 7:      # level 4-7
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 7 and myPlayer.bs_lvl < 11:     # level 7-11
+            skill_wait_time(2)                  
+        else:                                                   # level 11+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(3):  # -3 Copper bars
             removeItem("Copper Bar")
         addToInventory("Copper Sword")
         print("You receive a Copper Sword!")
-        myPlayer.bs_xp += items["Copper Sword"]["EXPERIENCE"]     # 20 XP
+        myPlayer.bs_xp += items["Copper Sword"]["EXPERIENCE"]    
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Iron Sword
     elif item == "Iron Sword":
-        print("You start hammering the Iron...")
+        print("You start hammering the Iron", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 9:                                 # level 7-9
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 9 and myPlayer.bs_lvl < 12:     # level 9-12
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 12 and myPlayer.bs_lvl < 16:    # level 12-16
+            skill_wait_time(2)
+        else:                                                   # level 16+
+            skill_wait_time(3)
+
+
+        # Remove bars from inventory
         for i in range(3):  # -3 Iron bars
             removeItem("Iron Bar")
         addToInventory("Iron Sword")
         print("You receive an Iron Sword!")
-        myPlayer.bs_xp += items["Iron Sword"]["EXPERIENCE"]       # 50 XP
+        myPlayer.bs_xp += items["Iron Sword"]["EXPERIENCE"]      
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Silver Sword
     elif item == "Silver Sword":
-        print("You start hammering the Silver...")
+        print("You start hammering the Silver", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 14:                                # level 12-14
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 14 and myPlayer.bs_lvl < 17:    # level 14-17
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 17 and myPlayer.bs_lvl < 21:    # level 17-21
+            skill_wait_time(2)
+        else:                                                   # level 21+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(3):  # -3 Silver bars
             removeItem("Silver Bar")
         addToInventory("Silver Sword")
         print("You receive a Silver Sword!")
-        myPlayer.bs_xp += items["Silver Sword"]["EXPERIENCE"]     # 100 XP
+        myPlayer.bs_xp += items["Silver Sword"]["EXPERIENCE"]     
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Gold Sword
     elif item == "Gold Sword":
-        print("You start hammering the Gold...")
+        print("You start hammering the Gold", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 19:                                # level 17-19
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 19 and myPlayer.bs_lvl < 21:    # level 19-21
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 21 and myPlayer.bs_lvl < 23:    # level 21-23
+            skill_wait_time(2)
+        else:                                                   # level 23+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(3):  # -3 Gold bars
             removeItem("Gold Bar")
         addToInventory("Gold Sword")
         print("You receive a Gold Sword!")
-        myPlayer.bs_xp += items["Gold Sword"]["EXPERIENCE"]       # 190 XP
+        myPlayer.bs_xp += items["Gold Sword"]["EXPERIENCE"]       
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Diamond Sword
     elif item == "Diamond Sword":
-        print("You start hammering the Diamond...")
+        print("You start hammering the Diamond", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 23:                                # level 22-23
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 23 and myPlayer.bs_lvl < 24:    # level 23
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 24 and myPlayer.bs_lvl < 25:    # level 24
+            skill_wait_time(2)
+        else:                                                   # level 25
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(3):  # -3 Diamond bars
             removeItem("Diamond Bar")
         addToInventory("Diamond Sword")
         print("You receive a Diamond Sword!")
-        myPlayer.bs_xp += items["Diamond Sword"]["EXPERIENCE"]    # 400 XP
+        myPlayer.bs_xp += items["Diamond Sword"]["EXPERIENCE"]    
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
-    # Platelegs
+
+    ### Platelegs ###
+
+    # Copper Platelegs
     elif item == "Copper Platelegs":
-        print("You start hammering the Copper...")
+        print("You start hammering the Copper", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 5:                                 # level 4-5
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 5 and myPlayer.bs_lvl < 8:      # level 5-8
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 8 and myPlayer.bs_lvl < 12:     # level 8-12
+            skill_wait_time(2)                  
+        else:                                                   # level 12+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(4):  # -4 Copper bars
             removeItem("Copper Bar")
         addToInventory("Copper Platelegs")
         print("You receive Copper Platelegs!")
-        myPlayer.bs_xp += items["Copper Platelegs"]["EXPERIENCE"] # 25 XP
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
-    elif item == "Iron Platelegs":
-        print("You start hammering the Iron...")
-        for i in range(4):  # -4 Iron bars
-            removeItem("Iron Bar")
-        addToInventory("Iron Platelegs")
-        print("You receive Iron Platelegs!")
-        myPlayer.bs_xp += items["Iron Platelegs"]["EXPERIENCE"]   # 60 XP
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
-    elif item == "Silver Platelegs":
-        print("You start hammering the Silver...")
-        for i in range(4):  # -4 Silver bars
-            removeItem("Silver Bar")
-        addToInventory("Silver Platelegs")
-        print("You receive Silver Platelegs!")
-        myPlayer.bs_xp += items["Silver Platelegs"]["EXPERIENCE"] # 120 XP
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
-    elif item == "Gold Platelegs":
-        print("You start hammering the Gold...")
-        for i in range(4):  # -4 Gold bars
-            removeItem("Gold Bar")
-        addToInventory("Gold Platelegs")
-        print("You receive Gold Platelegs!")
-        myPlayer.bs_xp += items["Gold Platelegs"]["EXPERIENCE"]   # 220 XP
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
-    elif item == "Diamond Platelegs":
-        print("You start hammering the Diamond...")
-        for i in range(4):  # -4 Diamond bars
-            removeItem("Diamond Bar")
-        addToInventory("Diamond Platelegs")
-        print("You receive Diamond Platelegs!")
-        myPlayer.bs_xp += items["Diamond Platelegs"]["EXPERIENCE"] # 450 XP
+        myPlayer.bs_xp += items["Copper Platelegs"]["EXPERIENCE"] 
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
-    # Platebody
+    # Iron Platelegs
+    elif item == "Iron Platelegs":
+        print("You start hammering the Iron", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 10:                                # level 8-10
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 10 and myPlayer.bs_lvl < 13:    # level 10-13
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 13 and myPlayer.bs_lvl < 17:    # level 13-17
+            skill_wait_time(2)
+        else:                                                   # level 17+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
+        for i in range(4):  # -4 Iron bars
+            removeItem("Iron Bar")
+        addToInventory("Iron Platelegs")
+        print("You receive Iron Platelegs!")
+        myPlayer.bs_xp += items["Iron Platelegs"]["EXPERIENCE"]   
+        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+            myPlayer.blacksmithing_level_up()
+        else:
+            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Silver Platelegs
+    elif item == "Silver Platelegs":
+        print("You start hammering the Silver", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 15:                                # level 13-15
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 15 and myPlayer.bs_lvl < 18:    # level 15-18
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 18 and myPlayer.bs_lvl < 22:    # level 18-22
+            skill_wait_time(2)
+        else:                                                   # level 22+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
+        for i in range(4):  # -4 Silver bars
+            removeItem("Silver Bar")
+        addToInventory("Silver Platelegs")
+        print("You receive Silver Platelegs!")
+        myPlayer.bs_xp += items["Silver Platelegs"]["EXPERIENCE"]
+        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+            myPlayer.blacksmithing_level_up()
+        else:
+            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Gold Platelegs
+    elif item == "Gold Platelegs":
+        print("You start hammering the Gold", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 20:                                # level 18-20
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 20 and myPlayer.bs_lvl < 22:    # level 20-22
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 22 and myPlayer.bs_lvl < 23:    # level 22-23
+            skill_wait_time(2)
+        else:                                                   # level 23+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
+        for i in range(4):  # -4 Gold bars
+            removeItem("Gold Bar")
+        addToInventory("Gold Platelegs")
+        print("You receive Gold Platelegs!")
+        myPlayer.bs_xp += items["Gold Platelegs"]["EXPERIENCE"]   
+        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+            myPlayer.blacksmithing_level_up()
+        else:
+            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    #Diamond Platelegs
+    elif item == "Diamond Platelegs":
+        print("You start hammering the Diamond", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 24:                                # level 23-24
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 24 and myPlayer.bs_lvl < 25:    # level 24
+            skill_wait_time(1)
+        else:                                                   # level 25
+            skill_wait_time(2)
+
+        # Remove bars from inventory
+        for i in range(4):  # -4 Diamond bars
+            removeItem("Diamond Bar")
+        addToInventory("Diamond Platelegs")
+        print("You receive Diamond Platelegs!")
+        myPlayer.bs_xp += items["Diamond Platelegs"]["EXPERIENCE"] 
+        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+            myPlayer.blacksmithing_level_up()
+        else:
+            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+
+    ### Platebody ###
+
+    # Copper Platebody
     elif item == "Copper Platebody":
-        print("You start hammering the Copper...")
+        print("You start hammering the Copper", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 6:                                 # level 5-6
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 6 and myPlayer.bs_lvl < 9:      # level 6-9
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 9 and myPlayer.bs_lvl < 13:     # level 9-13
+            skill_wait_time(2)                  
+        else:                                                   # level 13+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(5):  # -5 Copper bars
             removeItem("Copper Bar")
         addToInventory("Copper Platebody")
         print("You receive a Copper Platebody!")
-        myPlayer.bs_xp += items["Copper Platebody"]["EXPERIENCE"] # 35 XP
+        myPlayer.bs_xp += items["Copper Platebody"]["EXPERIENCE"] 
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Iron Platebody
     elif item == "Iron Platebody":
-        print("You start hammering the Iron...")
+        print("You start hammering the Iron", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 11:                                # level 9-11
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 11 and myPlayer.bs_lvl < 14:    # level 11-14
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 14 and myPlayer.bs_lvl < 18:    # level 14-18
+            skill_wait_time(2)
+        else:                                                   # level 18+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(5):  # -5 Iron bars
             removeItem("Iron Bar")
         addToInventory("Iron Platebody")
         print("You receive an Iron Platebody!")
-        myPlayer.bs_xp += items["Iron Platebody"]["EXPERIENCE"]   # 70 XP
+        myPlayer.bs_xp += items["Iron Platebody"]["EXPERIENCE"]   
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Silver Platebody
     elif item == "Silver Platebody":
-        print("You start hammering the Silver...")
+        print("You start hammering the Silver", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 16:                                # level 14-16
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 16 and myPlayer.bs_lvl < 19:    # level 16-19
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 19 and myPlayer.bs_lvl < 23:    # level 19-23
+            skill_wait_time(2)
+        else:                                                   # level 23+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(5):  # -5 Silver bars
             removeItem("Silver Bar")
         addToInventory("Silver Platebody")
         print("You receive a Silver Platebody!")
-        myPlayer.bs_xp += items["Silver Platebody"]["EXPERIENCE"] # 140 XP
+        myPlayer.bs_xp += items["Silver Platebody"]["EXPERIENCE"] 
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Gold Platebody
     elif item == "Gold Platebody":
-        print("You start hammering the Gold...")
+        print("You start hammering the Gold", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 21:                                # level 19-21
+            skill_wait_time(0)
+        elif myPlayer.bs_lvl >= 21 and myPlayer.bs_lvl < 23:    # level 21-23
+            skill_wait_time(1)
+        elif myPlayer.bs_lvl >= 23 and myPlayer.bs_lvl < 24:    # level 23-24
+            skill_wait_time(2)
+        else:                                                   # level 24+
+            skill_wait_time(3)
+
+        # Remove bars from inventory
         for i in range(5):  # -5 Gold bars
             removeItem("Gold Bar")
         addToInventory("Gold Platebody")
         print("You receive a Gold Platebody!")
-        myPlayer.bs_xp += items["Gold Platebody"]["EXPERIENCE"]   # 250 XP
+        myPlayer.bs_xp += items["Gold Platebody"]["EXPERIENCE"]   
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
             print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+    # Diamond Platebody
     elif item == "Diamond Platebody":
-        print("You start hammering the Diamond...")
+        print("You start hammering the Diamond", end='')
+        # Determine Blacksmithing time
+        if myPlayer.bs_lvl < 25:                                # level 24-25
+            skill_wait_time(0)
+        else:                                                   # level 25
+            skill_wait_time(1)
+
+        # Remove bars from inventory
         for i in range(5):  # -5 Diamond bars
             removeItem("Diamond Bar")
         addToInventory("Diamond Platebody")
         print("You receive a Diamond Platebody!")
-        myPlayer.bs_xp += items["Diamond Platebody"]["EXPERIENCE"] # 500 XP
+        myPlayer.bs_xp += items["Diamond Platebody"]["EXPERIENCE"] 
         if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
             myPlayer.blacksmithing_level_up()
         else:
