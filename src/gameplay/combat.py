@@ -26,6 +26,8 @@ def combat_state(enemy):
     print("3) Magic")
     print("4) Item")
     print("5) Flee")
+
+    print(player_defense())
     while True:
         action = input("> ")
         if action == '1':       # Melee
@@ -174,6 +176,33 @@ def enemy_attack(enemy):
     else:
         print("The {} hits you for {} damage!".format(enemy.name, damage))
         combat_state(enemy)
+
+# Calculate Player's total defense
+def player_defense():
+    # No helmet/chest/legs
+    if myPlayer.head == "None" and myPlayer.chest == "None" and myPlayer.legs == "None":      
+        return 0
+    # No helmet and no chest
+    elif myPlayer.head == "None" and myPlayer.chest == "None":
+        return items[myPlayer.legs]["DEFENSE"]
+    # No helmet and no legs
+    elif myPlayer.head == "None" and myPlayer.legs == "None":
+        return items[myPlayer.chest]["DEFENSE"]
+    # No chest and no legs 
+    elif myPlayer.chest == "None" and myPlayer.legs == "None":
+        return items[myPlayer.head]["DEFENSE"]
+    # No head
+    elif myPlayer.head == "None":
+        return items[myPlayer.chest]["DEFENSE"] + items[myPlayer.legs]["DEFENSE"]
+    # No chest
+    elif myPlayer.chest == "None":
+        return items[myPlayer.head]["DEFENSE"] + items[myPlayer.legs]["DEFENSE"]
+    # No legs
+    elif myPlayer.legs == "None":
+        return items[myPlayer.head]["DEFENSE"] + items[myPlayer.chest]["DEFENSE"]
+    # All slots equipped
+    else:
+        return items[myPlayer.head]["DEFENSE"] + items[myPlayer.chest]["DEFENSE"] + items[myPlayer.legs]["DEFENSE"]
 
 # Magic choice prompt
 def magic_prompt(enemy):
