@@ -85,6 +85,17 @@ class player:
         print("Blacksmithing:     {}\t\t\n".format(self.bs_lvl))
 
     def rest(self):
+        rest1 = ("You find a room at one of the local inns and rest for the night")
+        periods = (".....\n")
+        for character in rest1:
+            sys.stdout.write(character)
+            sys.stdout.flush()
+            time.sleep(0.05)
+        for character in periods:
+            sys.stdout.write(character)
+            sys.stdout.flush()
+            time.sleep(0.6)
+        print("You feel energized! Your HP and MP have been restored.\n")
         self.hp = self.max_hp
         self.mp = self.max_mp
 

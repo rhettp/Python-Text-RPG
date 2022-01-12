@@ -33,7 +33,6 @@ def town_prompt():
             os.system('clear')
             print_location()
             myPlayer.rest()
-            print("You feel rested. Your HP and MP have been restored.\n")
             myPlayer.display_stats()
             town_prompt()
             break
