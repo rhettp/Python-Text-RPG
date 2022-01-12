@@ -26,8 +26,6 @@ def combat_state(enemy):
     print("3) Magic")
     print("4) Item")
     print("5) Flee")
-
-    print(player_defense())
     while True:
         action = input("> ")
         if action == '1':       # Melee
@@ -166,7 +164,36 @@ def range_attack(enemy):
 
 # Enemy attack function
 def enemy_attack(enemy):
-    damage = random.randrange(enemy.max_hit + 1)
+    if player_defense() >= 0 and player_defense() < 10:     # 0-9 defense
+        damage = random.randrange(enemy.max_hit + 1)
+    elif player_defense() >= 10 and player_defense() < 15:  # 10-14 defense
+        damage = random.randrange(enemy.max_hit)
+    elif player_defense() >= 15 and player_defense() < 20:  # 15-19 defense
+        damage = random.randrange(enemy.max_hit - 1)
+    elif player_defense() >= 20 and player_defense() < 25:  # 20-24 defense
+        if enemy.max_hit - 3 <= 0:
+            damage = 0
+        else:
+            damage = random.randrange(enemy.max_hit - 3)
+    elif player_defense() >= 25 and player_defense() < 30:  # 25-29 defense
+        if enemy.max_hit - 5 <= 0:
+            damage = 0
+        else:
+            damage = random.randrange(enemy.max_hit - 5)
+    elif player_defense() >= 30 and player_defense() < 35:  # 30-34 defense
+        if enemy.max_hit - 7 <= 0:
+            damage = 0
+        else:
+            damage = random.randrange(enemy.max_hit - 7)
+    elif player_defense() >= 35 and player_defense() < 39:  # 35-38 defense
+        if enemy.max_hit - 9 <= 0:
+            damage = 0
+        damage = random.randrange(enemy.max_hit - 9)
+    else:
+        if enemy.max_hit - 10 <= 0:
+            damage = 0                                      # 39 defense
+        else:
+            damage = random.randrange(enemy.max_hit - 10)
     myPlayer.hp -= damage
     if damage == 0:
         print("The {} missed its attack!".format(enemy.name))
