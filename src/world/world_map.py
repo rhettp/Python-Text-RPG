@@ -1,43 +1,36 @@
-import cmd
-import textwrap
-import sys
-import os
-import time
-import random
-
 ##### World Map #####
 
 # World Zones
 world_zone = {
     'Town': {
-        "DESCRIPTION": 'Center of town'
+        "DESCRIPTION": 'A bustling town with several shops and inns.'
     },
     'Swamp': {
-        "DESCRIPTION": 'DESCRIPTION'
+        "DESCRIPTION": 'Rotting trees and moss surround the bog.\nYou sense danger is nearby.'
     },
     'Forest': {
-        "DESCRIPTION": 'DESCRIPTION'
+        "DESCRIPTION": 'A luscious forest containing numerous different types of trees.'
     },
     'Mine': {
-        "DESCRIPTION": 'DESCRIPTION'
+        "DESCRIPTION": 'An abandoned mine that contains ore yet to be mined.\nBut why?'
     },
     "Dragon's Lair": {
-        "DESCRIPTION": 'DESCRIPTION'
+        "DESCRIPTION": 'A skull of an unknown beast makes the entrance of the lair.\nI hope you are ready...'
     },
     "Graveyard": {
-        "DESCRIPTION": 'DESCRIPTION'
+        "DESCRIPTION": 'Fog covers the gravestones and tombs of the dead.\nYou feel dread start creeping in...'
     },
 }
 
 # Town Shops
 shops = {
     'Blacksmith': {
-        "DESCRIPTION": 'DESCRIPTION'
+        "DESCRIPTION": 'A shop that sells armour and Blacksmithing supplies.'
     },
     'Magic Shop': {
-        "DESCRIPTION": 'DESCRIPTION'
+        "DESCRIPTION": 'A shop that sells potions and Magic supplies.'
     },
     'General Store': {
-        "DESCRIPTION": 'DESCRIPTION'
+        "DESCRIPTION": 'A shop that sells Bows and Fletching supplies.'
     },
 }
