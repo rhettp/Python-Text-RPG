@@ -51,91 +51,91 @@ staff_set = ["Staff", "Magic Staff", "Greater Staff"]
 items = {
     # Logs
     'Oak Log': {
-        "DESCRIPTION": 'An oak log.',
+        "DESCRIPTION": 'A log cut from an Oak Tree.',
         "VALUE": 5,
         "EXPERIENCE": 10
     },
     'Willow Log': {
-        "DESCRIPTION": 'A willow log.',
+        "DESCRIPTION": 'A log cut from a Willow Tree.',
         "VALUE": 10,
         "EXPERIENCE": 20
     },
     'Maple Log': {
-        "DESCRIPTION": 'A maple log.',
+        "DESCRIPTION": 'A log cut from a Maple Tree.',
         "VALUE": 15,
         "EXPERIENCE": 45
     },
     'Yew Log': {
-        "DESCRIPTION": 'A yew log.',
+        "DESCRIPTION": 'A log cut from a Yew Tree.',
         "VALUE": 20,
         "EXPERIENCE": 90
     },
     'Magic Log': {
-        "DESCRIPTION": 'A magic log.',
+        "DESCRIPTION": 'A log cut from a Magic Tree.',
         "VALUE": 25,
         "EXPERIENCE": 170
     },
     
     # Bow String
      'Bow String': {
-        "DESCRIPTION": 'A Bow string',
+        "DESCRIPTION": 'A string used for bows.',
         "VALUE": 5
     },
 
     # Unstrung Bows
      'Oak Bow (u)': {
-        "DESCRIPTION": 'An unstrung Oak bow',
+        "DESCRIPTION": 'An unstrung Oak bow.',
         "VALUE": 10,
         "EXPERIENCE": 10
     },
      'Willow Bow (u)': {
-        "DESCRIPTION": 'An unstrung Willow bow',
+        "DESCRIPTION": 'An unstrung Willow bow.',
         "VALUE": 25,
         "EXPERIENCE": 20
     },
      'Maple Bow (u)': {
-        "DESCRIPTION": 'An unstrung Maple bow',
+        "DESCRIPTION": 'An unstrung Maple bow.',
         "VALUE": 40,
         "EXPERIENCE": 45
     },
      'Yew Bow (u)': {
-        "DESCRIPTION": 'An unstrung Yew bow',
+        "DESCRIPTION": 'An unstrung Yew bow.',
         "VALUE": 55,
         "EXPERIENCE": 90
     },
      'Magic Bow (u)': {
-        "DESCRIPTION": 'An unstrung Magic bow',
+        "DESCRIPTION": 'An unstrung Magic bow.',
         "VALUE": 70,
         "EXPERIENCE": 170
     },
 
     # Bows
      'Oak Bow': {
-        "DESCRIPTION": 'An Oak bow',
+        "DESCRIPTION": 'A bow made out of Oak.',
         "VALUE": 20,
         "DAMAGE": 5,
         "EXPERIENCE": 15
     },
      'Willow Bow': {
-        "DESCRIPTION": 'A Willow bow',
+        "DESCRIPTION": 'A bow made out of Willow.',
         "VALUE": 35,
         "DAMAGE": 10,
         "EXPERIENCE": 30
     },
      'Maple Bow': {
-        "DESCRIPTION": 'A Maple bow',
+        "DESCRIPTION": 'A bow made out of Maple.',
         "VALUE": 50,
         "DAMAGE": 15,
         "EXPERIENCE": 60
     },
      'Yew Bow': {
-        "DESCRIPTION": 'A Yew bow',
+        "DESCRIPTION": 'A bow made out of Yew.',
         "VALUE": 70,
         "DAMAGE": 20,
         "EXPERIENCE": 120
     },
      'Magic Bow': {
-        "DESCRIPTION": 'A Magic bow',
+        "DESCRIPTION": 'A bow made out of Magic logs.',
         "VALUE": 100,
         "DAMAGE": 30,
         "EXPERIENCE": 240
@@ -143,79 +143,79 @@ items = {
 
     # Ore
     'Copper Ore': {
-        "DESCRIPTION": 'A single Copper ore.',
+        "DESCRIPTION": 'Ore that can be smelted into Copper Bars.',
         "VALUE": 5,
         "EXPERIENCE": 10
     },
     'Iron Ore': {
-        "DESCRIPTION": 'A single Iron ore.',
+        "DESCRIPTION": 'Ore that can be smelted into Iron Bars.',
         "VALUE": 10,
         "EXPERIENCE": 20
     },
     'Silver Ore': {
-        "DESCRIPTION": 'A single Silver ore.',
+        "DESCRIPTION": 'Ore that can be smelted into Silver Bars.',
         "VALUE": 15,
         "EXPERIENCE": 45
     },
     'Gold Ore': {
-        "DESCRIPTION": 'A single Gold ore.',
+        "DESCRIPTION": 'Ore that can be smelted into Gold Bars.',
         "VALUE": 20,
         "EXPERIENCE": 90
     },
     'Diamond Ore': {
-        "DESCRIPTION": 'A single Diamond ore.',
+        "DESCRIPTION": 'Ore that can be smelted into Diamond Bars.',
         "VALUE": 25,
         "EXPERIENCE": 170
     },
 
     # Bars
     'Copper Bar': {
-        "DESCRIPTION": 'A single Copper ore.',
+        "DESCRIPTION": 'A bar of Copper used for Blacksmithing.',
         "VALUE": 5,
         "EXPERIENCE": 10
     },
     'Iron Bar': {
-        "DESCRIPTION": 'A single Iron bar.',
+        "DESCRIPTION": 'A bar of Iron used for Blacksmithing.',
         "VALUE": 10,
         "EXPERIENCE": 45
     },
     'Silver Bar': {
-        "DESCRIPTION": 'A single Silver bar.',
+        "DESCRIPTION": 'A bar of Silver used for Blacksmithing.',
         "VALUE": 15,
         "EXPERIENCE": 60
     },
     'Gold Bar': {
-        "DESCRIPTION": 'A single Gold bar.',
+        "DESCRIPTION": 'A bar of Gold used for Blacksmithing.',
         "VALUE": 20,
         "EXPERIENCE": 160
     },
     'Diamond Bar': {
-        "DESCRIPTION": 'A single Diamond bar.',
+        "DESCRIPTION": 'A bar of Diamond used for Blacksmithing.',
         "VALUE": 25,
         "EXPERIENCE": 450
     },
 
     # Copper Items
     'Copper Helmet': {
-        "DESCRIPTION": 'A Copper helmet.',
+        "DESCRIPTION": 'A Copper helmet with poor defense.',
         "VALUE": 15,
         "DEFENSE": 3,
         "EXPERIENCE": 15
     },
     'Copper Sword': {
-        "DESCRIPTION": 'A Copper sword.',
+        "DESCRIPTION": 'A Copper sword with poor attack damage.',
         "VALUE": 20,
         "DAMAGE": 5,
         "EXPERIENCE": 20
     },
     'Copper Platelegs': {
-        "DESCRIPTION": 'Copper platelegs.',
+        "DESCRIPTION": 'A set of Copper platelegs with poor defense.',
         "VALUE": 25,
         "DEFENSE": 5,
         "EXPERIENCE": 25
     },
     'Copper Platebody': {
-        "DESCRIPTION": 'Copper platebody',
+        "DESCRIPTION": 'A Copper platebody with poor defense',
         "VALUE": 30,
         "DEFENSE": 7,
         "EXPERIENCE": 35
@@ -223,131 +223,131 @@ items = {
 
     # Iron items
     'Iron Helmet': {
-        "DESCRIPTION": 'An Iron helmet.',
-        "VALUE": 15,
-        "DEFENSE": 3,
+        "DESCRIPTION": 'An Iron helmet with moderate defense.',
+        "VALUE": 30,
+        "DEFENSE": 5,
         "EXPERIENCE": 40
     },
     'Iron Sword': {
-        "DESCRIPTION": 'An Iron sword.',
+        "DESCRIPTION": 'An Iron sword with moderate attack damage.',
         "VALUE": 35,
         "DAMAGE": 10,
         "EXPERIENCE": 50
     },
     'Iron Platelegs': {
-        "DESCRIPTION": 'Iron platelegs.',
-        "VALUE": 25,
-        "DEFENSE": 5,
+        "DESCRIPTION": 'A set of Iron platelegs with moderate defense.',
+        "VALUE": 50,
+        "DEFENSE": 7,
         "EXPERIENCE": 60
     },
     'Iron Platebody': {
-        "DESCRIPTION": 'Iron platebody',
-        "VALUE": 30,
-        "DEFENSE": 7,
+        "DESCRIPTION": 'An Iron platebody with moderate defense.',
+        "VALUE": 60,
+        "DEFENSE": 9,
         "EXPERIENCE": 70
     },
 
     # Silver Items
     'Silver Helmet': {
-        "DESCRIPTION": 'A Silver helmet.',
-        "VALUE": 15,
-        "DEFENSE": 3,
+        "DESCRIPTION": 'A Silver helmet with good defense.',
+        "VALUE": 60,
+        "DEFENSE": 7,
         "EXPERIENCE": 80
     },
     'Silver Sword': {
-        "DESCRIPTION": 'A Silver sword.',
-        "VALUE": 50,
+        "DESCRIPTION": 'A Silver sword with good attack damage.',
+        "VALUE": 70,
         "DAMAGE": 15,
         "EXPERIENCE": 100
     },
     'Silver Platelegs': {
-        "DESCRIPTION": 'Silver platelegs.',
-        "VALUE": 25,
-        "DEFENSE": 5,
+        "DESCRIPTION": 'A set of Silver Platelegs with good defense.',
+        "VALUE": 100,
+        "DEFENSE": 9,
         "EXPERIENCE": 120
     },
     'Silver Platebody': {
-        "DESCRIPTION": 'Silver platebody',
-        "VALUE": 30,
-        "DEFENSE": 7,
+        "DESCRIPTION": 'A Silver platebody with good defense.',
+        "VALUE": 120,
+        "DEFENSE": 11,
         "EXPERIENCE": 140
     },
 
     # Gold Items
     'Gold Helmet': {
-        "DESCRIPTION": 'A Gold helmet.',
-        "VALUE": 15,
-        "DEFENSE": 3,
+        "DESCRIPTION": 'A Gold helmet with great defense.',
+        "VALUE": 120,
+        "DEFENSE": 9,
         "EXPERIENCE": 160
     },
     'Gold Sword': {
-        "DESCRIPTION": 'A Gold sword.',
-        "VALUE": 70,
+        "DESCRIPTION": 'A Gold sword with great attack damage.',
+        "VALUE": 140,
         "DAMAGE": 20,
         "EXPERIENCE": 190
     },
     'Gold Platelegs': {
-        "DESCRIPTION": 'Gold platelegs.',
-        "VALUE": 25,
-        "DEFENSE": 5,
+        "DESCRIPTION": 'A set of Gold platelegs with great defense.',
+        "VALUE": 200,
+        "DEFENSE": 11,
         "EXPERIENCE": 220
     },
     'Gold Platebody': {
-        "DESCRIPTION": 'Gold platebody',
-        "VALUE": 30,
-        "DEFENSE": 7,
+        "DESCRIPTION": 'A Gold platebody with great defense.',
+        "VALUE": 240,
+        "DEFENSE": 13,
         "EXPERIENCE": 250
     },
 
     # Diamond Items
     'Diamond Helmet': {
-        "DESCRIPTION": 'A Diamond helmet.',
-        "VALUE": 15,
-        "DEFENSE": 3,
+        "DESCRIPTION": 'A Diamond helmet with excellent defense.',
+        "VALUE": 240,
+        "DEFENSE": 11,
         "EXPERIENCE": 350
     },
     'Diamond Sword': {
-        "DESCRIPTION": 'A Diamond sword.',
-        "VALUE": 100,
+        "DESCRIPTION": 'A Diamond sword with excellent attack damage.',
+        "VALUE": 280,
         "DAMAGE": 30,
         "EXPERIENCE": 400
     },
     'Diamond Platelegs': {
-        "DESCRIPTION": 'Diamond platelegs.',
-        "VALUE": 25,
-        "DEFENSE": 5,
+        "DESCRIPTION": 'A set of Diamond platelegs with excellent defense.',
+        "VALUE": 400,
+        "DEFENSE": 13,
         "EXPERIENCE": 450
     },
     'Diamond Platebody': {
-        "DESCRIPTION": 'Diamond platebody',
-        "VALUE": 30,
-        "DEFENSE": 7,
+        "DESCRIPTION": 'A Diamond platebody with excellent defense.',
+        "VALUE": 480,
+        "DEFENSE": 15,
         "EXPERIENCE": 500
     },
 
     # Potions
      'Health Potion': {
-        "DESCRIPTION": 'A Health potion',
+        "DESCRIPTION": 'A potion that restores 50 HP.',
         "VALUE": 50,
         "EFFECT": 50
     },
      'Mana Potion': {
-        "DESCRIPTION": 'A Mana potion',
+        "DESCRIPTION": 'A potion that restores 50 MP.',
         "VALUE": 50,
         "EFFECT": 50
     },
      'Super Health Potion': {
-        "DESCRIPTION": 'A Super Health potion',
+        "DESCRIPTION": 'A potion that fully restores HP.',
         "VALUE": 100,
         "EFFECT": myPlayer.max_hp
     },
      'Super Mana Potion': {
-        "DESCRIPTION": 'A Super mana potion',
+        "DESCRIPTION": 'A potion that fully restores MP.',
         "VALUE": 100,
         "EFFECT": myPlayer.max_mp
     },
      'Restore Potion': {
-        "DESCRIPTION": 'A Restore potion',
+        "DESCRIPTION": 'A potion that fully restores HP and MP.',
         "VALUE": 200,
         "EFFECT": myPlayer.max_hp,
         "EFFECT_2": myPlayer.max_mp
@@ -355,18 +355,18 @@ items = {
 
     # Staffs
      'Staff': {
-        "DESCRIPTION": 'A basic staff',
-        "VALUE": 100,
-        "DAMAGE": 5
+        "DESCRIPTION": 'A basic staff with moderate magic damage.',
+        "VALUE": 200,
+        "DAMAGE": 10
     },
      'Magic Staff': {
-        "DESCRIPTION": 'A magic staff',
-        "VALUE": 100,
-        "DAMAGE": 15
+        "DESCRIPTION": 'A magic staff with good magic damage.',
+        "VALUE": 800,
+        "DAMAGE": 20
     },
      'Greater Staff': {
-        "DESCRIPTION": 'A greater magic staff',
-        "VALUE": 100,
+        "DESCRIPTION": 'A greater magic staff with excellent magic damage.',
+        "VALUE": 1500,
         "DAMAGE": 30
     },
 }
