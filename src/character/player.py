@@ -8,13 +8,13 @@ import random
 ##### Player setup #####
 class player:
     def __init__(self):
-        self.name = 'Player'
-        self.max_hp = 100
-        self.hp = self.max_hp
-        self.max_mp = 100
-        self.mp = self.max_mp
-        self.location = 'Town'
-        self.gold = 100
+        self.name = 'Player'        # Player name
+        self.max_hp = 100           # Player max HP
+        self.hp = self.max_hp       # Current HP
+        self.max_mp = 100           # Player max MP
+        self.mp = self.max_mp       # Current MP
+        self.location = 'Town'      # Player location
+        self.gold = 100             # Current gold
         self.inventory_size = 25    # Inventory size limit
 
         self.xp = 0                 # Combat XP
@@ -191,4 +191,6 @@ class player:
             self.bs_lvlUp = round(self.bs_lvlUp * 1.2)
             print("Congatulations your Blacksmithing level increased to {}!".format(self.bs_lvl))
             print("{} XP to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+
+myPlayer = player()
 

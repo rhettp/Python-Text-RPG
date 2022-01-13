@@ -5,15 +5,16 @@ import os
 import time
 import random
 from prompts.game_start import *
+from gameplay.save_load_game import *
 
 ##### Title Screen #####
 def title_screen():
     os.system('clear')
-    print('###################################')
+    print('\n###################################')
     print('# Welcome to the Python Text RPG! #')
     print('###################################')
-    print('1) Play')
-    print('2) Help')
+    print('1) Start Game')
+    print('2) Load Game')
     print('3) Quit')
     title_screen_selections()
 
@@ -21,25 +22,39 @@ def title_screen():
 def title_screen_selections():
     while True:
         option = input('> ')
-        if option == '1':
-            start_game()
-            break
+        # Start game
+        if option == '1':       
+            if os.path.exists('saved_game_file'):       # Saved game file exists
+                print("This will overwrite your saved game.")
+                print("Do you want to continue?")
+                while True:
+                    option = input('> ')
+                    if option in ["yes","Yes", "YES", "accept","Accept","ACCEPT"]:  # Continue
+                        start_game()
+                        break
+                    elif option in ["no","No","NO","back","Back","BACK"]:           # Go back
+                        title_screen()
+                        break
+                    else:                                                           # Input Validation
+                        print("Please enter a valid command.")
+                        continue
+            else:                                       # No saved game file
+                start_game()
+                break
+
+        # Load Game
         elif option == '2':
-            help_menu()
-            break
+            if os.path.exists('saved_game_file'):       # Load saved game file if it exists
+                load_game()
+                break
+            else:                                       # No saved game file
+                print("No saved game file exists.")
+                continue
         elif option == '3':
             sys.exit()
-        else:
+        else:                                           # Input Validation
             print("Please enter a valid command.")
             continue
+        break
 
-##### Help Menu #####
-def help_menu():
-    print("#############")
-    print("# Help Menu #")
-    print("#############")
-    print("Type left, right, up, or down to move.")
-    print("Type examine to investigate the room.")
-    print("Type quit to exit the game.")
-    print("Have fun!")
-    title_screen_selections()
+

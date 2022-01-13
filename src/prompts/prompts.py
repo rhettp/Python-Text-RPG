@@ -1,6 +1,7 @@
 from gameplay.movement import *
 from gameplay.combat import *
 from gameplay.inventory import *
+from gameplay.save_load_game import *
 from character.enemy import *
 from character.player import *
 from skills.woodcutting import *
@@ -69,6 +70,7 @@ def town_prompt():
             town_prompt()
             break
         elif action == '7':     # Quit
+            save_game()
             sys.exit()
         else:                   # Input validation
             print("Please enter a valid action.")
@@ -183,6 +185,7 @@ def shop_prompt():
             town_prompt()
             break
         elif action == '7':     # Quit
+            save_game()
             sys.exit()
         else:                   # Input Validation
             print("Please enter a valid action.")
@@ -502,7 +505,8 @@ def forest_prompt():
             character_prompt()
             forest_prompt()
             break
-        elif action == '8':     # Exit
+        elif action == '8':     # Quit
+            save_game()
             sys.exit()
         else:                   # Input Validation
             print("Please enter a valid action.")
@@ -594,7 +598,8 @@ def mine_prompt():
             character_prompt()
             mine_prompt()
             break
-        elif action == '8':     # Exit
+        elif action == '8':     # Quit
+            save_game()
             sys.exit()
         else:                   # Input Validation
             print("Please enter a valid action.")
@@ -654,7 +659,8 @@ def swamp_prompt():
             character_prompt()
             swamp_prompt()
             break
-        elif action == '6':     # Exit
+        elif action == '6':     # Quit
+            save_game()
             sys.exit()
         else:                   # Input Validation
             print("Please enter a valid action.")
@@ -714,7 +720,8 @@ def graveyard_prompt():
             character_prompt()
             graveyard_prompt()
             break
-        elif action == '6':     # Exit
+        elif action == '6':     # Quit
+            save_game()
             sys.exit()
         else:                   # Input Validation
             print("Please enter a valid action.")
@@ -774,7 +781,8 @@ def dragon_lair_prompt():
             character_prompt()
             dragon_lair_prompt()
             break
-        elif action == '6':     # Exit
+        elif action == '6':     # Quit
+            save_game()
             sys.exit()
         else:                   # Input Validation
             print("Please enter a valid action.")

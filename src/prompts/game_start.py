@@ -30,14 +30,18 @@ def start_game():
     time.sleep(2)
 
     os.system("clear")
-    print("#################")
+    print("\n#################")
     print("# Let us Begin! #")
     print("#################")
     time.sleep(1)
-    intro3 = "\nYou arrive in the bustling city of Myrefall.\n"
+    intro3 = "\nYou arrive in the bustling city of Myrefall"
     for character in intro3:
         sys.stdout.write(character)
         sys.stdout.flush()
         time.sleep(0.05)
-    time.sleep(1)
+    periods = "....."
+    for character in periods:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.6)
     main_game_loop()
