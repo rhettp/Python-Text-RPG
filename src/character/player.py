@@ -63,9 +63,10 @@ class player:
 
     # Display current player stats
     def display_stats(self):
-        print('======================================')
+        gold_length = len(str(myPlayer.gold))   # Length of amount of gold
+        print('===================================' + '=' * gold_length)
         print('HP: {}/{}   MP: ({}/{})  Gold: {}'.format(self.hp,self.max_hp, self.mp, self.max_mp, self.gold))
-        print('======================================')
+        print('===================================' + '=' * gold_length)
 
     # Display character info
     def character_info(self):
