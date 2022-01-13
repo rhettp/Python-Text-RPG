@@ -965,15 +965,44 @@ def head_slot_prompt():
     while True:
         item = input('> ')
         if item in inventory and item in helmet_set:
-            if myPlayer.head == "None":         # First gear equip
-                myPlayer.head = item
-                removeItem(item)
-                break
+            # First gear equip
+            if myPlayer.head == "None":       
+                if item == "Iron Helmet" and myPlayer.lvl < 5:          # Combat less than lvl 5
+                    print("You need a Combat level of at least 5 to wear Iron Armour.")
+                    continue
+                elif item == "Silver Helmet" and myPlayer.lvl < 10:     # Combat less than lvl 10
+                    print("You need a Combat level of at least 10 to wear Silver Armour.")
+                    continue
+                elif item == "Gold Helmet" and myPlayer.lvl < 15:       # Combat less than lvl 15
+                    print("You need a Combat level of at least 15 to wear Gold Armour.")
+                    continue
+                elif item == "Diamond Helmet" and myPlayer.lvl < 20:    # Combat less than lvl 20
+                    print("You need a Combat level of at least 20 to wear Diamond Armour.")
+                    continue
+                else:
+                    myPlayer.head = item
+                    removeItem(item)
+                    break
+            
+            # Replace gear slot
             else:
-                addToInventory(myPlayer.head)   # Replace gear slot
-                myPlayer.head = item
-                removeItem(item)
-                break
+                if item == "Iron Helmet" and myPlayer.lvl < 5:          # Combat less than lvl 5
+                    print("You need a Combat level of at least 5 to wear Iron Armour.")
+                    continue
+                elif item == "Silver Helmet" and myPlayer.lvl < 10:     # Combat less than lvl 10
+                    print("You need a Combat level of at least 10 to wear Silver Armour.")
+                    continue
+                elif item == "Gold Helmet" and myPlayer.lvl < 15:       # Combat less than lvl 15
+                    print("You need a Combat level of at least 15 to wear Gold Armour.")
+                    continue
+                elif item == "Diamond Helmet" and myPlayer.lvl < 20:    # Combat less than lvl 20
+                    print("You need a Combat level of at least 20 to wear Diamond Armour.")
+                    continue
+                else:
+                    addToInventory(myPlayer.head)   
+                    myPlayer.head = item
+                    removeItem(item)
+                    break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
             os.system('clear')
             print('\n' + ('#' * (4 + len(myPlayer.name))))
@@ -1003,15 +1032,44 @@ def chest_slot_prompt():
     while True:
         item = input('> ')
         if item in inventory and item in platebody_set:
-            if myPlayer.chest == "None":         # First gear equip
-                myPlayer.chest = item
-                removeItem(item)
-                break
+            # First gear equip
+            if myPlayer.chest == "None":       
+                if item == "Iron Platebody" and myPlayer.lvl < 5:          # Combat less than lvl 5
+                    print("You need a Combat level of at least 5 to wear Iron Armour.")
+                    continue
+                elif item == "Silver Platebody" and myPlayer.lvl < 10:     # Combat less than lvl 10
+                    print("You need a Combat level of at least 10 to wear Silver Armour.")
+                    continue
+                elif item == "Gold Platebody" and myPlayer.lvl < 15:       # Combat less than lvl 15
+                    print("You need a Combat level of at least 15 to wear Gold Armour.")
+                    continue
+                elif item == "Diamond Platebody" and myPlayer.lvl < 20:    # Combat less than lvl 20
+                    print("You need a Combat level of at least 20 to wear Diamond Armour.")
+                    continue
+                else:
+                    myPlayer.chest = item
+                    removeItem(item)
+                    break
+            
+            # Replace gear slot
             else:
-                addToInventory(myPlayer.chest)   # Replace gear slot
-                myPlayer.chest = item
-                removeItem(item)
-                break
+                if item == "Iron Platebody" and myPlayer.lvl < 5:          # Combat less than lvl 5
+                    print("You need a Combat level of at least 5 to wear Iron Armour.")
+                    continue
+                elif item == "Silver Platebody" and myPlayer.lvl < 10:     # Combat less than lvl 10
+                    print("You need a Combat level of at least 10 to wear Silver Armour.")
+                    continue
+                elif item == "Gold Platebody" and myPlayer.lvl < 15:       # Combat less than lvl 15
+                    print("You need a Combat level of at least 15 to wear Gold Armour.")
+                    continue
+                elif item == "Diamond Platebody" and myPlayer.lvl < 20:    # Combat less than lvl 20
+                    print("You need a Combat level of at least 20 to wear Diamond Armour.")
+                    continue
+                else:
+                    addToInventory(myPlayer.chest)   
+                    myPlayer.chest = item
+                    removeItem(item)
+                    break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
             os.system('clear')
             print('\n' + ('#' * (4 + len(myPlayer.name))))
@@ -1041,15 +1099,44 @@ def legs_slot_prompt():
     while True:
         item = input('> ')
         if item in inventory and item in platelegs_set:
-            if myPlayer.legs == "None":         # First gear equip
-                myPlayer.legs = item
-                removeItem(item)
-                break
+            # First gear equip
+            if myPlayer.legs == "None":       
+                if item == "Iron Platelegs" and myPlayer.lvl < 5:          # Combat less than lvl 5
+                    print("You need a Combat level of at least 5 to wear Iron Armour.")
+                    continue
+                elif item == "Silver Platelegs" and myPlayer.lvl < 10:     # Combat less than lvl 10
+                    print("You need a Combat level of at least 10 to wear Silver Armour.")
+                    continue
+                elif item == "Gold Platelegs" and myPlayer.lvl < 15:       # Combat less than lvl 15
+                    print("You need a Combat level of at least 15 to wear Gold Armour.")
+                    continue
+                elif item == "Diamond Platelegs" and myPlayer.lvl < 20:    # Combat less than lvl 20
+                    print("You need a Combat level of at least 20 to wear Diamond Armour.")
+                    continue
+                else:
+                    myPlayer.legs = item
+                    removeItem(item)
+                    break
+            
+            # Replace gear slot
             else:
-                addToInventory(myPlayer.legs)   # Replace gear slot
-                myPlayer.legs = item
-                removeItem(item)
-                break
+                if item == "Iron Platelegs" and myPlayer.lvl < 5:          # Combat less than lvl 5
+                    print("You need a Combat level of at least 5 to wear Iron Armour.")
+                    continue
+                elif item == "Silver Platelegs" and myPlayer.lvl < 10:     # Combat less than lvl 10
+                    print("You need a Combat level of at least 10 to wear Silver Armour.")
+                    continue
+                elif item == "Gold Platelegs" and myPlayer.lvl < 15:       # Combat less than lvl 15
+                    print("You need a Combat level of at least 15 to wear Gold Armour.")
+                    continue
+                elif item == "Diamond Platelegs" and myPlayer.lvl < 20:    # Combat less than lvl 20
+                    print("You need a Combat level of at least 20 to wear Diamond Armour.")
+                    continue
+                else:
+                    addToInventory(myPlayer.legs)   
+                    myPlayer.legs = item
+                    removeItem(item)
+                    break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
             os.system('clear')
             print('\n' + ('#' * (4 + len(myPlayer.name))))
@@ -1079,15 +1166,44 @@ def melee_slot_prompt():
     while True:
         item = input('> ')
         if item in inventory and item in melee_set:
-            if myPlayer.melee_weapon == "None":         # First gear equip
-                myPlayer.melee_weapon = item
-                removeItem(item)
-                break
+            # First gear equip
+            if myPlayer.melee_weapon == "None":       
+                if item == "Iron Sword" and myPlayer.strength < 5:          # Strength less than lvl 5
+                    print("You need a Strength level of at least 5 to use an Iron Sword.")
+                    continue
+                elif item == "Silver Sword" and myPlayer.strength < 10:     # Strength less than lvl 10
+                    print("You need a Strength level of at least 10 to use a Silver Sword.")
+                    continue
+                elif item == "Gold Sword" and myPlayer.strength < 15:       # Strength less than lvl 15
+                    print("You need a Strength level of at least 15 to use a Gold Sword.")
+                    continue
+                elif item == "Diamond Sword" and myPlayer.strength < 20:    # Strength less than lvl 20
+                    print("You need a Strength level of at least 20 to use a Diamond Sword.")
+                    continue
+                else:
+                    myPlayer.melee_weapon = item
+                    removeItem(item)
+                    break
+            
+            # Replace gear slot
             else:
-                addToInventory(myPlayer.melee_weapon)   # Replace gear slot
-                myPlayer.melee_weapon = item
-                removeItem(item)
-                break
+                if item == "Iron Sword" and myPlayer.strength < 5:          # Strength less than lvl 5
+                    print("You need a Strength level of at least 5 to use an Iron Sword.")
+                    continue
+                elif item == "Silver Sword" and myPlayer.strength < 10:     # Strength less than lvl 10
+                    print("You need a Strength level of at least 10 to use a Silver Sword.")
+                    continue
+                elif item == "Gold Sword" and myPlayer.strength < 15:       # Strength less than lvl 15
+                    print("You need a Strength level of at least 15 to use a Gold Sword.")
+                    continue
+                elif item == "Diamond Sword" and myPlayer.strength < 20:    # Strength less than lvl 20
+                    print("You need a Strength level of at least 20 to use a Diamond Sword.")
+                    continue
+                else:
+                    addToInventory(myPlayer.melee_weapon)   
+                    myPlayer.melee_weapon = item
+                    removeItem(item)
+                    break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
             os.system('clear')
             print('\n' + ('#' * (4 + len(myPlayer.name))))
@@ -1117,15 +1233,44 @@ def range_slot_prompt():
     while True:
         item = input('> ')
         if item in inventory and item in range_set:
-            if myPlayer.range_weapon == "None":         # First gear equip
-                myPlayer.range_weapon = item
-                removeItem(item)
-                break
+            # First gear equip
+            if myPlayer.range_weapon == "None":       
+                if item == "Willow Bow" and myPlayer.agility < 5:           # Agility less than lvl 5
+                    print("You need an Agility level of at least 5 to use a Willow Bow.")
+                    continue
+                elif item == "Maple Bow" and myPlayer.agility < 10:         # Agility less than lvl 10
+                    print("You need an Agility level of at least 10 to use a Maple Bow.")
+                    continue
+                elif item == "Yew Bow" and myPlayer.agility < 15:           # Agility less than lvl 15
+                    print("You need an Agility level of at least 15 to use a Yew Bow.")
+                    continue
+                elif item == "Magic Bow" and myPlayer.agility < 20:         # Agility less than lvl 20
+                    print("You need an Agility level of at least 20 to use a Magic Bow.")
+                    continue
+                else:
+                    myPlayer.range_weapon = item
+                    removeItem(item)
+                    break
+            
+            # Replace gear slot
             else:
-                addToInventory(myPlayer.range_weapon)   # Replace gear slot
-                myPlayer.range_weapon = item
-                removeItem(item)
-                break
+                if item == "Willow Bow" and myPlayer.agility < 5:           # Agility less than lvl 5
+                    print("You need an Agility level of at least 5 to use a Willow Bow.")
+                    continue
+                elif item == "Maple Bow" and myPlayer.agility < 10:         # Agility less than lvl 10
+                    print("You need an Agility level of at least 10 to use a Maple Bow.")
+                    continue
+                elif item == "Yew Bow" and myPlayer.agility < 15:           # Agility less than lvl 15
+                    print("You need an Agility level of at least 15 to use a Yew Bow.")
+                    continue
+                elif item == "Magic Bow" and myPlayer.agility < 20:         # Agility less than lvl 20
+                    print("You need an Agility level of at least 20 to use a Magic Bow.")
+                    continue
+                else:
+                    addToInventory(myPlayer.range_weapon)   
+                    myPlayer.range_weapon = item
+                    removeItem(item)
+                    break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
             os.system('clear')
             print('\n' + ('#' * (4 + len(myPlayer.name))))
@@ -1158,15 +1303,32 @@ def magic_slot_prompt():
     while True:
         item = input('> ')
         if item in inventory and item in staff_set:
-            if myPlayer.magic_weapon == "None":         # First gear equip
-                myPlayer.magic_weapon = item
-                removeItem(item)
-                break
+            # First gear equip
+            if myPlayer.magic_weapon == "None":       
+                if item == "Magic Staff" and myPlayer.magic < 10:             # Magic less than lvl 10
+                    print("You need a Magic level of at least 10 to use a Magic Staff.")
+                    continue
+                elif item == "Greater Staff" and myPlayer.magic < 20:         # Magic less than lvl 20
+                    print("You need a Magic level of at least 20 to use a Greater Staff.")
+                    continue
+                else:
+                    myPlayer.magic_weapon = item
+                    removeItem(item)
+                    break
+            
+            # Replace gear slot
             else:
-                addToInventory(myPlayer.magic_weapon)   # Replace gear slot
-                myPlayer.magic_weapon = item
-                removeItem(item)
-                break
+                if item == "Magic Staff" and myPlayer.magic < 10:             # Magic less than lvl 10
+                    print("You need a Magic level of at least 10 to use a Magic Staff.")
+                    continue
+                elif item == "Greater Staff" and myPlayer.magic < 20:         # Magic less than lvl 20
+                    print("You need a Magic level of at least 20 to use a Greater Staff.")
+                    continue
+                else:
+                    addToInventory(myPlayer.magic_weapon)   
+                    myPlayer.magic_weapon = item
+                    removeItem(item)
+                    break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
             os.system('clear')
             print('\n' + ('#' * (4 + len(myPlayer.name))))
@@ -1179,4 +1341,5 @@ def magic_slot_prompt():
         else:
             print("Please enter a valid item.")
             continue
+
 
