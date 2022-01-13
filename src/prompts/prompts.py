@@ -196,30 +196,40 @@ def buy_prompt():
     print_location()
     if myPlayer.location == "General Store":
         if myPlayer.inventory_size == 25:
-            print("Big Bag:\t {}".format(items["Big Bag"]["DESCRIPTION"]))
+            print("Big Bag \t {} gold  :   {}".format(items["Big Bag"]["VALUE"],items["Big Bag"]["DESCRIPTION"]))
         elif myPlayer.inventory_size == 50:
-            print("Bigger Bag:\t {}".format(items["Bigger Bag"]["DESCRIPTION"]))
+            print("Bigger Bag \t {} gold  :   {}".format(items["Bigger Bag"]["VALUE"], items["Bigger Bag"]["DESCRIPTION"]))
         elif myPlayer.inventory_size == 75:
-            print("Biggest Bag:\t {}".format(items["Biggest Bag"]["DESCRIPTION"]))
+            print("Biggest Bag \t {} gold :   {}".format(items["Biggest Bag"]["VALUE"], items["Biggest Bag"]["DESCRIPTION"]))
         for item in general_store_buy_set:
-            print("{}:\t {}".format(item, items[item]["DESCRIPTION"]))
+            if item in ["Oak Log", "Bow String"]:
+                print("{} \t {} gold    :   {}".format(item, items[item]["VALUE"], items[item]["DESCRIPTION"]))
+            else:
+                print("{} \t {} gold   :   {}".format(item, items[item]["VALUE"], items[item]["DESCRIPTION"]))
     elif myPlayer.location == "Blacksmith":
         for item in blacksmith_buy_set:
             if item not in ["Copper Platelegs", "Copper Platebody", "Silver Platelegs",\
-                "Silver Platebody", "Diamond Platelegs", "Diamond Platebody"]:
-                print("{}:\t\t {}".format(item, items[item]["DESCRIPTION"]))
-            elif item in ["Copper Platebody", "Silver Platebody", "Copper Platelegs", "Silver Platelegs"]:
-                print("{}:\t {}".format(item, items[item]["DESCRIPTION"]))
+                "Silver Platebody", "Diamond Platelegs", "Diamond Platebody","Copper Ore", "Copper Bar"]:
+                print("{} \t   {} gold   :  {}".format(item, items[item]["VALUE"], items[item]["DESCRIPTION"]))
+            elif item in ["Silver Platebody", "Silver Platelegs"]:
+                print("{}   {} gold  :  {}".format(item, items[item]["VALUE"], items[item]["DESCRIPTION"]))
+            elif item in ["Copper Platebody", "Copper Platelegs"]:
+                print("{}   {} gold   :  {}".format(item, items[item]["VALUE"], items[item]["DESCRIPTION"]))
             else:
-                print("{}: {:>24}".format(item, items[item]["DESCRIPTION"]))
+                print("{} \t   {} gold    :  {}".format(item, items[item]["VALUE"], items[item]["DESCRIPTION"]))
     else:
         for item in magic_shop_buy_set:
-            if item not in ["Super Health Potion", "Super Mana Potion", "Staff"]:
-                print("{}:\t\t{}".format(item, items[item]["DESCRIPTION"]))
-            elif item != "Staff":
-                print("{}:\t{}".format(item, items[item]["DESCRIPTION"]))
+            if item not in ["Super Health Potion", "Super Mana Potion", "Staff", "Greater Staff",\
+                "Health Potion", "Mana Potion"]:
+                print("{} \t\t{} gold   :  {}".format(item, items[item]["VALUE"],items[item]["DESCRIPTION"]))
+            elif item == "Staff":
+                print("{} \t\t\t{} gold   :  {}".format(item, items[item]["VALUE"], items[item]["DESCRIPTION"]))
+            elif item == "Greater Staff":
+                print("{} \t\t{} gold  :  {}".format(item, items[item]["VALUE"],items[item]["DESCRIPTION"]))
+            elif item in ["Health Potion","Mana Potion"]:
+                print("{} \t\t{} gold    :  {}".format(item, items[item]["VALUE"], items[item]["DESCRIPTION"]))
             else:
-                print("{}:\t\t\t{}".format(item, items[item]["DESCRIPTION"]))
+                print("{} \t{} gold   :  {}".format(item, items[item]["VALUE"], items[item]["DESCRIPTION"]))
     print("\n")
     myPlayer.display_stats()
     print("Which item would you like to buy?")
@@ -333,18 +343,22 @@ def sell_prompt():
             if item in blacksmith_sell_set:
                 if item not in ["Copper Platelegs", "Copper Platebody", "Silver Platelegs",\
                 "Silver Platebody", "Diamond Platelegs", "Diamond Platebody"]:
-                    print("{} \t\t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+                    print("{} \t    ({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+                elif item in ["Diamond Platelegs", "Diamond Platebody"]:
+                    print("{}   ({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
                 else:
-                    print("{} \t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+                    print("{}    ({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
     else:
         for item in item_set:
             if item in magic_shop_sell_set:     
                 if item not in ["Super Health Potion", "Super Mana Potion", "Staff"]:
-                    print("{} \t\t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
-                elif item != "Staff":
-                    print("{} \t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+                    print("{} \t      ({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+                elif item == "Super Health Potion":
+                    print("{}   ({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+                elif item == "Super Mana Potion":
+                    print("{}     ({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
                 else:
-                    print("{} \t\t\t({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
+                    print("{} \t\t      ({}) : {} gold".format(item, inventory.count(item), items[item]["VALUE"]))
     print("\n")
     myPlayer.display_stats()
     print("Which item would you like to sell?")
