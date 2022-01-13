@@ -15,6 +15,7 @@ class player:
         self.mp = self.max_mp
         self.location = 'Town'
         self.gold = 100
+        self.inventory_size = 25
 
         self.xp = 0                 # Combat XP
         self.lvlUp = 50             # Combat XP required for level up

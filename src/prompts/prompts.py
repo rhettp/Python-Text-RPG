@@ -185,6 +185,12 @@ def shop_prompt():
 def buy_prompt():
     print_location()
     if myPlayer.location == "General Store":
+        if myPlayer.inventory_size == 25:
+            print("Big Bag:\t {}".format(items["Big Bag"]["DESCRIPTION"]))
+        elif myPlayer.inventory_size == 50:
+            print("Bigger Bag:\t {}".format(items["Bigger Bag"]["DESCRIPTION"]))
+        elif myPlayer.inventory_size == 75:
+            print("Biggest Bag:\t {}".format(items["Biggest Bag"]["DESCRIPTION"]))
         for item in general_store_buy_set:
             print("{}:\t {}".format(item, items[item]["DESCRIPTION"]))
     elif myPlayer.location == "Blacksmith":
@@ -209,7 +215,39 @@ def buy_prompt():
     print("Which item would you like to buy?")
     while True:
         item = input('> ')
-        if item in general_store_buy_set or item in blacksmith_buy_set or item in magic_shop_buy_set:
+        if item in bag_set:     # Buy inventory upgrade
+            os.system('clear')
+            print_location()
+            print("{}: {} gold\n".format(item, items[item]["VALUE"]))
+            myPlayer.display_stats()
+            print("Your inventory will increase to {} items.".format(items[item]["SIZE"]))
+            print("Would you like to purchase it?")
+            while True:
+                action = input('> ')
+                if action in ["yes","Yes","YES"] and myPlayer.gold >= items[item]["VALUE"]:
+                    os.system('clear')
+                    print_location()
+                    print("You bought the {} for {} gold.".format(item, items[item]["VALUE"]))
+                    print("\n")
+                    myPlayer.inventory_size = items[item]["SIZE"]
+                    myPlayer.gold -= items[item]["VALUE"]
+                    myPlayer.display_stats()
+                    shop_prompt()
+                    break
+                elif action in ["yes","Yes","YES"] and myPlayer.gold < items[item]["VALUE"]:
+                    print("You don't have enough gold for the {}.".format(item))
+                elif action in ["no","No","NO","back","Back","BACK"]:
+                    os.system('clear')
+                    print_location()
+                    print("You did not buy the {}.".format(item))
+                    print("\n")
+                    myPlayer.display_stats()
+                    shop_prompt()
+                    break
+                else:
+                    print("Please enter a valid action.")
+                    continue
+        elif item in general_store_buy_set or item in blacksmith_buy_set or item in magic_shop_buy_set:
             os.system('clear')
             print_location()
             print("{}: {} gold\n".format(item, items[item]["VALUE"]))

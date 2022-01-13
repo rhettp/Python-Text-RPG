@@ -7,4 +7,5 @@ myPlayer.wc_lvl = 24
 myPlayer.ft_lvl = 24
 myPlayer.mn_lvl = 24
 myPlayer.bs_lvl = 24
-forest_prompt()
+myPlayer.gold = 10000
+town_prompt()

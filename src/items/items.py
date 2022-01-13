@@ -9,6 +9,9 @@ general_store_buy_set = ["Oak Log", "Willow Log", "Maple Log", "Oak Bow (u)", "W
 general_sell_set = ["Oak Log", "Willow Log", "Maple Log", "Yew Log", "Oak Bow (u)", "Willow Bow (u)", "Maple Bow (u)",\
      "Yew Bow (u)", "Bow String", "Oak Bow", "Willow Bow", "Maple Bow", "Yew Bow"]
 
+# Bag set  
+bag_set = ["Big Bag", "Bigger Bag", "Biggest Bag"]
+
 # Blacksmith buy set
 blacksmith_buy_set = ["Copper Ore", "Iron Ore", "Silver Ore", "Copper Bar", "Iron Bar", "Silver Bar", "Copper Sword",\
     "Copper Helmet","Copper Platelegs", "Copper Platebody", "Iron Sword", "Iron Helmet", "Iron Platelegs", "Iron Platebody",\
@@ -368,5 +371,22 @@ items = {
         "DESCRIPTION": 'A greater magic staff with +30 magic damage.',
         "VALUE": 1500,
         "DAMAGE": 30
+    },
+
+    # Bags
+     'Big Bag': {
+        "DESCRIPTION": 'A big bag that can hold up to 50 items.',
+        "VALUE": 200,
+        "SIZE": 50
+    },
+     'Bigger Bag': {
+        "DESCRIPTION": 'A bigger bag that can hold up to 75 items.',
+        "VALUE": 500,
+        "SIZE": 75
+    },
+     'Biggest Bag': {
+        "DESCRIPTION": 'The biggest bag around! Holds up to 100 items!',
+        "VALUE": 1000,
+        "SIZE": 100
     },
 }
