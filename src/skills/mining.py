@@ -109,11 +109,12 @@ def mine(ore):
             skill_wait_time(3)
         addToInventory("Copper Ore")
         print("You receive Copper Ore!")
-        myPlayer.mn_xp += items["Copper Ore"]["EXPERIENCE"]      # 10 XP
-        if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
-            myPlayer.mining_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
+        myPlayer.mn_xp += items["Copper Ore"]["EXPERIENCE"]  
+        if myPlayer.mn_lvl < myPlayer.max_level:    
+            if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
+                myPlayer.mining_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
 
     # Iron Ore
     elif ore == "Iron Ore":
@@ -129,11 +130,12 @@ def mine(ore):
             skill_wait_time(3)
         addToInventory("Iron Ore")
         print("You receive Iron Ore!")
-        myPlayer.mn_xp += items["Iron Ore"]["EXPERIENCE"]      # 20 XP
-        if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
-            myPlayer.mining_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
+        myPlayer.mn_xp += items["Iron Ore"]["EXPERIENCE"]
+        if myPlayer.mn_lvl < myPlayer.max_level:      
+            if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
+                myPlayer.mining_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
 
     # Silver Ore
     elif ore == "Silver Ore":
@@ -149,11 +151,12 @@ def mine(ore):
             skill_wait_time(3)
         addToInventory("Silver Ore")
         print("You receive Silver Ore!")
-        myPlayer.mn_xp += items["Silver Ore"]["EXPERIENCE"]      # 40 XP
-        if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
-            myPlayer.mining_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
+        myPlayer.mn_xp += items["Silver Ore"]["EXPERIENCE"] 
+        if myPlayer.mn_lvl < myPlayer.max_level:    
+            if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
+                myPlayer.mining_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
 
     # Gold Ore
     elif ore == "Gold Ore":
@@ -169,11 +172,12 @@ def mine(ore):
             skill_wait_time(3)
         addToInventory("Gold Ore")
         print("You receive Gold Ore!")
-        myPlayer.mn_xp += items["Gold Ore"]["EXPERIENCE"]      # 80 XP
-        if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
-            myPlayer.mining_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
+        myPlayer.mn_xp += items["Gold Ore"]["EXPERIENCE"] 
+        if myPlayer.mn_lvl < myPlayer.max_level:    
+            if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
+                myPlayer.mining_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
 
     # Diamond Ore
     elif ore == "Diamond Ore":
@@ -189,10 +193,10 @@ def mine(ore):
             skill_wait_time(3)
         addToInventory("Diamond Ore")
         print("You receive Diamond Ore!")
-        myPlayer.mn_xp += items["Diamond Ore"]["EXPERIENCE"]      # 160 XP
-        if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
-            myPlayer.mining_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
+        myPlayer.mn_xp += items["Diamond Ore"]["EXPERIENCE"]
+        if myPlayer.mn_lvl < myPlayer.max_level:      
+            if myPlayer.mn_xp >= myPlayer.mn_lvlUp:
+                myPlayer.mining_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
 
-  

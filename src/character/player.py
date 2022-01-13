@@ -18,7 +18,8 @@ class player:
 
         self.xp = 0                 # Combat XP
         self.lvlUp = 50             # Combat XP required for level up
-        self.lvl = 1                # Current Combat level 
+        self.lvl = 1                # Current Combat level
+        self.max_level = 25         # Max level for skills 
 
         self.str_xp = 0             # Strength XP
         self.str_lvlUp = 50         # Strength XP required for level up
@@ -104,65 +105,90 @@ class player:
         self.lvl += 1
         self.max_hp += 5
         self.xp -= self.lvlUp
-        self.lvlUp = round(self.lvlUp * 1.2)
-        print("Congatulations your Combat level increased to {}!".format(self.lvl))
-        print("{} XP to next level.\n".format(myPlayer.lvlUp - myPlayer.xp))
+        if self.lvl == self.max_level:
+            print("Congatulations you increased Combat to the max level!\n")
+        else:
+            self.lvlUp = round(self.lvlUp * 1.2)
+            print("Congatulations your Combat level increased to {}!".format(self.lvl))
+            print("{} XP to next level.\n".format(myPlayer.lvlUp - myPlayer.xp))
 
     # Strength level up
     def strength_level_up(self):
         self.strength += 1
         self.str_xp -= self.str_lvlUp
-        self.str_lvlUp = round(self.str_lvlUp * 1.2)
-        print("Congatulations your Strength level increased to {}!".format(self.strength))
-        print("{} XP to next level.\n".format(myPlayer.str_lvlUp - myPlayer.str_xp))
+        if self.strength == self.max_level:
+            print("Congatulations you increased Strength to the max level!\n")
+        else:
+            self.str_lvlUp = round(self.str_lvlUp * 1.2)
+            print("Congatulations your Strength level increased to {}!".format(self.strength))
+            print("{} XP to next level.\n".format(myPlayer.str_lvlUp - myPlayer.str_xp))
 
     # Agility level up
     def agility_level_up(self):
         self.agility += 1
         self.ag_xp -= self.ag_lvlUp
-        self.ag_lvlUp = round(self.ag_lvlUp * 1.2)
-        print("Congatulations your Agility level increased to {}!".format(self.agility))
-        print("{} XP to next level.\n".format(myPlayer.ag_lvlUp - myPlayer.ag_xp))
+        if self.agility == self.max_level:
+            print("Congatulations you increased Agility to the max level!\n")
+        else:
+            self.ag_lvlUp = round(self.ag_lvlUp * 1.2)
+            print("Congatulations your Agility level increased to {}!".format(self.agility))
+            print("{} XP to next level.\n".format(myPlayer.ag_lvlUp - myPlayer.ag_xp))
 
     # Magic level up
     def magic_level_up(self):
         self.magic += 1
         self.max_mp += 5
         self.mag_xp -= self.mag_lvlUp
-        self.mag_lvlUp = round(self.mag_lvlUp * 1.2)
-        print("Congatulations your Magic level increased to {}!".format(self.magic))
-        print("{} XP to next level.\n".format(myPlayer.mag_lvlUp - myPlayer.mag_xp))
+        if self.magic == self.max_level:
+            print("Congatulations you increased Magic to the max level!\n")
+        else:
+            self.mag_lvlUp = round(self.mag_lvlUp * 1.2)
+            print("Congatulations your Magic level increased to {}!".format(self.magic))
+            print("{} XP to next level.\n".format(myPlayer.mag_lvlUp - myPlayer.mag_xp))
 
     # Woodcutting level up
     def woodcutting_level_up(self):
         self.wc_lvl += 1
         self.wc_xp -= self.wc_lvlUp
-        self.wc_lvlUp = round(self.wc_lvlUp * 1.2)
-        print("Congatulations your Woodcutting level increased to {}!".format(self.wc_lvl))
-        print("{} XP to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
+        if self.wc_lvl == self.max_level:
+            print("Congatulations you increased Woodcutting to the max level!\n")
+        else:
+            self.wc_lvlUp = round(self.wc_lvlUp * 1.2)
+            print("Congatulations your Woodcutting level increased to {}!".format(self.wc_lvl))
+            print("{} XP to next level.\n".format(myPlayer.wc_lvlUp - myPlayer.wc_xp))
 
     # Fletching level up
     def fletching_level_up(self):
         self.ft_lvl += 1
         self.ft_xp -= self.ft_lvlUp
-        self.ft_lvlUp = round(self.ft_lvlUp * 1.2)
-        print("Congatulations your Fletching level increased to {}!".format(self.ft_lvl))
-        print("{} XP to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
+        if self.ft_lvl == self.max_level:
+            print("Congatulations you increased Fletching to the max level!\n")
+        else:
+            self.ft_lvlUp = round(self.ft_lvlUp * 1.2)
+            print("Congatulations your Fletching level increased to {}!".format(self.ft_lvl))
+            print("{} XP to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
 
     # Mining level up
     def mining_level_up(self):
         self.mn_lvl += 1
         self.mn_xp -= self.mn_lvlUp
-        self.mn_lvlUp = round(self.mn_lvlUp * 1.2)
-        print("Congatulations your Mining level increased to {}!".format(self.mn_lvl))
-        print("{} XP to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
+        if self.mn_lvl == self.max_level:
+            print("Congatulations you increased Mining to the max level!\n")
+        else:
+            self.mn_lvlUp = round(self.mn_lvlUp * 1.2)
+            print("Congatulations your Mining level increased to {}!".format(self.mn_lvl))
+            print("{} XP to next level.\n".format(myPlayer.mn_lvlUp - myPlayer.mn_xp))
 
     # Blacksmithing level up
     def blacksmithing_level_up(self):
         self.bs_lvl += 1
         self.bs_xp -= self.bs_lvlUp
-        self.bs_lvlUp = round(self.bs_lvlUp * 1.2)
-        print("Congatulations your Blacksmithing level increased to {}!".format(self.bs_lvl))
-        print("{} XP to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        if self.bs_lvl == self.max_level:
+            print("Congatulations you increased Blacksmithing to the max level!\n")
+        else:
+            self.bs_lvlUp = round(self.bs_lvlUp * 1.2)
+            print("Congatulations your Blacksmithing level increased to {}!".format(self.bs_lvl))
+            print("{} XP to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
 myPlayer = player()
+

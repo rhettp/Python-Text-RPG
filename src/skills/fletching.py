@@ -179,11 +179,12 @@ def fletch(logs):
             removeItem(logs)
         addToInventory("Oak Bow (u)")
         print("You receive an Oak Bow (u)!")
-        myPlayer.ft_xp += items["Oak Bow (u)"]["EXPERIENCE"]      
-        if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
-            myPlayer.fletching_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
+        myPlayer.ft_xp += items["Oak Bow (u)"]["EXPERIENCE"]
+        if myPlayer.ft_lvl < myPlayer.max_level:       
+            if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
+                myPlayer.fletching_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
 
     # Willow Bow
     elif logs == "Willow Log":
@@ -203,11 +204,12 @@ def fletch(logs):
             removeItem(logs)
         addToInventory("Willow Bow (u)")
         print("You receive a Willow Bow (u)!")
-        myPlayer.ft_xp += items["Willow Bow (u)"]["EXPERIENCE"]     
-        if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
-            myPlayer.fletching_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
+        myPlayer.ft_xp += items["Willow Bow (u)"]["EXPERIENCE"]
+        if myPlayer.ft_lvl < myPlayer.max_level:      
+            if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
+                myPlayer.fletching_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
 
     # Maple Bow
     elif logs == "Maple Log":
@@ -227,11 +229,12 @@ def fletch(logs):
             removeItem(logs)
         addToInventory("Maple Bow (u)")
         print("You receive a Maple Bow (u)!")
-        myPlayer.ft_xp += items["Maple Bow (u)"]["EXPERIENCE"]     
-        if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
-            myPlayer.fletching_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
+        myPlayer.ft_xp += items["Maple Bow (u)"]["EXPERIENCE"]
+        if myPlayer.ft_lvl < myPlayer.max_level:      
+            if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
+                myPlayer.fletching_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
 
     # Yew Bow
     elif logs == "Yew Log":
@@ -251,11 +254,12 @@ def fletch(logs):
             removeItem(logs)
         addToInventory("Yew Bow (u)")
         print("You receive a Yew Bow (u)!")
-        myPlayer.ft_xp += items["Yew Bow (u)"]["EXPERIENCE"]       
-        if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
-            myPlayer.fletching_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
+        myPlayer.ft_xp += items["Yew Bow (u)"]["EXPERIENCE"]
+        if myPlayer.ft_lvl < myPlayer.max_level:        
+            if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
+                myPlayer.fletching_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
 
     # Magic Bow
     elif logs == "Magic Log":
@@ -275,11 +279,12 @@ def fletch(logs):
             removeItem(logs)
         addToInventory("Magic Bow (u)")
         print("You receive a Magic Bow (u)!")
-        myPlayer.ft_xp += items["Magic Bow (u)"]["EXPERIENCE"]     
-        if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
-            myPlayer.fletching_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
+        myPlayer.ft_xp += items["Magic Bow (u)"]["EXPERIENCE"] 
+        if myPlayer.ft_lvl < myPlayer.max_level:     
+            if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
+                myPlayer.fletching_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
 
 # String bow prompt
 def string_bow_prompt():
@@ -441,11 +446,12 @@ def string(bow):
         removeItem("Oak Bow (u)")
         addToInventory("Oak Bow")
         print("You receive an Oak Bow!")
-        myPlayer.ft_xp += items["Oak Bow"]["EXPERIENCE"]           
-        if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
-            myPlayer.fletching_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
+        myPlayer.ft_xp += items["Oak Bow"]["EXPERIENCE"] 
+        if myPlayer.ft_lvl < myPlayer.max_level:           
+            if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
+                myPlayer.fletching_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
 
     # Willow Bow
     elif bow == "Willow Bow":
@@ -463,11 +469,12 @@ def string(bow):
         removeItem("Willow Bow (u)")
         addToInventory("Willow Bow")
         print("You receive a Willow Bow!")
-        myPlayer.ft_xp += items["Willow Bow"]["EXPERIENCE"]          
-        if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
-            myPlayer.fletching_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
+        myPlayer.ft_xp += items["Willow Bow"]["EXPERIENCE"]
+        if myPlayer.ft_lvl < myPlayer.max_level:           
+            if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
+                myPlayer.fletching_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
 
     # Maple Bow
     elif bow == "Maple Bow":
@@ -485,11 +492,12 @@ def string(bow):
         removeItem("Maple Bow (u)")
         addToInventory("Maple Bow")
         print("You receive a Maple Bow!")
-        myPlayer.ft_xp += items["Maple Bow"]["EXPERIENCE"]          
-        if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
-            myPlayer.fletching_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
+        myPlayer.ft_xp += items["Maple Bow"]["EXPERIENCE"] 
+        if myPlayer.ft_lvl < myPlayer.max_level:          
+            if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
+                myPlayer.fletching_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
 
     # Yew Bow
     elif bow == "Yew Bow":
@@ -507,11 +515,12 @@ def string(bow):
         removeItem("Yew Bow (u)")
         addToInventory("Yew Bow")
         print("You receive a Yew Bow!")
-        myPlayer.ft_xp += items["Yew Bow"]["EXPERIENCE"]          
-        if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
-            myPlayer.fletching_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
+        myPlayer.ft_xp += items["Yew Bow"]["EXPERIENCE"]
+        if myPlayer.ft_lvl < myPlayer.max_level:           
+            if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
+                myPlayer.fletching_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
 
     # Magic Bow
     elif bow == "Magic Bow":
@@ -529,8 +538,9 @@ def string(bow):
         removeItem("Magic Bow (u)")
         addToInventory("Magic Bow")
         print("You receive a Magic Bow!")
-        myPlayer.ft_xp += items["Magic Bow"]["EXPERIENCE"]        
-        if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
-            myPlayer.fletching_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))
+        myPlayer.ft_xp += items["Magic Bow"]["EXPERIENCE"]
+        if myPlayer.ft_lvl < myPlayer.max_level:         
+            if myPlayer.ft_xp >= myPlayer.ft_lvlUp:
+                myPlayer.fletching_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.ft_lvlUp - myPlayer.ft_xp))

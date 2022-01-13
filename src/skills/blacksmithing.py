@@ -176,11 +176,12 @@ def forge(ore):
         removeItem(ore)     # -1 Copper ore
         addToInventory("Copper Bar")
         print("You receive a Copper Bar!")
-        myPlayer.bs_xp += items["Copper Bar"]["EXPERIENCE"]      
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Copper Bar"]["EXPERIENCE"]
+        if myPlayer.bs_lvl < myPlayer.max_level:      
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Iron Ore
     elif ore == "Iron Ore":
@@ -200,11 +201,12 @@ def forge(ore):
             removeItem(ore)
         addToInventory("Iron Bar")
         print("You receive an Iron Bar!")
-        myPlayer.bs_xp += items["Iron Bar"]["EXPERIENCE"]      
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Iron Bar"]["EXPERIENCE"]
+        if myPlayer.bs_lvl < myPlayer.max_level:       
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Silver Ore
     elif ore == "Silver Ore":
@@ -224,11 +226,12 @@ def forge(ore):
             removeItem(ore)
         addToInventory("Silver Bar")
         print("You receive a Silver Bar!")
-        myPlayer.bs_xp += items["Silver Bar"]["EXPERIENCE"]      
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Silver Bar"]["EXPERIENCE"]
+        if myPlayer.bs_lvl < myPlayer.max_level:       
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Gold Ore    
     elif ore == "Gold Ore":
@@ -248,11 +251,12 @@ def forge(ore):
             removeItem(ore)
         addToInventory("Gold Bar")
         print("You receive a Gold Bar!")
-        myPlayer.bs_xp += items["Gold Bar"]["EXPERIENCE"]      
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Gold Bar"]["EXPERIENCE"]
+        if myPlayer.bs_lvl < myPlayer.max_level:       
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Diamond Ore
     elif ore == "Diamond Ore":
@@ -272,11 +276,12 @@ def forge(ore):
             removeItem(ore)
         addToInventory("Diamond Bar")
         print("You receive a Diamond Bar!")
-        myPlayer.bs_xp += items["Diamond Bar"]["EXPERIENCE"]     
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Diamond Bar"]["EXPERIENCE"]
+        if myPlayer.bs_lvl < myPlayer.max_level:      
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
 # Smith prompt
 def smith_prompt():
@@ -772,13 +777,12 @@ def smith(item):
             removeItem("Copper Bar")
         addToInventory("Copper Helmet")
         print("You receive a Copper Helmet!")
-        myPlayer.bs_xp += items["Copper Helmet"]["EXPERIENCE"] 
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            print("{} XP gained, {} current XP, {} lvl up".format(items["Copper Helmet"]["EXPERIENCE"], myPlayer.bs_xp, myPlayer.bs_lvlUp))
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP gained, {} current XP, {} lvl up".format(items["Copper Helmet"]["EXPERIENCE"], myPlayer.bs_xp, myPlayer.bs_lvlUp))
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Copper Helmet"]["EXPERIENCE"]
+        if myPlayer.bs_lvl < myPlayer.max_level:  
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Iron Helmet
     elif item == "Iron Helmet":
@@ -799,10 +803,11 @@ def smith(item):
         addToInventory("Iron Helmet")
         print("You receive an Iron Helmet!")
         myPlayer.bs_xp += items["Iron Helmet"]["EXPERIENCE"] 
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        if myPlayer.bs_lvl < myPlayer.max_level: 
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Silver Helmet
     elif item == "Silver Helmet":
@@ -823,10 +828,11 @@ def smith(item):
         addToInventory("Silver Helmet")
         print("You receive a Silver Helmet!")
         myPlayer.bs_xp += items["Silver Helmet"]["EXPERIENCE"] 
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        if myPlayer.bs_lvl < myPlayer.max_level: 
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Gold Helmet
     elif item == "Gold Helmet":
@@ -846,11 +852,12 @@ def smith(item):
             removeItem("Gold Bar")
         addToInventory("Gold Helmet")
         print("You receive a Gold Helmet!")
-        myPlayer.bs_xp += items["Gold Helmet"]["EXPERIENCE"]   
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Gold Helmet"]["EXPERIENCE"]
+        if myPlayer.bs_lvl < myPlayer.max_level:    
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Diamond Helmet
     elif item == "Diamond Helmet":
@@ -870,11 +877,12 @@ def smith(item):
             removeItem("Diamond Bar")
         addToInventory("Diamond Helmet")
         print("You receive a Diamond Helmet!")
-        myPlayer.bs_xp += items["Diamond Helmet"]["EXPERIENCE"] 
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Diamond Helmet"]["EXPERIENCE"]
+        if myPlayer.bs_lvl < myPlayer.max_level:  
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
 
     ### Swords ###
@@ -897,11 +905,12 @@ def smith(item):
             removeItem("Copper Bar")
         addToInventory("Copper Sword")
         print("You receive a Copper Sword!")
-        myPlayer.bs_xp += items["Copper Sword"]["EXPERIENCE"]    
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Copper Sword"]["EXPERIENCE"] 
+        if myPlayer.bs_lvl < myPlayer.max_level:    
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Iron Sword
     elif item == "Iron Sword":
@@ -922,11 +931,12 @@ def smith(item):
             removeItem("Iron Bar")
         addToInventory("Iron Sword")
         print("You receive an Iron Sword!")
-        myPlayer.bs_xp += items["Iron Sword"]["EXPERIENCE"]      
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Iron Sword"]["EXPERIENCE"] 
+        if myPlayer.bs_lvl < myPlayer.max_level:      
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Silver Sword
     elif item == "Silver Sword":
@@ -946,11 +956,12 @@ def smith(item):
             removeItem("Silver Bar")
         addToInventory("Silver Sword")
         print("You receive a Silver Sword!")
-        myPlayer.bs_xp += items["Silver Sword"]["EXPERIENCE"]     
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Silver Sword"]["EXPERIENCE"] 
+        if myPlayer.bs_lvl < myPlayer.max_level:     
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Gold Sword
     elif item == "Gold Sword":
@@ -970,11 +981,12 @@ def smith(item):
             removeItem("Gold Bar")
         addToInventory("Gold Sword")
         print("You receive a Gold Sword!")
-        myPlayer.bs_xp += items["Gold Sword"]["EXPERIENCE"]       
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Gold Sword"]["EXPERIENCE"] 
+        if myPlayer.bs_lvl < myPlayer.max_level:       
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Diamond Sword
     elif item == "Diamond Sword":
@@ -994,11 +1006,12 @@ def smith(item):
             removeItem("Diamond Bar")
         addToInventory("Diamond Sword")
         print("You receive a Diamond Sword!")
-        myPlayer.bs_xp += items["Diamond Sword"]["EXPERIENCE"]    
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Diamond Sword"]["EXPERIENCE"] 
+        if myPlayer.bs_lvl < myPlayer.max_level:    
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
 
     ### Platelegs ###
@@ -1022,10 +1035,11 @@ def smith(item):
         addToInventory("Copper Platelegs")
         print("You receive Copper Platelegs!")
         myPlayer.bs_xp += items["Copper Platelegs"]["EXPERIENCE"] 
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        if myPlayer.bs_lvl < myPlayer.max_level: 
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Iron Platelegs
     elif item == "Iron Platelegs":
@@ -1045,11 +1059,12 @@ def smith(item):
             removeItem("Iron Bar")
         addToInventory("Iron Platelegs")
         print("You receive Iron Platelegs!")
-        myPlayer.bs_xp += items["Iron Platelegs"]["EXPERIENCE"]   
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Iron Platelegs"]["EXPERIENCE"] 
+        if myPlayer.bs_lvl < myPlayer.max_level:   
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Silver Platelegs
     elif item == "Silver Platelegs":
@@ -1070,10 +1085,11 @@ def smith(item):
         addToInventory("Silver Platelegs")
         print("You receive Silver Platelegs!")
         myPlayer.bs_xp += items["Silver Platelegs"]["EXPERIENCE"]
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        if myPlayer.bs_lvl < myPlayer.max_level: 
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Gold Platelegs
     elif item == "Gold Platelegs":
@@ -1093,11 +1109,12 @@ def smith(item):
             removeItem("Gold Bar")
         addToInventory("Gold Platelegs")
         print("You receive Gold Platelegs!")
-        myPlayer.bs_xp += items["Gold Platelegs"]["EXPERIENCE"]   
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Gold Platelegs"]["EXPERIENCE"]  
+        if myPlayer.bs_lvl < myPlayer.max_level:  
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     #Diamond Platelegs
     elif item == "Diamond Platelegs":
@@ -1116,10 +1133,11 @@ def smith(item):
         addToInventory("Diamond Platelegs")
         print("You receive Diamond Platelegs!")
         myPlayer.bs_xp += items["Diamond Platelegs"]["EXPERIENCE"] 
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        if myPlayer.bs_lvl < myPlayer.max_level: 
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
 
     ### Platebody ###
@@ -1143,10 +1161,11 @@ def smith(item):
         addToInventory("Copper Platebody")
         print("You receive a Copper Platebody!")
         myPlayer.bs_xp += items["Copper Platebody"]["EXPERIENCE"] 
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        if myPlayer.bs_lvl < myPlayer.max_level: 
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Iron Platebody
     elif item == "Iron Platebody":
@@ -1166,11 +1185,12 @@ def smith(item):
             removeItem("Iron Bar")
         addToInventory("Iron Platebody")
         print("You receive an Iron Platebody!")
-        myPlayer.bs_xp += items["Iron Platebody"]["EXPERIENCE"]   
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Iron Platebody"]["EXPERIENCE"]  
+        if myPlayer.bs_lvl < myPlayer.max_level:  
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Silver Platebody
     elif item == "Silver Platebody":
@@ -1191,10 +1211,11 @@ def smith(item):
         addToInventory("Silver Platebody")
         print("You receive a Silver Platebody!")
         myPlayer.bs_xp += items["Silver Platebody"]["EXPERIENCE"] 
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        if myPlayer.bs_lvl < myPlayer.max_level: 
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Gold Platebody
     elif item == "Gold Platebody":
@@ -1214,11 +1235,12 @@ def smith(item):
             removeItem("Gold Bar")
         addToInventory("Gold Platebody")
         print("You receive a Gold Platebody!")
-        myPlayer.bs_xp += items["Gold Platebody"]["EXPERIENCE"]   
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        myPlayer.bs_xp += items["Gold Platebody"]["EXPERIENCE"]  
+        if myPlayer.bs_lvl < myPlayer.max_level:  
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
     # Diamond Platebody
     elif item == "Diamond Platebody":
@@ -1235,8 +1257,9 @@ def smith(item):
         addToInventory("Diamond Platebody")
         print("You receive a Diamond Platebody!")
         myPlayer.bs_xp += items["Diamond Platebody"]["EXPERIENCE"] 
-        if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
-            myPlayer.blacksmithing_level_up()
-        else:
-            print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
+        if myPlayer.bs_lvl < myPlayer.max_level: 
+            if myPlayer.bs_xp >= myPlayer.bs_lvlUp:
+                myPlayer.blacksmithing_level_up()
+            else:
+                print("{} XP left to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
