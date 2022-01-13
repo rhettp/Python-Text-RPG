@@ -21,7 +21,7 @@ def title_screen_selections():
         option = input('> ')
         # Start game
         if option == '1':       
-            if os.path.exists('saved_game_file'):       # Saved game file exists
+            if os.path.exists('saved_game_file') or os.path.exists('saved_game_file.dir'):       # Saved game file exists
                 print("This will overwrite your saved game.")
                 print("Do you want to continue?")
                 while True:
@@ -41,7 +41,7 @@ def title_screen_selections():
 
         # Load Game
         elif option == '2':
-            if os.path.exists('saved_game_file'):       # Load saved game file if it exists
+            if os.path.exists('saved_game_file') or os.path.exists('saved_game_file.dir'):       # Load saved game file if it exists
                 load_game()
                 break
             else:                                       # No saved game file
