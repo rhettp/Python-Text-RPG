@@ -1,8 +1,4 @@
-import cmd
-import textwrap
-import sys
-import os
-import time
+from prompts.clear_console import *
 from character.player import *
 from gameplay.inventory import *
 from skills.skill_wait_time import *
@@ -19,7 +15,7 @@ def fletching_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Unstrung bows 
-            os.system('clear')
+            clearConsole()
             print("\n#############")
             print("# Fletching #")
             print("#############\n")
@@ -27,7 +23,7 @@ def fletching_prompt():
             unstrung_prompt()
             break
         elif action == '2':     # String bows
-            os.system('clear')
+            clearConsole()
             print("\n#############")
             print("# Fletching #")
             print("#############\n")
@@ -35,12 +31,12 @@ def fletching_prompt():
             string_bow_prompt()
             break
         elif action == '3':     # Inventory
-            os.system('clear')
+            clearConsole()
             print("\n#############")
             print("# Fletching #")
             print("#############\n")
             inventory_prompt()
-            os.system('clear')
+            clearConsole()
             print("\n#############")
             print("# Fletching #")
             print("#############\n")
@@ -48,7 +44,7 @@ def fletching_prompt():
             fletching_prompt()
             break
         elif action == '4':     # Back
-            os.system('clear')
+            clearConsole()
             break
         else:                   # Input Validation
             print("Please enter a valid action.")
@@ -68,7 +64,7 @@ def unstrung_prompt():
         action = input('> ')
         if action == '1':       # Oak Bow (u)
             if inventory.count("Oak Log") >= 2:   # 2 Oak Logs needed
-                os.system('clear')
+                clearConsole()
                 print("\n#############")
                 print("# Fletching #")
                 print("#############\n")
@@ -80,7 +76,7 @@ def unstrung_prompt():
                 print("You need 2 Oak Logs to make an Oak Bow (u).")
         elif action == '2':     # Willow Bow (u)
             if inventory.count("Willow Log") >= 2 and myPlayer.ft_lvl >= 5:        # 2 Willow logs and at least lvl 5
-                os.system('clear')
+                clearConsole()
                 print("\n#############")
                 print("# Fletching #")
                 print("#############\n")
@@ -94,7 +90,7 @@ def unstrung_prompt():
                 print("You need 2 Willow Logs to make a Willow Bow (u).")
         elif action == '3':     # Maple Bow (u)
             if inventory.count("Maple Log") >= 2 and myPlayer.ft_lvl >= 10:        # 2 Maple logs and at least lvl 10
-                os.system('clear')
+                clearConsole()
                 print("\n#############")
                 print("# Fletching #")
                 print("#############\n")
@@ -108,7 +104,7 @@ def unstrung_prompt():
                 print("You need 2 Maple Logs to make a Maple Bow (u).")
         elif action == '4':     # Yew Bow (u)
             if inventory.count("Yew Log") >= 2 and myPlayer.ft_lvl >= 15:        # 2 Yew logs and at least lvl 15
-                os.system('clear')
+                clearConsole()
                 print("\n#############")
                 print("# Fletching #")
                 print("#############\n")
@@ -122,7 +118,7 @@ def unstrung_prompt():
                 print("You need 2 Yew Logs to make a Yew Bow (u).")
         elif action == '5':     # Magic Bow (u)
             if inventory.count("Magic Log") >= 2 and myPlayer.ft_lvl >= 20:        # 2 Magic logs and at least lvl 20
-                os.system('clear')
+                clearConsole()
                 print("\n#############")
                 print("# Fletching #")
                 print("#############\n")
@@ -135,12 +131,12 @@ def unstrung_prompt():
             else:
                 print("You need 2 Magic Logs to make a Magic Bow (u).")
         elif action == '6':     # Inventory
-            os.system('clear')
+            clearConsole()
             print("\n#############")
             print("# Fletching #")
             print("#############\n")
             inventory_prompt()
-            os.system('clear')
+            clearConsole()
             print("\n#############")
             print("# Fletching #")
             print("#############\n")
@@ -148,7 +144,7 @@ def unstrung_prompt():
             unstrung_prompt()
             break
         elif action == '7':     # Back
-            os.system('clear')
+            clearConsole()
             print("\n#############")
             print("# Fletching #")
             print("#############\n")
@@ -302,7 +298,7 @@ def string_bow_prompt():
         if action == '1':
             # 1 Bow string, 1 Oak Bow (u), and at least lvl 2
             if inventory.count("Bow String") >= 1 and inventory.count("Oak Bow (u)") >= 1 and myPlayer.ft_lvl >= 2:
-                os.system('clear')
+                clearConsole()
                 print("\n#############")
                 print("# Fletching #")
                 print("#############\n")
@@ -323,7 +319,7 @@ def string_bow_prompt():
         elif action == '2':
             # 1 Bow string, 1 Willow Bow (u), and at least lvl 6
             if inventory.count("Bow String") >= 1 and inventory.count("Willow Bow (u)") >= 1 and myPlayer.ft_lvl >= 6:       
-                os.system('clear')
+                clearConsole()
                 print("\n#############")
                 print("# Fletching #")
                 print("#############\n")
@@ -344,7 +340,7 @@ def string_bow_prompt():
         elif action == '3':
             # 1 Bow string, 1 Maple Bow (u), and at least lvl 11
             if inventory.count("Bow String") >= 1 and inventory.count("Maple Bow (u)") >= 1 and myPlayer.ft_lvl >= 11:        
-                os.system('clear')
+                clearConsole()
                 print("\n#############")
                 print("# Fletching #")
                 print("#############\n")
@@ -365,7 +361,7 @@ def string_bow_prompt():
         elif action == '4':
             # 1 Bow string, 1 Yew Bow (u), and at least lvl 16
             if inventory.count("Bow String") >= 1 and inventory.count("Yew Bow (u)") >= 1 and myPlayer.ft_lvl >= 16:        
-                os.system('clear')
+                clearConsole()
                 print("\n#############")
                 print("# Fletching #")
                 print("#############\n")
@@ -386,7 +382,7 @@ def string_bow_prompt():
         elif action == '5':   
             # 1 Bow string, 1 Magic Bow (u), and at least lvl 21
             if inventory.count("Bow String") >= 1 and inventory.count("Magic Bow (u)") >= 1 and myPlayer.ft_lvl >= 21:       
-                os.system('clear')
+                clearConsole()
                 print("\n#############")
                 print("# Fletching #")
                 print("#############\n")
@@ -404,12 +400,12 @@ def string_bow_prompt():
                 print("You need a Bow String to make a Magic Bow.")                          # No Bow String, has Bow (u)
 
         elif action == '6':     # Inventory
-            os.system('clear')
+            clearConsole()
             print("\n#############")
             print("# Fletching #")
             print("#############\n")
             inventory_prompt()
-            os.system('clear')
+            clearConsole()
             print("\n#############")
             print("# Fletching #")
             print("#############\n")
@@ -417,7 +413,7 @@ def string_bow_prompt():
             string_bow_prompt()
             break
         elif action == '7':     # Back
-            os.system('clear')
+            clearConsole()
             print("\n#############")
             print("# Fletching #")
             print("#############\n")

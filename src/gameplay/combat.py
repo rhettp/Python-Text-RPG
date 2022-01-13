@@ -1,13 +1,11 @@
-import cmd
-import textwrap
 import sys
-import os
 import time
 import random
 from character.player import *
 from character.enemy import *
 from prompts.prompts import *
 from gameplay.inventory import *
+from prompts.clear_console import *
 
 ##### Combat #####
 
@@ -51,14 +49,14 @@ def combat_state(enemy):
                 used_strength = False
                 used_agility = False
                 used_magic = False
-                os.system('clear')
+                clearConsole()
                 print_location()
                 print("You successfully escaped the {}!\n".format(enemy.name))
                 enemy.hp = enemy.max_hp     # Reset enemy health
                 myPlayer.display_stats()
                 break
             else:       # Failed to flee
-                os.system('clear')
+                clearConsole()
                 print("\n##########")
                 print("# Combat #")
                 print("##########\n")
@@ -82,7 +80,7 @@ def melee_attack(enemy):
     else:
         damage = random.randrange(1, round(myPlayer.strength / 2) + round(items[myPlayer.melee_weapon]["DAMAGE"] / 2))
     enemy.hp -= damage
-    os.system('clear')
+    clearConsole()
     if damage == 0:
         print("\n##########")
         print("# Combat #")
@@ -147,7 +145,7 @@ def range_attack(enemy):
     else:
         damage = random.randrange(1, round(myPlayer.agility / 2) + round(items[myPlayer.range_weapon]["DAMAGE"] / 2))
     enemy.hp -= damage
-    os.system('clear')
+    clearConsole()
     if damage == 0:
         print("\n##########")
         print("# Combat #")
@@ -236,7 +234,7 @@ def player_defense():
 
 # Magic choice prompt
 def magic_prompt(enemy):
-    os.system('clear')
+    clearConsole()
     print("\n##########")
     print("# Combat #")
     print("##########\n")
@@ -279,7 +277,7 @@ def magic_prompt(enemy):
                 heal(enemy)
                 break
         elif action == '4':     # Back
-            os.system('clear')
+            clearConsole()
             print("\n##########")
             print("# Combat #")
             print("##########\n")
@@ -300,7 +298,7 @@ def fireball(enemy):
     else:
         damage = random.randrange(1, round(myPlayer.magic / 2) + round(items[myPlayer.magic_weapon]["DAMAGE"] / 2) + 5)
     enemy.hp -= damage
-    os.system('clear')
+    clearConsole()
     if damage == 0:
         print("\n##########")
         print("# Combat #")
@@ -328,7 +326,7 @@ def icebolt(enemy):
     else:
         damage = random.randrange(1, round(myPlayer.magic / 2) + round(items[myPlayer.magic_weapon]["DAMAGE"] / 2) + 9)
     enemy.hp -= damage
-    os.system('clear')
+    clearConsole()
     if damage == 0:
         print("\n##########")
         print("# Combat #")
@@ -355,7 +353,7 @@ def heal(enemy):
     else:
         healed = 40
         myPlayer.hp += healed
-    os.system('clear')
+    clearConsole()
     print("\n##########")
     print("# Combat #")
     print("##########\n")
@@ -365,7 +363,7 @@ def heal(enemy):
 
 # Item prompt
 def item_prompt(enemy):
-    os.system('clear')
+    clearConsole()
     print("\n##########")
     print("# Combat #")
     print("##########\n")
@@ -396,7 +394,7 @@ def item_prompt(enemy):
                     healed = items["Health Potion"]["EFFECT"]
                     myPlayer.hp += healed
                 removeItem("Health Potion")
-                os.system('clear')
+                clearConsole()
                 print("\n##########")
                 print("# Combat #")
                 print("##########\n")
@@ -419,7 +417,7 @@ def item_prompt(enemy):
                     mana = items["Mana Potion"]["EFFECT"]
                     myPlayer.mp += mana
                 removeItem("Mana Potion")
-                os.system('clear')
+                clearConsole()
                 print("\n##########")
                 print("# Combat #")
                 print("##########\n")
@@ -437,7 +435,7 @@ def item_prompt(enemy):
             else:
                 myPlayer.hp = items["Super Health Potion"]["EFFECT"]
                 removeItem("Super Health Potion")
-                os.system('clear')
+                clearConsole()
                 print("\n##########")
                 print("# Combat #")
                 print("##########\n")
@@ -455,7 +453,7 @@ def item_prompt(enemy):
             else:
                 myPlayer.mp = items["Super Mana Potion"]["EFFECT"]
                 removeItem("Super Mana Potion")
-                os.system('clear')
+                clearConsole()
                 print("\n##########")
                 print("# Combat #")
                 print("##########\n")
@@ -474,7 +472,7 @@ def item_prompt(enemy):
                 myPlayer.hp = items["Restore Potion"]["EFFECT"]
                 myPlayer.mp = items["Restore Potion"]["EFFECT_2"]
                 removeItem("Restore Potion")
-                os.system('clear')
+                clearConsole()
                 print("\n##########")
                 print("# Combat #")
                 print("##########\n")
@@ -483,7 +481,7 @@ def item_prompt(enemy):
                 enemy_attack(enemy)
                 break
         elif action == '6':     # Back
-            os.system('clear')
+            clearConsole()
             print("\n##########")
             print("# Combat #")
             print("##########\n")
@@ -660,7 +658,7 @@ def combat_defeat(enemy):
     used_agility = False
     used_magic = False
     enemy.hp = enemy.max_hp     # Reset enemy health
-    os.system('clear')
+    clearConsole()
     print("\n##########")
     print("# Combat #")
     print("##########\n")
@@ -676,7 +674,7 @@ def combat_defeat(enemy):
         time.sleep(0.05)
     time.sleep(2)
     
-    os.system('clear')
+    clearConsole()
     print_location()
     defeat3 = ("Some time later")
     for character in defeat3:

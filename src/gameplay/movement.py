@@ -1,9 +1,3 @@
-import cmd
-import textwrap
-import sys
-import os
-import time
-import random
 from character.player import *
 from world.world_map import*
 

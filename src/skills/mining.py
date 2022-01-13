@@ -1,8 +1,4 @@
-import cmd
-import textwrap
-import sys
-import os
-import time
+from prompts.clear_console import *
 from character.player import *
 from gameplay.inventory import *
 from skills.skill_wait_time import *
@@ -22,7 +18,7 @@ def mining_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Copper ore
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print("\n##########")
                 print("# Mining #")
@@ -43,7 +39,7 @@ def mining_prompt():
             print("You need a Mining level of at least 5 to mine Iron Ore.")
             continue 
         elif action == '2' and myPlayer.mn_lvl >= 5:    # Iron ore
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print("\n##########")
                 print("# Mining #")
@@ -64,7 +60,7 @@ def mining_prompt():
             print("You need a Mining level of at least 10 to mine Silver Ore.")
             continue 
         elif action == '3' and myPlayer.mn_lvl >= 10:   # Silver ore
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print("\n##########")
                 print("# Mining #")
@@ -85,7 +81,7 @@ def mining_prompt():
             print("You need a Mining level of at least 15 to mine Gold Ore.")
             continue 
         elif action == '4' and myPlayer.mn_lvl >= 15:   # Gold ore
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print("\n##########")
                 print("# Mining #")
@@ -106,7 +102,7 @@ def mining_prompt():
             print("You need a Mining level of at least 20 to mine Diamond Ore.")
             continue 
         elif action == '5' and myPlayer.mn_lvl >= 20:   # Diamond ore
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print("\n##########")
                 print("# Mining #")
@@ -124,7 +120,7 @@ def mining_prompt():
                 mining_prompt()
                 break
         elif action == '6':     # Inventory
-            os.system('clear')
+            clearConsole()
             print("\n##########")
             print("# Mining #")
             print("##########\n")
@@ -132,7 +128,7 @@ def mining_prompt():
             mining_prompt()
             break
         elif action == '7':     # Back
-            os.system('clear')
+            clearConsole()
             break
         else:                   # Input Validation
             print("Please enter a valid ore.")

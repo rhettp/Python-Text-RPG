@@ -8,6 +8,7 @@ from skills.woodcutting import *
 from skills.fletching import *
 from skills.mining import *
 from skills.blacksmithing import *
+from prompts.clear_console import *
 
 ##### Prompts ##### 
 
@@ -24,21 +25,21 @@ def town_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Shop     
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             shop_selection()
             town_prompt()
             break
         elif action == '2':     # Rest
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.rest()
             myPlayer.display_stats()
             town_prompt()
             break
         elif action == '3':     # Look
-            os.system('clear')
+            clearConsole()
             print_location()
             print(world_zone[myPlayer.location]["DESCRIPTION"])
             print("\n")
@@ -46,20 +47,20 @@ def town_prompt():
             town_prompt()
             break
         elif action == '4':     # Travel
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             player_move()
             prompt_choice()
             break
         elif action == '5':     # Inventory
-            os.system('clear')
+            clearConsole()
             print_location()
             inventory_prompt()
             town_prompt()
             break
         elif action == '6':     # Character
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -88,27 +89,27 @@ def shop_selection():
         destination = input('> ')
         if destination == '1':
             myPlayer.location = "General Store"
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             shop_prompt()
             break
         elif destination == '2':
             myPlayer.location = "Blacksmith"
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             shop_prompt()
             break
         elif destination == '3':
             myPlayer.location = "Magic Shop"
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             shop_prompt()
             break
         elif destination == '4':    # Back
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             break
@@ -129,7 +130,7 @@ def shop_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Buy
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print_location()
                 print("Your inventory is full.\n")
@@ -141,7 +142,7 @@ def shop_prompt():
                 shop_prompt()
                 break
         elif action == '2':     # Sell
-            os.system('clear')
+            clearConsole()
             if not inventory:   # Empty inventory
                 print_location()
                 print("Your inventory is empty.\n")
@@ -153,7 +154,7 @@ def shop_prompt():
                 shop_prompt()
                 break
         elif action == '3':     # Look
-            os.system('clear')
+            clearConsole()
             print_location()
             print(shops[myPlayer.location]["DESCRIPTION"])
             print("\n")
@@ -161,13 +162,13 @@ def shop_prompt():
             shop_prompt()
             break
         elif action == '4':     # Inventory
-            os.system('clear')
+            clearConsole()
             print_location()
             inventory_prompt()
             shop_prompt()
             break
         elif action == '5':     # Character
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -178,7 +179,7 @@ def shop_prompt():
             shop_prompt()
             break
         elif action == '6':     # Leave
-            os.system('clear')
+            clearConsole()
             myPlayer.location = "Town"
             print_location()
             myPlayer.display_stats()
@@ -236,7 +237,7 @@ def buy_prompt():
     while True:
         item = input('> ')
         if item in bag_set:     # Buy inventory upgrade
-            os.system('clear')
+            clearConsole()
             print_location()
             print("{}: {} gold\n".format(item, items[item]["VALUE"]))
             myPlayer.display_stats()
@@ -245,7 +246,7 @@ def buy_prompt():
             while True:
                 action = input('> ')
                 if action in ["yes","Yes","YES"] and myPlayer.gold >= items[item]["VALUE"]:
-                    os.system('clear')
+                    clearConsole()
                     print_location()
                     print("You bought the {} for {} gold.".format(item, items[item]["VALUE"]))
                     print("\n")
@@ -258,7 +259,7 @@ def buy_prompt():
                 elif action in ["yes","Yes","YES"] and myPlayer.gold < items[item]["VALUE"]:
                     print("You don't have enough gold for the {}.".format(item))
                 elif action in ["no","No","NO","back","Back","BACK"]:
-                    os.system('clear')
+                    clearConsole()
                     print_location()
                     print("You did not buy the {}.".format(item))
                     print("\n")
@@ -269,7 +270,7 @@ def buy_prompt():
                     print("Please enter a valid action.")
                     continue
         elif item in general_store_buy_set or item in blacksmith_buy_set or item in magic_shop_buy_set:
-            os.system('clear')
+            clearConsole()
             print_location()
             print("{}: {} gold\n".format(item, items[item]["VALUE"]))
             myPlayer.display_stats()
@@ -282,7 +283,7 @@ def buy_prompt():
                     print("Please enter a valid number.")
                 else:
                     if number == 0:         # 0 items
-                        os.system('clear')
+                        clearConsole()
                         print_location()
                         print("No {}(s) were bought.".format(item))
                         print("\n")
@@ -290,7 +291,7 @@ def buy_prompt():
                         shop_prompt()
                         break
                     elif number == 1 and myPlayer.gold >= number * items[item]["VALUE"]:       # 1 item
-                        os.system('clear')
+                        clearConsole()
                         print_location()
                         print("You bought a(n) {} for {} gold.".format(item, items[item]["VALUE"]))
                         print("\n")
@@ -304,7 +305,7 @@ def buy_prompt():
                     elif myPlayer.gold < number * items[item]["VALUE"]:                       # Not enough gold
                         print("You don't have enough gold for {} {}(s).".format(number, item))
                     elif number > 1 and myPlayer.gold >= number * items[item]["VALUE"]:       # Multiple items
-                        os.system('clear')
+                        clearConsole()
                         print_location()
                         sum = 0
                         for i in range(number):
@@ -321,7 +322,7 @@ def buy_prompt():
                         continue
             break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # Buy no items/go back
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             shop_prompt()
@@ -374,7 +375,7 @@ def sell_prompt():
                     print("Please enter a valid number.")
                 else:
                     if number == 0:         # 0 items
-                        os.system('clear')
+                        clearConsole()
                         print_location()
                         print("No {}(s) were sold.".format(item))
                         print("\n")
@@ -382,7 +383,7 @@ def sell_prompt():
                         shop_prompt()
                         break
                     elif number == 1:       # 1 item
-                        os.system('clear')
+                        clearConsole()
                         print_location()
                         print("You sold a(n) {} for {} gold.".format(item, items[item]["VALUE"]))
                         print("\n")
@@ -395,7 +396,7 @@ def sell_prompt():
                         print("You don't have {} {}(s).".format(number, item))
                         continue
                     elif number > 1 and number <= inventory.count(item):    # Multiple items
-                        os.system('clear')
+                        clearConsole()
                         print_location()
                         sum = 0
                         for i in range(number):
@@ -412,7 +413,7 @@ def sell_prompt():
                         continue
             break
         elif item in ["all","All", "ALL"]:  # Sell all items
-            os.system('clear')
+            clearConsole()
             print_location()
             sum = 0
             for i in inventory:
@@ -425,7 +426,7 @@ def sell_prompt():
             shop_prompt()
             break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # Sell no items/go back
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             shop_prompt()
@@ -448,7 +449,7 @@ def forest_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Combat
-            os.system('clear')
+            clearConsole()
             print("\n##########")
             print("# Combat #")
             print("##########\n")
@@ -459,7 +460,7 @@ def forest_prompt():
             forest_prompt()
             break
         elif action == '2':     # Woodcutting
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print_location()
                 print("Your inventory is full.\n")
@@ -477,7 +478,7 @@ def forest_prompt():
                 forest_prompt()
                 break
         elif action == '3':     # Fletching
-            os.system('clear')
+            clearConsole()
             print("\n#############")
             print("# Fletching #")
             print("#############\n\n")
@@ -488,7 +489,7 @@ def forest_prompt():
             forest_prompt()
             break
         elif action == '4':     # Look
-            os.system('clear')
+            clearConsole()
             print_location()
             print(world_zone[myPlayer.location]["DESCRIPTION"])
             print("\n")
@@ -496,20 +497,20 @@ def forest_prompt():
             forest_prompt()
             break
         elif action == '5':     # Travel
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             player_move()
             prompt_choice()
             break
         elif action == '6':     # Inventory
-            os.system('clear')
+            clearConsole()
             print_location()
             inventory_prompt()
             forest_prompt()
             break
         elif action == '7':     # Character
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -540,7 +541,7 @@ def mine_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Combat
-            os.system('clear')
+            clearConsole()
             print("\n##########")
             print("# Combat #")
             print("##########\n")
@@ -551,7 +552,7 @@ def mine_prompt():
             mine_prompt()
             break
         elif action == '2':     # Mining
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print_location()
                 print("Your inventory is full.\n")
@@ -559,7 +560,7 @@ def mine_prompt():
                 mine_prompt()
                 break
             else:
-                os.system('clear')
+                clearConsole()
                 print("\n##########")
                 print("# Mining #")
                 print("##########\n\n")
@@ -570,7 +571,7 @@ def mine_prompt():
                 mine_prompt()
                 break
         elif action == '3':      # Blacksmithing
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n\n")
@@ -581,7 +582,7 @@ def mine_prompt():
             mine_prompt()
             break
         elif action == '4':     # Look
-            os.system('clear')
+            clearConsole()
             print_location()
             print(world_zone[myPlayer.location]["DESCRIPTION"])
             print("\n")
@@ -589,20 +590,20 @@ def mine_prompt():
             mine_prompt()
             break
         elif action == '5':     # Travel
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             player_move()
             prompt_choice()
             break
         elif action == '6':     # Inventory
-            os.system('clear')
+            clearConsole()
             print_location()
             inventory_prompt()
             mine_prompt()
             break
         elif action == '7':     # Character
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -631,7 +632,7 @@ def swamp_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Combat
-            os.system('clear')
+            clearConsole()
             print("\n##########")
             print("# Combat #")
             print("##########\n")
@@ -642,7 +643,7 @@ def swamp_prompt():
             swamp_prompt()
             break
         elif action == '2':     # Look
-            os.system('clear')
+            clearConsole()
             print_location()
             print(world_zone[myPlayer.location]["DESCRIPTION"])
             print("\n")
@@ -650,20 +651,20 @@ def swamp_prompt():
             swamp_prompt()
             break
         elif action == '3':     # Travel
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             player_move()
             prompt_choice()
             break
         elif action == '4':     # Inventory
-            os.system('clear')
+            clearConsole()
             print_location()
             inventory_prompt()
             swamp_prompt()
             break
         elif action == '5':     # Character
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -692,7 +693,7 @@ def graveyard_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Combat
-            os.system('clear')
+            clearConsole()
             print("\n##########")
             print("# Combat #")
             print("##########\n")
@@ -703,7 +704,7 @@ def graveyard_prompt():
             graveyard_prompt()
             break
         elif action == '2':     # Look
-            os.system('clear')
+            clearConsole()
             print_location()
             print(world_zone[myPlayer.location]["DESCRIPTION"])
             print("\n")
@@ -711,20 +712,20 @@ def graveyard_prompt():
             graveyard_prompt()
             break
         elif action == '3':     # Travel
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             player_move()
             prompt_choice()
             break
         elif action == '4':     # Inventory
-            os.system('clear')
+            clearConsole()
             print_location()
             inventory_prompt()
             graveyard_prompt()
             break
         elif action == '5':     # Character
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -753,7 +754,7 @@ def dragon_lair_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Combat
-            os.system('clear')
+            clearConsole()
             print("\n##########")
             print("# Combat #")
             print("##########\n")
@@ -764,7 +765,7 @@ def dragon_lair_prompt():
             dragon_lair_prompt()
             break
         elif action == '2':     # Look
-            os.system('clear')
+            clearConsole()
             print_location()
             print(world_zone[myPlayer.location]["DESCRIPTION"])
             print("\n")
@@ -772,20 +773,20 @@ def dragon_lair_prompt():
             dragon_lair_prompt()
             break
         elif action == '3':     # Travel
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             player_move()
             prompt_choice()
             break
         elif action == '4':     # Inventory
-            os.system('clear')
+            clearConsole()
             print_location()
             inventory_prompt()
             dragon_lair_prompt()
             break
         elif action == '5':     # Character
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -805,7 +806,7 @@ def dragon_lair_prompt():
 
 # Prompt based on player location
 def prompt_choice():
-    os.system('clear')
+    clearConsole()
     print_location()
     myPlayer.display_stats()
     if myPlayer.location == "Town":
@@ -831,7 +832,7 @@ def character_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Change Gear
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -841,7 +842,7 @@ def character_prompt():
             change_gear_prompt()
             break
         elif action == '2':       # Back
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             break
@@ -864,7 +865,7 @@ def change_gear_prompt():
         if action == '1':       # Head Slot
             if any(item in inventory for item in helmet_set):
                 head_slot_prompt()
-                os.system('clear')
+                clearConsole()
                 print('\n' + ('#' * (4 + len(myPlayer.name))))
                 print('# {} #'.format(myPlayer.name))
                 print('#' * (4 + len(myPlayer.name)))
@@ -879,7 +880,7 @@ def change_gear_prompt():
         elif action == '2':     # Chest Slot
             if any(item in inventory for item in platebody_set):
                 chest_slot_prompt()
-                os.system('clear')
+                clearConsole()
                 print('\n' + ('#' * (4 + len(myPlayer.name))))
                 print('# {} #'.format(myPlayer.name))
                 print('#' * (4 + len(myPlayer.name)))
@@ -894,7 +895,7 @@ def change_gear_prompt():
         elif action == '3':     # Legs Slot
             if any(item in inventory for item in platelegs_set):
                 legs_slot_prompt()
-                os.system('clear')
+                clearConsole()
                 print('\n' + ('#' * (4 + len(myPlayer.name))))
                 print('# {} #'.format(myPlayer.name))
                 print('#' * (4 + len(myPlayer.name)))
@@ -909,7 +910,7 @@ def change_gear_prompt():
         elif action == '4':     # Melee Slot
             if any(item in inventory for item in melee_set):
                 melee_slot_prompt()
-                os.system('clear')
+                clearConsole()
                 print('\n' + ('#' * (4 + len(myPlayer.name))))
                 print('# {} #'.format(myPlayer.name))
                 print('#' * (4 + len(myPlayer.name)))
@@ -924,7 +925,7 @@ def change_gear_prompt():
         elif action == '5':     # Range Slot
             if any(item in inventory for item in range_set):
                 range_slot_prompt()
-                os.system('clear')
+                clearConsole()
                 print('\n' + ('#' * (4 + len(myPlayer.name))))
                 print('# {} #'.format(myPlayer.name))
                 print('#' * (4 + len(myPlayer.name)))
@@ -939,7 +940,7 @@ def change_gear_prompt():
         elif action == '6':     # Magic Slot
             if any(item in inventory for item in staff_set):
                 magic_slot_prompt()
-                os.system('clear')
+                clearConsole()
                 print('\n' + ('#' * (4 + len(myPlayer.name))))
                 print('# {} #'.format(myPlayer.name))
                 print('#' * (4 + len(myPlayer.name)))
@@ -952,7 +953,7 @@ def change_gear_prompt():
                 print("You don't have a Magic Weapon to equip.")
                 continue
         elif action == '7':     # Back
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             break
@@ -962,7 +963,7 @@ def change_gear_prompt():
 
 # Head Slot prompt
 def head_slot_prompt():
-    os.system('clear')
+    clearConsole()
     print('\n' + ('#' * (4 + len(myPlayer.name))))
     print('# {} #'.format(myPlayer.name))
     print('#' * (4 + len(myPlayer.name)))
@@ -1018,7 +1019,7 @@ def head_slot_prompt():
                     removeItem(item)
                     break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -1032,7 +1033,7 @@ def head_slot_prompt():
 
 # Chest Slot prompt
 def chest_slot_prompt():
-    os.system('clear')
+    clearConsole()
     print('\n' + ('#' * (4 + len(myPlayer.name))))
     print('# {} #'.format(myPlayer.name))
     print('#' * (4 + len(myPlayer.name)))
@@ -1085,7 +1086,7 @@ def chest_slot_prompt():
                     removeItem(item)
                     break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -1099,7 +1100,7 @@ def chest_slot_prompt():
 
 # Legs Slot prompt
 def legs_slot_prompt():
-    os.system('clear')
+    clearConsole()
     print('\n' + ('#' * (4 + len(myPlayer.name))))
     print('# {} #'.format(myPlayer.name))
     print('#' * (4 + len(myPlayer.name)))
@@ -1152,7 +1153,7 @@ def legs_slot_prompt():
                     removeItem(item)
                     break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -1166,7 +1167,7 @@ def legs_slot_prompt():
 
 # Melee Slot prompt
 def melee_slot_prompt():
-    os.system('clear')
+    clearConsole()
     print('\n' + ('#' * (4 + len(myPlayer.name))))
     print('# {} #'.format(myPlayer.name))
     print('#' * (4 + len(myPlayer.name)))
@@ -1219,7 +1220,7 @@ def melee_slot_prompt():
                     removeItem(item)
                     break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -1233,7 +1234,7 @@ def melee_slot_prompt():
 
 # Range Slot prompt
 def range_slot_prompt():
-    os.system('clear')
+    clearConsole()
     print('\n' + ('#' * (4 + len(myPlayer.name))))
     print('# {} #'.format(myPlayer.name))
     print('#' * (4 + len(myPlayer.name)))
@@ -1286,7 +1287,7 @@ def range_slot_prompt():
                     removeItem(item)
                     break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))
@@ -1300,7 +1301,7 @@ def range_slot_prompt():
 
 # Magic Slot prompt
 def magic_slot_prompt():
-    os.system('clear')
+    clearConsole()
     print('\n' + ('#' * (4 + len(myPlayer.name))))
     print('# {} #'.format(myPlayer.name))
     print('#' * (4 + len(myPlayer.name)))
@@ -1344,7 +1345,7 @@ def magic_slot_prompt():
                     removeItem(item)
                     break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:  # No gear change/go back
-            os.system('clear')
+            clearConsole()
             print('\n' + ('#' * (4 + len(myPlayer.name))))
             print('# {} #'.format(myPlayer.name))
             print('#' * (4 + len(myPlayer.name)))

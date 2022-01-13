@@ -1,4 +1,4 @@
-import os
+from prompts.clear_console import *
 from items.items import *
 from character.player import *
 from gameplay.movement import *
@@ -31,14 +31,14 @@ def dropItemPrompt():
                     print("Please enter a valid number.")
                 else:
                     if number == 0:
-                        os.system('clear')
+                        clearConsole()
                         print_location()
                         print("No {}s were dropped.".format(item))
                         print("\n")
                         inventory_prompt()
                         break
                     elif number == 1:
-                        os.system('clear')
+                        clearConsole()
                         print_location()
                         print("You dropped a(n) {}".format(item))
                         print("\n")
@@ -49,7 +49,7 @@ def dropItemPrompt():
                         print("You don't have {} {}s.".format(number, item))
                         continue
                     elif number > 1 and number <= inventory.count(item):
-                        os.system('clear')
+                        clearConsole()
                         print_location()
                         print("You dropped {} {}s.".format(number, item))
                         print("\n")
@@ -62,7 +62,7 @@ def dropItemPrompt():
                         continue
             break
         elif item in ["all","All", "ALL"]:
-            os.system('clear')
+            clearConsole()
             print_location()
             print("All items were dropped.")
             inventory.clear()
@@ -70,7 +70,7 @@ def dropItemPrompt():
             inventory_prompt()
             break
         elif item in ["none", "None", "NONE", "back", "Back", "BACK"]:
-            os.system('clear')
+            clearConsole()
             print_location()
             inventory_prompt()
             break
@@ -109,7 +109,7 @@ def inventory_prompt():
     while True:
         action = input('> ')
         if action == '1':     # Drop item
-            os.system('clear')
+            clearConsole()
             print_location()
             if not inventory:
                 print("Your inventory is empty.\n\n")
@@ -123,7 +123,7 @@ def inventory_prompt():
                 dropItemPrompt()
                 break
         elif action == '2':     # Back
-            os.system('clear')
+            clearConsole()
             print_location()
             myPlayer.display_stats()
             break

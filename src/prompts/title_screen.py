@@ -1,15 +1,12 @@
-import cmd
-import textwrap
 import sys
 import os
-import time
-import random
 from prompts.game_start import *
 from gameplay.save_load_game import *
+from prompts.clear_console import *
 
 ##### Title Screen #####
 def title_screen():
-    os.system('clear')
+    clearConsole()
     print('\n###################################')
     print('# Welcome to the Python Text RPG! #')
     print('###################################')

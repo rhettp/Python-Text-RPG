@@ -1,8 +1,4 @@
-import cmd
-import textwrap
-import sys
-import os
-import time
+from prompts.clear_console import *
 from character.player import *
 from gameplay.inventory import *
 from skills.skill_wait_time import *
@@ -22,7 +18,7 @@ def woodcutting_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Oak tree
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print("\n###############")
                 print("# Woodcutting #")
@@ -43,7 +39,7 @@ def woodcutting_prompt():
             print("You need a Woodcutting level of at least 5 to cut Willow Trees.")
             continue 
         elif action == '2' and myPlayer.wc_lvl >= 5:    # Willow tree
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print("\n###############")
                 print("# Woodcutting #")
@@ -64,7 +60,7 @@ def woodcutting_prompt():
             print("You need a Woodcutting level of at least 10 to cut Maple Trees.")
             continue 
         elif action == '3' and myPlayer.wc_lvl >= 10:   # Maple tree
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print("\n###############")
                 print("# Woodcutting #")
@@ -85,7 +81,7 @@ def woodcutting_prompt():
             print("You need a Woodcutting level of at least 15 to cut Yew Trees.")
             continue 
         elif action == '4' and myPlayer.wc_lvl >= 15:   # Yew tree
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print("\n###############")
                 print("# Woodcutting #")
@@ -106,7 +102,7 @@ def woodcutting_prompt():
             print("You need a Woodcutting level of at least 20 to cut Magic Trees.")
             continue 
         elif action == '5' and myPlayer.wc_lvl >= 20:   # Magic tree
-            os.system('clear')
+            clearConsole()
             if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
                 print("\n###############")
                 print("# Woodcutting #")
@@ -124,7 +120,7 @@ def woodcutting_prompt():
                 woodcutting_prompt()
                 break
         elif action == '6':     # Inventory
-            os.system('clear')
+            clearConsole()
             print("\n###############")
             print("# Woodcutting #")
             print("###############\n")
@@ -132,7 +128,7 @@ def woodcutting_prompt():
             woodcutting_prompt()
             break
         elif action == '7':     # Back
-            os.system('clear')
+            clearConsole()
             break
         else:                   # Input Validation
             print("Please enter a valid tree.")

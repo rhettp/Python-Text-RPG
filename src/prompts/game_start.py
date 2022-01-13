@@ -1,12 +1,12 @@
 import sys
-import os
+from prompts.clear_console import *
 import time
 from character.player import *
 from gameplay.game_loop import *
 
 ##### New Game Start #####
 def start_game():
-    os.system('clear')
+    clearConsole()
     question = "What is your name?\n"
     for character in question:
         sys.stdout.write(character)
@@ -29,7 +29,7 @@ def start_game():
         time.sleep(0.05)
     time.sleep(2)
 
-    os.system("clear")
+    clearConsole()
     print("\n#################")
     print("# Let us Begin! #")
     print("#################")

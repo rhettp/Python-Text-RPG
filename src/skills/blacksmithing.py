@@ -1,8 +1,4 @@
-import cmd
-import textwrap
-import sys
-import os
-import time
+from prompts.clear_console import *
 from character.player import *
 from gameplay.inventory import *
 from skills.skill_wait_time import *
@@ -20,7 +16,7 @@ def blacksmithing_prompt():
         action = input('> ')
         if action == '1':       # Forge
             if any(i in ["Copper Ore", "Iron Ore", "Silver Ore", "Gold Ore", "Diamond Ore"] for i in inventory):    # Check if player has ore
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -32,7 +28,7 @@ def blacksmithing_prompt():
                 continue
         elif action == '2':     # Smith
             if any(i in ["Copper Bar", "Iron Bar", "Silver Bar", "Gold Bar", "Diamond Bar"] for i in inventory):    # Check if player has bars
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -43,7 +39,7 @@ def blacksmithing_prompt():
                 print("You don't have any bars.")
                 continue
         elif action == '3':     # Inventory
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -51,7 +47,7 @@ def blacksmithing_prompt():
             blacksmithing_prompt()
             break
         elif action == '4':     # Back
-            os.system('clear')
+            clearConsole()
             break
         else:                   # Input Validation
             print("Please enter a valid ore.")
@@ -71,7 +67,7 @@ def forge_prompt():
         action = input('> ')
         if action == '1':       # Copper Ore
             if inventory.count("Copper Ore") > 0:   # 1 Copper Ore needed
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -83,7 +79,7 @@ def forge_prompt():
                 print("You need at least 1 Copper Ore to smelt it into bars.")
         elif action == '2':       # Iron Ore
             if inventory.count("Iron Ore") >= 2 and myPlayer.bs_lvl >= 5:       # 2 Iron Ore and at least lvl 5
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -97,7 +93,7 @@ def forge_prompt():
                 print("You need at least 2 Iron Ore to smelt it into bars.")
         elif action == '3':       # Silver Ore
             if inventory.count("Silver Ore") >= 3 and myPlayer.bs_lvl >= 10:    # 3 Silver Ore and at least lvl 10
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -111,7 +107,7 @@ def forge_prompt():
                 print("You need at least 3 Silver Ore to smelt it into bars.")
         elif action == '4':       # Gold Ore
             if inventory.count("Gold Ore") >= 4 and myPlayer.bs_lvl >= 15:      # 4 Gold Ore and at least lvl 15
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -125,7 +121,7 @@ def forge_prompt():
                 print("You need at least 4 Gold Ore to smelt it into bars.")
         elif action == '5':       # Diamond Ore
             if inventory.count("Diamond Ore") >= 5 and myPlayer.bs_lvl >= 20:   # 5 Diamond Ore and at least lvl 20
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -138,7 +134,7 @@ def forge_prompt():
             else:
                 print("You need at least 5 Diamond Ore to smelt it into bars")
         elif action == '6':     # Inventory
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -146,7 +142,7 @@ def forge_prompt():
             forge_prompt()
             break
         elif action == '7':     # Back
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -295,7 +291,7 @@ def smith_prompt():
     while True:
         action = input('> ')
         if action == '1':       # Helmet
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -303,7 +299,7 @@ def smith_prompt():
             helmet_prompt()
             break
         elif action == '2':     # Sword
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -311,7 +307,7 @@ def smith_prompt():
             sword_prompt()
             break
         elif action == '3':     # Platelegs
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -319,7 +315,7 @@ def smith_prompt():
             platelegs_prompt()
             break
         elif action == '4':     # Platebody
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -327,7 +323,7 @@ def smith_prompt():
             platebody_prompt()
             break
         elif action == '5':     # Inventory
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -335,7 +331,7 @@ def smith_prompt():
             smith_prompt()
             break
         elif action == '6':     # Back
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -360,7 +356,7 @@ def helmet_prompt():
         action = input('> ')
         if action == '1':       # Copper
             if inventory.count("Copper Bar") >= 2 and myPlayer.bs_lvl >= 2:     # 2 Copper bars and at least lvl 2
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -374,7 +370,7 @@ def helmet_prompt():
                 print("You need at least 2 Copper Bars to make a Helmet.")
         elif action == '2':       # Iron
             if inventory.count("Iron Bar") >= 2 and myPlayer.bs_lvl >= 6:       # 2 Iron Bars and at least lvl 6
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -388,7 +384,7 @@ def helmet_prompt():
                 print("You need at least 2 Iron Bars to make a Helmet")
         elif action == '3':       # Silver
             if inventory.count("Silver Bar") >= 2 and myPlayer.bs_lvl >= 11:    # 2 Silver Bars and at least lvl 11
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -402,7 +398,7 @@ def helmet_prompt():
                 print("You need at least 2 Silver Bars to make a Helmet.")
         elif action == '4':       # Gold
             if inventory.count("Gold Bar") >= 2 and myPlayer.bs_lvl >= 16:      # 2 Gold Bars and at least lvl 16
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -416,7 +412,7 @@ def helmet_prompt():
                 print("You need at least 2 Gold Bars to make a Helmet.")
         elif action == '5':       # Diamond
             if inventory.count("Diamond Bar") >= 2 and myPlayer.bs_lvl >= 21:    # 2 Diamond Bars and at least lvl 21
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -429,7 +425,7 @@ def helmet_prompt():
             else:
                 print("You need at least 2 Diamond Bars to make a Helmet.")
         elif action == '6':     # Inventory
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -437,7 +433,7 @@ def helmet_prompt():
             helmet_prompt()
             break
         elif action == '7':     # Back
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -462,7 +458,7 @@ def sword_prompt():
         action = input('> ')
         if action == '1':       # Copper
             if inventory.count("Copper Bar") >= 3 and myPlayer.bs_lvl >= 3:     # 3 Copper bars and at least lvl 3
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -476,7 +472,7 @@ def sword_prompt():
                 print("You need at least 3 Copper Bars to make a Sword.")
         elif action == '2':       # Iron
             if inventory.count("Iron Bar") >= 3 and myPlayer.bs_lvl >= 7:       # 3 Iron Bars and at least lvl 7
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -490,7 +486,7 @@ def sword_prompt():
                 print("You need at least 3 Iron Bars to make a Sword")
         elif action == '3':       # Silver
             if inventory.count("Silver Bar") >= 3 and myPlayer.bs_lvl >= 12:    # 3 Silver Bars and at least lvl 12
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -504,7 +500,7 @@ def sword_prompt():
                 print("You need at least 3 Silver Bars to make a Sword.")
         elif action == '4':       # Gold
             if inventory.count("Gold Bar") >= 3 and myPlayer.bs_lvl >= 17:    # 3 Gold Bars and at least lvl 17
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -518,7 +514,7 @@ def sword_prompt():
                 print("You need at least 3 Gold Bars to make a Sword.")
         elif action == '5':       # Diamond
             if inventory.count("Diamond Bar") >= 3 and myPlayer.bs_lvl >= 22:    # 3 Diamond Bars and at least lvl 22
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -531,7 +527,7 @@ def sword_prompt():
             else:
                 print("You need at least 3 Diamond Bars to make a Sword.")
         elif action == '6':     # Inventory
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -539,7 +535,7 @@ def sword_prompt():
             sword_prompt()
             break
         elif action == '7':     # Back
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -564,7 +560,7 @@ def platelegs_prompt():
         action = input('> ')
         if action == '1':       # Copper
             if inventory.count("Copper Bar") >= 4 and myPlayer.bs_lvl >= 4:     # 4 Copper bars and at least lvl 4
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -578,7 +574,7 @@ def platelegs_prompt():
                 print("You need at least 4 Copper Bars to make a Platelegs.")
         elif action == '2':       # Iron
             if inventory.count("Iron Bar") >= 4 and myPlayer.bs_lvl >= 8:       # 4 Iron Bars and at least lvl 8
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -592,7 +588,7 @@ def platelegs_prompt():
                 print("You need at least 4 Iron Bars to make a Platelegs")
         elif action == '3':       # Silver
             if inventory.count("Silver Bar") >= 4 and myPlayer.bs_lvl >= 13:    # 4 Silver Bars and at least lvl 13
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -606,7 +602,7 @@ def platelegs_prompt():
                 print("You need at least 4 Silver Bars to make a Platelegs.")
         elif action == '4':       # Gold
             if inventory.count("Gold Bar") >= 4 and myPlayer.bs_lvl >= 18:    # 4 Gold Bars and at least lvl 18
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -620,7 +616,7 @@ def platelegs_prompt():
                 print("You need at least 4 Gold Bars to make a Platelegs.")
         elif action == '5':       # Diamond
             if inventory.count("Diamond Bar") >= 4 and myPlayer.bs_lvl >= 23:    # 4 Diamond Bars and at least lvl 23
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -633,7 +629,7 @@ def platelegs_prompt():
             else:
                 print("You need at least 4 Diamond Bars to make a Platelegs.")
         elif action == '6':     # Inventory
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -641,7 +637,7 @@ def platelegs_prompt():
             platelegs_prompt()
             break
         elif action == '7':     # Back
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -666,7 +662,7 @@ def platebody_prompt():
         action = input('> ')
         if action == '1':       # Copper
             if inventory.count("Copper Bar") >= 5 and myPlayer.bs_lvl >= 5:     # 5 Copper bars and at least lvl 5
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -680,7 +676,7 @@ def platebody_prompt():
                 print("You need at least 5 Copper Bars to make a Platebody.")
         elif action == '2':       # Iron
             if inventory.count("Iron Bar") >= 5 and myPlayer.bs_lvl >= 9:       # 5 Iron Bars and at least lvl 9
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -694,7 +690,7 @@ def platebody_prompt():
                 print("You need at least 5 Iron Bars to make an Platebody")
         elif action == '3':       # Silver
             if inventory.count("Silver Bar") >= 5 and myPlayer.bs_lvl >= 14:    # 5 Silver Bars and at least lvl 14
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -708,7 +704,7 @@ def platebody_prompt():
                 print("You need at least 5 Silver Bars to make a Platebody.")
         elif action == '4':       # Gold
             if inventory.count("Gold Bar") >= 5 and myPlayer.bs_lvl >= 19:    # 5 Gold Bars and at least lvl 19
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -722,7 +718,7 @@ def platebody_prompt():
                 print("You need at least 5 Gold Bars to make a Platebody.")
         elif action == '5':       # Diamond
             if inventory.count("Diamond Bar") >= 5 and myPlayer.bs_lvl >= 24:    # 5 Diamond Bars and at least lvl 24
-                os.system('clear')
+                clearConsole()
                 print("\n#################")
                 print("# Blacksmithing #")
                 print("#################\n")
@@ -735,7 +731,7 @@ def platebody_prompt():
             else:
                 print("You need at least 5 Diamond Bars to make a Platebody.")
         elif action == '6':     # Inventory
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
@@ -743,7 +739,7 @@ def platebody_prompt():
             platebody_prompt()
             break
         elif action == '7':     # Back
-            os.system('clear')
+            clearConsole()
             print("\n#################")
             print("# Blacksmithing #")
             print("#################\n")
