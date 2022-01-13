@@ -75,9 +75,12 @@ def melee_attack(enemy):
     if miss():
         damage = 0
     elif myPlayer.melee_weapon == "None":
-        damage = random.randrange(1, myPlayer.strength * 2 + 1)
+        if myPlayer.strength < 6:
+            damage = random.randrange(1, 3)
+        else:
+            damage = random.randrange(1, round(myPlayer.strength / 2))
     else:
-        damage = random.randrange(1, myPlayer.strength * 2 + items[myPlayer.melee_weapon]["DAMAGE"] + 1)
+        damage = random.randrange(1, round(myPlayer.strength / 2) + round(items[myPlayer.melee_weapon]["DAMAGE"] / 2))
     enemy.hp -= damage
     os.system('clear')
     if damage == 0:
@@ -142,7 +145,7 @@ def range_attack(enemy):
     if miss():
         damage = 0
     else:
-        damage = random.randrange(1, myPlayer.agility * 2 + items[myPlayer.range_weapon]["DAMAGE"] + 1)
+        damage = random.randrange(1, round(myPlayer.agility / 2) + round(items[myPlayer.range_weapon]["DAMAGE"] / 2))
     enemy.hp -= damage
     os.system('clear')
     if damage == 0:
@@ -293,9 +296,9 @@ def fireball(enemy):
     if miss():
         damage = 0
     elif myPlayer.magic_weapon == "None":
-        damage = random.randrange(1, myPlayer.magic * 2 + 5)
+        damage = random.randrange(1, round(myPlayer.magic / 2) + 5)
     else:
-        damage = random.randrange(1, myPlayer.magic * 2 + items[myPlayer.magic_weapon]["DAMAGE"] + 5)
+        damage = random.randrange(1, round(myPlayer.magic / 2) + round(items[myPlayer.magic_weapon]["DAMAGE"] / 2) + 5)
     enemy.hp -= damage
     os.system('clear')
     if damage == 0:
@@ -321,9 +324,9 @@ def icebolt(enemy):
     if miss():
         damage = 0
     elif myPlayer.magic_weapon == "None":
-        damage = random.randrange(1, myPlayer.magic * 2 + 9)
+        damage = random.randrange(1, round(myPlayer.magic / 2) + 9)
     else:
-        damage = random.randrange(1, myPlayer.magic * 2 + items[myPlayer.magic_weapon]["DAMAGE"] + 9)
+        damage = random.randrange(1, round(myPlayer.magic / 2) + round(items[myPlayer.magic_weapon]["DAMAGE"] / 2) + 9)
     enemy.hp -= damage
     os.system('clear')
     if damage == 0:
