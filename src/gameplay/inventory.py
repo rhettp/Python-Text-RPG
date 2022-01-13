@@ -112,8 +112,6 @@ def inventory_prompt():
             clearConsole()
             print_location()
             if not inventory:
-                print("Your inventory is empty.\n\n")
-                myPlayer.display_stats()
                 inventory_prompt()
                 break
             else:
