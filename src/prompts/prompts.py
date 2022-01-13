@@ -205,8 +205,8 @@ def buy_prompt():
             if item not in ["Copper Platelegs", "Copper Platebody", "Silver Platelegs",\
                 "Silver Platebody", "Diamond Platelegs", "Diamond Platebody"]:
                 print("{}:\t\t {}".format(item, items[item]["DESCRIPTION"]))
-            elif item in ["Copper Platebody", "Silver Platebody"]:
-                print("{}: {:>23}".format(item, items[item]["DESCRIPTION"]))
+            elif item in ["Copper Platebody", "Silver Platebody", "Copper Platelegs", "Silver Platelegs"]:
+                print("{}:\t {}".format(item, items[item]["DESCRIPTION"]))
             else:
                 print("{}: {:>24}".format(item, items[item]["DESCRIPTION"]))
     else:
@@ -214,9 +214,9 @@ def buy_prompt():
             if item not in ["Super Health Potion", "Super Mana Potion", "Staff"]:
                 print("{}:\t\t{}".format(item, items[item]["DESCRIPTION"]))
             elif item != "Staff":
-                print("{} {:>25}".format(item, items[item]["DESCRIPTION"]))
+                print("{}:\t{}".format(item, items[item]["DESCRIPTION"]))
             else:
-                print("{} {:>31}".format(item, items[item]["DESCRIPTION"]))
+                print("{}:\t\t\t{}".format(item, items[item]["DESCRIPTION"]))
     print("\n")
     myPlayer.display_stats()
     print("Which item would you like to buy?")

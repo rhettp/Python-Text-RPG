@@ -192,5 +192,3 @@ class player:
             print("Congatulations your Blacksmithing level increased to {}!".format(self.bs_lvl))
             print("{} XP to next level.\n".format(myPlayer.bs_lvlUp - myPlayer.bs_xp))
 
-myPlayer = player()
-
