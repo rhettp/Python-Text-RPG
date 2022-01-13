@@ -128,9 +128,16 @@ def shop_prompt():
         action = input('> ')
         if action == '1':       # Buy
             os.system('clear')
-            buy_prompt()
-            shop_prompt()
-            break
+            if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
+                print_location()
+                print("Your inventory is full.\n")
+                myPlayer.display_stats()
+                shop_prompt()
+                break
+            else:
+                buy_prompt()
+                shop_prompt()
+                break
         elif action == '2':     # Sell
             os.system('clear')
             if not inventory:   # Empty inventory
@@ -229,6 +236,7 @@ def buy_prompt():
                     print_location()
                     print("You bought the {} for {} gold.".format(item, items[item]["VALUE"]))
                     print("\n")
+                    myPlayer.bag = item
                     myPlayer.inventory_size = items[item]["SIZE"]
                     myPlayer.gold -= items[item]["VALUE"]
                     myPlayer.display_stats()
@@ -278,9 +286,10 @@ def buy_prompt():
                         myPlayer.display_stats()
                         shop_prompt()
                         break
+                    elif myPlayer.inventory_size < len(inventory) + number:                   # Not enough inventory space
+                        print("You don't have enough inventory space for {} {}(s).".format(number, item))
                     elif myPlayer.gold < number * items[item]["VALUE"]:                       # Not enough gold
                         print("You don't have enough gold for {} {}(s).".format(number, item))
-                        continue
                     elif number > 1 and myPlayer.gold >= number * items[item]["VALUE"]:       # Multiple items
                         os.system('clear')
                         print_location()
@@ -434,15 +443,22 @@ def forest_prompt():
             break
         elif action == '2':     # Woodcutting
             os.system('clear')
-            print("\n###############")
-            print("# Woodcutting #")
-            print("###############\n\n")
-            myPlayer.display_stats()
-            woodcutting_prompt()
-            print_location()
-            myPlayer.display_stats()
-            forest_prompt()
-            break
+            if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
+                print_location()
+                print("Your inventory is full.\n")
+                myPlayer.display_stats()
+                forest_prompt()
+                break
+            else:
+                print("\n###############")
+                print("# Woodcutting #")
+                print("###############\n\n")
+                myPlayer.display_stats()
+                woodcutting_prompt()
+                print_location()
+                myPlayer.display_stats()
+                forest_prompt()
+                break
         elif action == '3':     # Fletching
             os.system('clear')
             print("\n#############")
@@ -518,15 +534,23 @@ def mine_prompt():
             break
         elif action == '2':     # Mining
             os.system('clear')
-            print("\n##########")
-            print("# Mining #")
-            print("##########\n\n")
-            myPlayer.display_stats()
-            mining_prompt()
-            print_location()
-            myPlayer.display_stats()
-            mine_prompt()
-            break
+            if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
+                print_location()
+                print("Your inventory is full.\n")
+                myPlayer.display_stats()
+                mine_prompt()
+                break
+            else:
+                os.system('clear')
+                print("\n##########")
+                print("# Mining #")
+                print("##########\n\n")
+                myPlayer.display_stats()
+                mining_prompt()
+                print_location()
+                myPlayer.display_stats()
+                mine_prompt()
+                break
         elif action == '3':      # Blacksmithing
             os.system('clear')
             print("\n#################")
@@ -805,7 +829,7 @@ def character_prompt():
 
 # Gear change prompt
 def change_gear_prompt():
-    print("What gear slot would you like to chnage?")
+    print("What gear slot would you like to change?")
     print("1) Head Slot")
     print("2) Chest Slot")
     print("3) Legs Slot")
@@ -1147,3 +1171,4 @@ def magic_slot_prompt():
         else:
             print("Please enter a valid item.")
             continue
+

@@ -23,61 +23,106 @@ def mining_prompt():
         action = input('> ')
         if action == '1':       # Copper ore
             os.system('clear')
-            print("\n##########")
-            print("# Mining #")
-            print("##########\n")
-            mine("Copper Ore")
-            myPlayer.display_stats()
-            mining_prompt()
-            break
+            if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
+                print("\n##########")
+                print("# Mining #")
+                print("##########\n")
+                print("Your inventory is full.\n")
+                myPlayer.display_stats()
+                mining_prompt()
+                break
+            else:
+                print("\n##########")
+                print("# Mining #")
+                print("##########\n")
+                mine("Copper Ore")
+                myPlayer.display_stats()
+                mining_prompt()
+                break
         elif action == '2' and myPlayer.mn_lvl < 5:     # Iron Ore lvl check
             print("You need a Mining level of at least 5 to mine Iron Ore.")
             continue 
         elif action == '2' and myPlayer.mn_lvl >= 5:    # Iron ore
             os.system('clear')
-            print("\n##########")
-            print("# Mining #")
-            print("##########\n")
-            mine("Iron Ore")
-            myPlayer.display_stats()
-            mining_prompt()
-            break
+            if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
+                print("\n##########")
+                print("# Mining #")
+                print("##########\n")
+                print("Your inventory is full.\n")
+                myPlayer.display_stats()
+                mining_prompt()
+                break
+            else:
+                print("\n##########")
+                print("# Mining #")
+                print("##########\n")
+                mine("Iron Ore")
+                myPlayer.display_stats()
+                mining_prompt()
+                break
         elif action == '3' and myPlayer.mn_lvl < 10:    # Silver ore lvl check
             print("You need a Mining level of at least 10 to mine Silver Ore.")
             continue 
         elif action == '3' and myPlayer.mn_lvl >= 10:   # Silver ore
             os.system('clear')
-            print("\n##########")
-            print("# Mining #")
-            print("##########\n")
-            mine("Silver Ore")
-            myPlayer.display_stats()
-            mining_prompt()
-            break
+            if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
+                print("\n##########")
+                print("# Mining #")
+                print("##########\n")
+                print("Your inventory is full.\n")
+                myPlayer.display_stats()
+                mining_prompt()
+                break
+            else:
+                print("\n##########")
+                print("# Mining #")
+                print("##########\n")
+                mine("Silver Ore")
+                myPlayer.display_stats()
+                mining_prompt()
+                break
         elif action == '4' and myPlayer.mn_lvl < 15:    # Gold ore lvl check
             print("You need a Mining level of at least 15 to mine Gold Ore.")
             continue 
         elif action == '4' and myPlayer.mn_lvl >= 15:   # Gold ore
             os.system('clear')
-            print("\n##########")
-            print("# Mining #")
-            print("##########\n")
-            mine("Gold Ore")
-            myPlayer.display_stats()
-            mining_prompt()
+            if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
+                print("\n##########")
+                print("# Mining #")
+                print("##########\n")
+                print("Your inventory is full.\n")
+                myPlayer.display_stats()
+                mining_prompt()
+                break
+            else:
+                print("\n##########")
+                print("# Mining #")
+                print("##########\n")
+                mine("Gold Ore")
+                myPlayer.display_stats()
+                mining_prompt()
             break
         elif action == '5' and myPlayer.mn_lvl < 20:    # Diamond ore lvl check
             print("You need a Mining level of at least 20 to mine Diamond Ore.")
             continue 
         elif action == '5' and myPlayer.mn_lvl >= 20:   # Diamond ore
             os.system('clear')
-            print("\n##########")
-            print("# Mining #")
-            print("##########\n")
-            mine("Diamond Ore")
-            myPlayer.display_stats()
-            mining_prompt()
-            break
+            if len(inventory) >= myPlayer.inventory_size:  # Inventory is full
+                print("\n##########")
+                print("# Mining #")
+                print("##########\n")
+                print("Your inventory is full.\n")
+                myPlayer.display_stats()
+                mining_prompt()
+                break
+            else:
+                print("\n##########")
+                print("# Mining #")
+                print("##########\n")
+                mine("Diamond Ore")
+                myPlayer.display_stats()
+                mining_prompt()
+                break
         elif action == '6':     # Inventory
             os.system('clear')
             print("\n##########")
