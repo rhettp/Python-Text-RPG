@@ -250,7 +250,6 @@ def buy_prompt():
                     print_location()
                     print("You bought the {} for {} gold.".format(item, items[item]["VALUE"]))
                     print("\n")
-                    myPlayer.bag = item
                     myPlayer.inventory_size = items[item]["SIZE"]
                     myPlayer.gold -= items[item]["VALUE"]
                     myPlayer.display_stats()
