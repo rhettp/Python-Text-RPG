@@ -78,7 +78,10 @@ def melee_attack(enemy):
         else:
             damage = random.randrange(1, round(myPlayer.strength / 2))
     else:
-        damage = random.randrange(1, round(myPlayer.strength / 2) + round(items[myPlayer.melee_weapon]["DAMAGE"] / 2))
+        if myPlayer.strength < 3:
+            damage = random.randrange(1, round(myPlayer.strength + 1) + round(items[myPlayer.melee_weapon]["DAMAGE"] / 2)) 
+        else:
+            damage = random.randrange(1, round(myPlayer.strength / 2) + round(items[myPlayer.melee_weapon]["DAMAGE"] / 2) + 1)
     enemy.hp -= damage
     clearConsole()
     if damage == 0:
@@ -143,7 +146,10 @@ def range_attack(enemy):
     if miss():
         damage = 0
     else:
-        damage = random.randrange(1, round(myPlayer.agility / 2) + round(items[myPlayer.range_weapon]["DAMAGE"] / 2))
+        if myPlayer.agility < 3:
+            damage = random.randrange(1, round(myPlayer.agility + 1) + round(items[myPlayer.range_weapon]["DAMAGE"] / 2))
+        else:
+            damage = random.randrange(1, round(myPlayer.agility / 2) + round(items[myPlayer.range_weapon]["DAMAGE"] / 2) + 1)
     enemy.hp -= damage
     clearConsole()
     if damage == 0:
