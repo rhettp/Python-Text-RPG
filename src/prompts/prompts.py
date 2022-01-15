@@ -34,7 +34,10 @@ def town_prompt():
         elif action == '2':     # Rest
             clearConsole()
             print_location()
-            myPlayer.rest()
+            if myPlayer.gold >= 10:
+                myPlayer.rest()
+            else:
+                print("You need 10 gold to pay for a room.\n")
             myPlayer.display_stats()
             town_prompt()
             break

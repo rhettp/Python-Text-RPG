@@ -84,8 +84,9 @@ class player:
         print("Blacksmithing:     {}\t\t\n".format(self.bs_lvl))
 
     def rest(self):
-        rest1 = ("You find a room at one of the local inns and rest for the night")
+        rest1 = ("You pay 10 gold for a room at a local inn and rest for the night")
         periods = (".....\n")
+        myPlayer.gold -= 10
         for character in rest1:
             sys.stdout.write(character)
             sys.stdout.flush()
