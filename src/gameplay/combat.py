@@ -696,7 +696,7 @@ def combat_defeat(enemy):
 
     # Player has at least 2 items and 2 gold
     if len(inventory) >= 2 and myPlayer.gold >= 2:
-        defeat4 = ("You awaken and disover half of your gold and inventory is gone!\n\n")
+        defeat4 = ("You awaken and discover half of your gold and inventory is gone!\n\n")
         myPlayer.gold = round(myPlayer.gold / 2)            # Player gold divided in half
         for i in range(round(len(inventory) / 2)):          # Remove half of inventory randomly
             inventory.pop(random.randrange(len(inventory)))
@@ -708,7 +708,7 @@ def combat_defeat(enemy):
 
     # Player has at least 2 items and less than 2 gold
     elif len(inventory) >= 2 and myPlayer.gold < 2:
-        defeat4 = ("You awaken and disover half of your inventory is gone!\n\n")
+        defeat4 = ("You awaken and discover half of your inventory is gone!\n\n")
         for i in range(round(len(inventory) / 2)):          # Remove half of inventory randomly
             inventory.pop(random.randrange(len(inventory)))
     
