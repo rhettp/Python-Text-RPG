@@ -439,7 +439,7 @@ def item_prompt(enemy):
                 print("Already at full HP.")
                 continue
             else:
-                myPlayer.hp = items["Super Health Potion"]["EFFECT"]
+                myPlayer.hp = myPlayer.max_hp
                 removeItem("Super Health Potion")
                 clearConsole()
                 print("\n##########")
@@ -457,7 +457,7 @@ def item_prompt(enemy):
                 print("Already at full MP.")
                 continue
             else:
-                myPlayer.mp = items["Super Mana Potion"]["EFFECT"]
+                myPlayer.mp = myPlayer.max_mp
                 removeItem("Super Mana Potion")
                 clearConsole()
                 print("\n##########")
@@ -475,8 +475,8 @@ def item_prompt(enemy):
                 print("Already at full HP and MP.")
                 continue
             else:
-                myPlayer.hp = items["Restore Potion"]["EFFECT"]
-                myPlayer.mp = items["Restore Potion"]["EFFECT_2"]
+                myPlayer.hp = myPlayer.max_hp
+                myPlayer.mp = myPlayer.max_mp
                 removeItem("Restore Potion")
                 clearConsole()
                 print("\n##########")
