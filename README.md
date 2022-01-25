@@ -23,7 +23,8 @@ In this game you will fight varied enemies, level up skills, and complete quests
 `python3 src/main.py`
 ## Windows
 - Download the latest version of Python  
-https://www.python.org/downloads/windows/
+https://www.python.org/downloads/windows/  
+![alt text](https://docs.blender.org/manual/en/latest/_images/about_contribute_install_windows_installer.png)
 - Open Command Prompt
 - Verify your Python Version  
 `python -V`
